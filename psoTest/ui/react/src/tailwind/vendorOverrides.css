@@ -7,64 +7,13 @@
  * This material may be covered by one or more patents or pending patent applications.
  */
 
+/*
+ * Copyright 2009-2026 C3 AI (www.c3.ai). All Rights Reserved.
+ */
+
 /**
  * Vendor Library Style Overrides
  *
- * This file contains style overrides for third-party libraries to align them
- * with the C3 Design System. These overrides ensure consistent appearance
- * across all UI components, whether custom or from external libraries.
+ * Add third-party library tweaks here as needed. Kendo-specific rules were removed
+ * after migrating examples to shadcn/Radix.
  */
-
-/* ========================================================================
-   Kendo UI Component Overrides
-   ======================================================================== */
-
-/* Button Component */
-button.k-button {
-  font-weight: normal;
-}
-
-/* TabStrip Component */
-div.k-tabstrip-items {
-  background-color: var(--c3-style-componentBackgroundColor);
-  border-bottom: 1px solid var(--c3-style-colorBorderWeak);
-}
-
-div.k-tabstrip > .k-tabstrip-content > .k-animation-container {
-  width: 100%;
-}
-
-/* Expander Component */
-div.k-expander-content-wrapper.no-padding .k-expander-content {
-  padding: 0;
-}
-
-div.k-expander {
-  background-color: var(--c3-style-componentBackgroundColor);
-  border: none;
-}
-
-div.k-expander.k-expanded {
-  border: none;
-}
-
-div.k-expander-header {
-  background-color: var(--c3-style-componentBackgroundColor);
-  padding-left: 0;
-}
-
-span.k-expander-indicator {
-  order: 0;
-  margin-left: 0;
-}
-
-div.k-expander-title,
-div.k-expander-sub-title {
-  margin-left: var(--c3-style-space-03);
-  color: var(--c3-style-colorFgPrimary);
-  order: 1;
-}
-
-.k-spacer {
-  order: 2;
-}

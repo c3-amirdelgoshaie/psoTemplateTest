@@ -17,8 +17,7 @@ export function EmptyState({ title, message, action }: EmptyStateProps) {
       }}
     >
       <div
-        className="hel-serif"
-        style={{ fontSize: 18, color: 'var(--hel-text)', marginBottom: 6 }}
+        style={{ fontSize: 18, fontWeight: 600, color: 'var(--color-text-primary)', marginBottom: 6 }}
       >
         {title}
       </div>

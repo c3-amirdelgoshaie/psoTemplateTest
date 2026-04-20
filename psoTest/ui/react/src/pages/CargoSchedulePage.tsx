@@ -1288,7 +1288,7 @@ function ModalShell({
           }}
         >
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-            <Dialog.Title style={{ margin: 0, fontSize: 18, fontFamily: 'var(--hel-font-display)' }}>
+            <Dialog.Title style={{ margin: 0, fontSize: 18, fontWeight: 600 }}>
               {title}
             </Dialog.Title>
             <Dialog.Close asChild>

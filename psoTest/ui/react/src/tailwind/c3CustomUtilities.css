@@ -16,7 +16,6 @@
   border-color: var(--color-border-weak);
   border-radius: var(--radius-sm);
   padding: var(--spacing-04);
-  box-shadow: var(--shadow-card);
 }
 
 /* C3 Logo Utility */

@@ -243,7 +243,7 @@ export default function EvidenceDrawer({ rec, onClose, readOnly }: EvidenceDrawe
               borderRadius: 8,
               padding: 10,
               fontSize: 12,
-              fontFamily: 'var(--hel-font-body)',
+              fontFamily: 'inherit',
             }}
           >
             {rec.feedbackNotes}
@@ -268,7 +268,6 @@ export default function EvidenceDrawer({ rec, onClose, readOnly }: EvidenceDrawe
               border: '1px solid var(--hel-border)',
               borderRadius: 8,
               padding: 8,
-              fontFamily: 'var(--hel-font-body)',
               fontSize: 13,
             }}
           />

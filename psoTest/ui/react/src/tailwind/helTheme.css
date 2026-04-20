@@ -60,15 +60,6 @@
   --hel-grade-other:  #8D7DA3;
 }
 
-/* ------------------------------------------------------------------
- * Global font + background for the Helleniq shell.
- * ------------------------------------------------------------------ */
-body {
-  font-family: var(--hel-font-body) !important;
-  background-color: var(--hel-bg) !important;
-  color: var(--hel-text) !important;
-  font-size: 14px;
-}
 
 /* Utility classes — deliberately verbose names so they never collide
  * with Tailwind or the existing C3 theme. */
@@ -78,10 +69,9 @@ body {
   color: var(--hel-text);
   min-height: 100vh;
   min-width: var(--hel-min-viewport);
-  font-family: var(--hel-font-body);
 }
 
-.hel-serif  { font-family: var(--hel-font-display); }
+.hel-serif  { font-family: var(--font-sans); }
 
 .hel-card {
   background: var(--hel-surface);
@@ -94,18 +84,20 @@ body {
 .hel-card--compact { padding: 12px 16px; }
 
 .hel-card__title {
-  font-family: var(--hel-font-display);
+  font-family: var(--font-sans);
   font-size: 16px;
-  color: var(--hel-text);
+  font-weight: 600;
+  color: var(--color-text-primary);
   margin: 0 0 12px 0;
   letter-spacing: 0.2px;
 }
 
 .hel-kpi__value {
-  font-family: var(--hel-font-display);
+  font-family: var(--font-sans);
   font-size: 32px;
+  font-weight: 700;
   line-height: 1;
-  color: var(--hel-text);
+  color: var(--color-text-primary);
 }
 
 .hel-kpi__label {
@@ -128,7 +120,7 @@ body {
 
 /* Buttons */
 .hel-btn {
-  font-family: var(--hel-font-body);
+  font-family: var(--font-sans);
   font-size: 14px;
   font-weight: 500;
   padding: 8px 16px;
@@ -232,14 +224,15 @@ body {
 
 /* Section headers (page titles) */
 .hel-section-title {
-  font-family: var(--hel-font-display);
+  font-family: var(--font-sans);
   font-size: 24px;
-  color: var(--hel-text);
+  font-weight: 600;
+  color: var(--color-text-primary);
   margin: 0;
 }
 .hel-section-subtitle {
   font-size: 13px;
-  color: var(--hel-text-muted);
+  color: var(--color-text-secondary);
   margin-top: 4px;
 }
 
@@ -264,7 +257,7 @@ body {
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 .hel-sidebar__brand-text {
-  font-family: var(--hel-font-display);
+  font-family: var(--font-sans);
   font-size: 16px;
   letter-spacing: 0.3px;
   line-height: 1.1;
@@ -354,7 +347,7 @@ body {
   padding: 4px 12px;
   font-size: 12px;
   cursor: pointer;
-  font-family: var(--hel-font-body);
+  font-family: var(--font-sans);
 }
 .hel-horizon-toggle > button.hel-active {
   background: var(--hel-primary);

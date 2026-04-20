@@ -29,11 +29,11 @@ if (import.meta.env.MODE === 'development') {
 export default function App() {
   return (
     <ErrorReporterProvider>
-      <div className="hel-shell" style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
+      <div className="h-screen flex max-w-full overflow-hidden">
         <SideNav />
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+        <div className="flex-1 flex flex-col min-w-0">
           <TopBar />
-          <main className="hel-scroll" style={{ flex: 1, padding: 20 }}>
+          <main className="flex-1 overflow-auto p-5">
             <Routes>
               <Route path="/" element={<DashboardPage />} />
               <Route path="/schedule" element={<CargoSchedulePage />} />
