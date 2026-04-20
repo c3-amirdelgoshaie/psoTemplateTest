@@ -1,0 +1,117 @@
+/**
+ * An inbound crude cargo / vessel nominated for discharge at the terminal.
+ *
+ * One row per vessel per laycan. Drives the Cargo & SKU Registry, the
+ * cargo Gantt on the Crude Cargo Schedule page, and the cargo-decision
+ * variables in the MILP.
+ */
+type PsoCargoInput {
+  /**
+   * Stable cargo identifier (e.g. "CRG-2026-001").
+   */
+  cargoId: !string
+
+  /**
+   * Vessel name for display.
+   */
+  vesselName: !string
+
+  /**
+   * IMO number — globally unique vessel identifier.
+   */
+  imoNumber: string
+
+  /**
+   * Vessel class: "VLCC" | "Suezmax" | "Aframax".
+   */
+  vesselType: !string
+
+  /**
+   * Crude grade carried — matches a {@link PsoItemInput#itemId}.
+   */
+  crudeGrade: !string
+
+  /**
+   * Region of origin.
+   */
+  originRegion: string
+
+  /**
+   * Cargo volume in barrels.
+   */
+  volumeBbls: !double
+
+  /**
+   * Loading port of origin.
+   */
+  loadingPort: string
+
+  /**
+   * Earliest laycan date (inclusive).
+   */
+  laycanStart: !date
+
+  /**
+   * Latest laycan date (inclusive).
+   */
+  laycanEnd: !date
+
+  /**
+   * Current estimated arrival at the terminal.
+   */
+  etaTerminal: datetime
+
+  /**
+   * Destination terminal (e.g. "Aspropyrgos").
+   */
+  destinationTerminal: string
+
+  /**
+   * Charter-party reference.
+   */
+  charterPartyRef: string
+
+  /**
+   * Operational status: "Confirmed" | "Provisional" | "At Risk".
+   */
+  status: !string
+
+  /**
+   * Tanks already nominated for discharge (tankIds). May be empty.
+   */
+  nominatedTanks: [string]
+
+  /**
+   * Current vessel AIS position. Missing value triggers the "stale AIS"
+   * assumption path in the solver.
+   */
+  currentLat: double
+
+  /**
+   * Current vessel AIS longitude.
+   */
+  currentLon: double
+
+  /**
+   * Demurrage risk level pre-computed upstream: "None" | "Low" | "Medium" |
+   * "High". The solver refines this with severity 1–5 based on dem_c.
+   */
+  demurrageRiskLevel: string
+
+  /**
+   * Daily demurrage rate ($/day) for this cargo's vessel class. Missing
+   * value triggers the default-by-vessel-class assumption.
+   */
+  demurrageRateUsdDay: double
+
+  /**
+   * Freight + logistics cost ($) if this cargo is nominated.
+   */
+  freightCostUsd: double
+
+  /**
+   * If true, the cargo is locked by contract and the optimizer may not
+   * reject / substitute / defer it.
+   */
+  isFixed: !boolean
+}

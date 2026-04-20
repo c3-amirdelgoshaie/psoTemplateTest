@@ -1,0 +1,465 @@
+/*
+ * Helleniq Crude Schedule Optimizer — Design System tokens.
+ *
+ * Applied globally via globals.css. Namespaced as `hel-*` to avoid
+ * fighting the template's C3 semantic tokens; component classes inside
+ * the app use these tokens exclusively.
+ *
+ * Spec reference: /psoTest/resource/spec/helleniq_crude_scheduler_c3_prompt.md
+ * (lines 212-236, Design System).
+ *
+ * Note: the DM Serif Display / IBM Plex Sans Google Font imports live in
+ * globals.css (so they precede any rules, per CSS @import ordering rules).
+ */
+
+:root {
+  /* Brand + status palette (per spec lines 214-223) */
+  --hel-primary:        #0B2545;      /* deep navy — sidebar, primary buttons */
+  --hel-primary-hover:  #103764;
+  --hel-accent:         #1D9E75;      /* petroleum teal — active state */
+  --hel-accent-weak:    #d8efe6;
+  --hel-warning:        #EF9F27;      /* amber */
+  --hel-warning-weak:   #fdf0d9;
+  --hel-danger:         #D85A30;      /* coral */
+  --hel-danger-weak:    #fbe3d9;
+  --hel-success:        #639922;      /* muted green */
+  --hel-success-weak:   #e4f0d1;
+
+  --hel-bg:             #F8F7F4;      /* off-white background */
+  --hel-surface:        #FFFFFF;
+  --hel-surface-alt:    #FAFAF7;
+  --hel-text:           #1A1A1A;
+  --hel-text-muted:     #6B6B6B;
+  --hel-border:         #E0DEDB;
+  --hel-border-strong:  #C5C2BC;
+
+  /* Spec-mandated fonts (line 226-227) */
+  --hel-font-display: 'DM Serif Display', Georgia, serif;
+  --hel-font-body:    'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Component conventions (lines 229-236) */
+  --hel-card-radius: 12px;
+  --hel-card-padding: 20px;
+  --hel-badge-radius: 999px;
+  --hel-gantt-radius: 4px;
+  --hel-gantt-height: 28px;
+
+  /* Minimum viewport 1280px per spec line 235 */
+  --hel-min-viewport: 1280px;
+
+  /* Status / decision colors used throughout */
+  --hel-status-confirmed: var(--hel-primary);
+  --hel-status-provisional: var(--hel-warning);
+  --hel-status-atrisk:    var(--hel-danger);
+
+  /* Crude grade family colors (stable for every chart / badge) */
+  --hel-grade-arab:   #5B8FAD;
+  --hel-grade-urals:  #2F5A77;
+  --hel-grade-cpc:    #77A850;
+  --hel-grade-azeri:  #E5B94A;
+  --hel-grade-other:  #8D7DA3;
+}
+
+/* ------------------------------------------------------------------
+ * Global font + background for the Helleniq shell.
+ * ------------------------------------------------------------------ */
+body {
+  font-family: var(--hel-font-body) !important;
+  background-color: var(--hel-bg) !important;
+  color: var(--hel-text) !important;
+  font-size: 14px;
+}
+
+/* Utility classes — deliberately verbose names so they never collide
+ * with Tailwind or the existing C3 theme. */
+
+.hel-shell {
+  background: var(--hel-bg);
+  color: var(--hel-text);
+  min-height: 100vh;
+  min-width: var(--hel-min-viewport);
+  font-family: var(--hel-font-body);
+}
+
+.hel-serif  { font-family: var(--hel-font-display); }
+
+.hel-card {
+  background: var(--hel-surface);
+  border: 1px solid var(--hel-border);
+  border-radius: var(--hel-card-radius);
+  padding: var(--hel-card-padding);
+}
+
+.hel-card--flush   { padding: 0; }
+.hel-card--compact { padding: 12px 16px; }
+
+.hel-card__title {
+  font-family: var(--hel-font-display);
+  font-size: 16px;
+  color: var(--hel-text);
+  margin: 0 0 12px 0;
+  letter-spacing: 0.2px;
+}
+
+.hel-kpi__value {
+  font-family: var(--hel-font-display);
+  font-size: 32px;
+  line-height: 1;
+  color: var(--hel-text);
+}
+
+.hel-kpi__label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--hel-text-muted);
+  margin-bottom: 8px;
+}
+
+.hel-kpi__delta {
+  font-size: 12px;
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+.hel-kpi__delta--up   { color: var(--hel-success); }
+.hel-kpi__delta--down { color: var(--hel-danger); }
+.hel-kpi__delta--flat { color: var(--hel-text-muted); }
+
+/* Buttons */
+.hel-btn {
+  font-family: var(--hel-font-body);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+}
+
+.hel-btn--primary {
+  background: var(--hel-primary);
+  color: #fff;
+  border-color: var(--hel-primary);
+}
+.hel-btn--primary:hover { background: var(--hel-primary-hover); }
+.hel-btn--primary:disabled { background: #7b8aa0; border-color: #7b8aa0; cursor: not-allowed; }
+
+.hel-btn--secondary {
+  background: var(--hel-surface);
+  color: var(--hel-primary);
+  border-color: var(--hel-primary);
+}
+.hel-btn--secondary:hover { background: #eef3fa; }
+
+.hel-btn--destructive {
+  background: var(--hel-danger);
+  color: #fff;
+  border-color: var(--hel-danger);
+}
+.hel-btn--destructive:hover { background: #b8491f; }
+
+.hel-btn--ghost {
+  background: transparent;
+  color: var(--hel-primary);
+  border-color: transparent;
+}
+.hel-btn--ghost:hover { background: var(--hel-surface-alt); }
+
+.hel-btn--sm { padding: 4px 10px; font-size: 12px; }
+
+/* Status badges */
+.hel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 4px 10px;
+  border-radius: var(--hel-badge-radius);
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.hel-badge--confirmed   { background: #e7edf5; color: var(--hel-primary); border-color: #c8d3e3; }
+.hel-badge--provisional { background: var(--hel-warning-weak); color: #87590b; border-color: #f1d49a; }
+.hel-badge--atrisk      { background: var(--hel-danger-weak); color: #7a2a0f; border-color: #f0b69c; }
+
+.hel-badge--success     { background: var(--hel-success-weak); color: #3e6014; border-color: #bcd392; }
+.hel-badge--warning     { background: var(--hel-warning-weak); color: #87590b; border-color: #f1d49a; }
+.hel-badge--danger      { background: var(--hel-danger-weak); color: #7a2a0f; border-color: #f0b69c; }
+.hel-badge--info        { background: #e7edf5; color: var(--hel-primary); border-color: #c8d3e3; }
+.hel-badge--muted       { background: #f1efec; color: var(--hel-text-muted); border-color: var(--hel-border); }
+
+.hel-badge--hi          { background: #ffe4e4; color: #8f1a1a; border-color: #f6b6b6; }
+
+/* Priority tiers */
+.hel-priority--HIGH   { background: var(--hel-danger-weak); color: #7a2a0f; border: 1px solid #f0b69c; }
+.hel-priority--MEDIUM { background: var(--hel-warning-weak); color: #87590b; border: 1px solid #f1d49a; }
+.hel-priority--LOW    { background: var(--hel-accent-weak); color: #185241; border: 1px solid #92c7b0; }
+
+/* Tables */
+.hel-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 13px;
+}
+.hel-table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--hel-text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--hel-border);
+  background: var(--hel-surface-alt);
+}
+.hel-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--hel-border);
+  color: var(--hel-text);
+}
+.hel-table tr:last-child td { border-bottom: none; }
+.hel-table tr:hover td { background: var(--hel-surface-alt); }
+
+/* Section headers (page titles) */
+.hel-section-title {
+  font-family: var(--hel-font-display);
+  font-size: 24px;
+  color: var(--hel-text);
+  margin: 0;
+}
+.hel-section-subtitle {
+  font-size: 13px;
+  color: var(--hel-text-muted);
+  margin-top: 4px;
+}
+
+/* Sidebar */
+.hel-sidebar {
+  background: var(--hel-primary);
+  color: #fff;
+  width: 220px;
+  min-width: 220px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.2s ease, min-width 0.2s ease;
+}
+.hel-sidebar--collapsed { width: 64px; min-width: 64px; }
+
+.hel-sidebar__brand {
+  padding: 18px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.hel-sidebar__brand-text {
+  font-family: var(--hel-font-display);
+  font-size: 16px;
+  letter-spacing: 0.3px;
+  line-height: 1.1;
+}
+.hel-sidebar__brand-sub {
+  font-size: 10px;
+  opacity: 0.6;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.hel-sidebar__nav { list-style: none; padding: 8px 0; margin: 0; flex: 1; }
+.hel-sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: rgba(255,255,255,0.78);
+  padding: 10px 18px;
+  font-size: 13.5px;
+  text-decoration: none;
+  position: relative;
+  border-left: 3px solid transparent;
+}
+.hel-sidebar__link:hover { background: rgba(255,255,255,0.05); color: #fff; }
+.hel-sidebar__link--active {
+  color: #fff;
+  background: rgba(29,158,117,0.12);
+  border-left-color: var(--hel-accent);
+}
+
+.hel-sidebar__footer {
+  padding: 12px 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 11px;
+}
+
+.hel-feed-dot {
+  width: 8px; height: 8px; border-radius: 50%; display: inline-block;
+  margin-right: 8px; vertical-align: middle;
+}
+.hel-feed-dot--live     { background: #4ccd8f; box-shadow: 0 0 0 2px rgba(76,205,143,0.2); }
+.hel-feed-dot--partial  { background: var(--hel-warning); box-shadow: 0 0 0 2px rgba(239,159,39,0.2); }
+.hel-feed-dot--degraded { background: var(--hel-danger); box-shadow: 0 0 0 2px rgba(216,90,48,0.2); }
+
+/* Top bar */
+.hel-topbar {
+  height: 60px;
+  background: var(--hel-surface);
+  border-bottom: 1px solid var(--hel-border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 16px;
+}
+
+.hel-topbar__spacer { flex: 1; }
+
+.hel-topbar__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border: 1px solid var(--hel-border);
+  border-radius: 999px;
+  background: var(--hel-surface-alt);
+  color: var(--hel-text);
+  font-size: 12.5px;
+  line-height: 1;
+}
+
+.hel-topbar__sync {
+  color: var(--hel-text-muted);
+  font-size: 12px;
+}
+
+.hel-horizon-toggle {
+  display: inline-flex;
+  border: 1px solid var(--hel-border);
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--hel-surface);
+}
+.hel-horizon-toggle > button {
+  border: none;
+  background: transparent;
+  color: var(--hel-text-muted);
+  padding: 4px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  font-family: var(--hel-font-body);
+}
+.hel-horizon-toggle > button.hel-active {
+  background: var(--hel-primary);
+  color: #fff;
+}
+
+/* Gantt */
+.hel-gantt-bar {
+  height: var(--hel-gantt-height);
+  border-radius: var(--hel-gantt-radius);
+  font-size: 11.5px;
+  color: #fff;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+}
+.hel-gantt-bar--Confirmed   { background: var(--hel-status-confirmed); }
+.hel-gantt-bar--Provisional { background: var(--hel-status-provisional); color: #1a1a1a; }
+.hel-gantt-bar--AtRisk      { background: var(--hel-status-atrisk); }
+.hel-gantt-bar--maint       { background: repeating-linear-gradient(45deg, #666 0, #666 6px, #777 6px, #777 12px); color: #fff; }
+.hel-gantt-bar:hover        { opacity: 0.9; }
+.hel-gantt-bar--dragging    { opacity: 0.7; cursor: grabbing; }
+
+/* Tank heat cells */
+.hel-tank {
+  position: relative;
+  border: 1px solid var(--hel-border);
+  border-radius: 8px;
+  background: var(--hel-surface);
+  padding: 12px;
+  overflow: hidden;
+}
+.hel-tank__fill {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  transition: height 0.3s ease;
+  opacity: 0.25;
+}
+.hel-tank__fill--high  { background: var(--hel-success); }
+.hel-tank__fill--med   { background: var(--hel-warning); }
+.hel-tank__fill--low   { background: var(--hel-danger); }
+
+/* Layout */
+.hel-grid { display: grid; gap: 16px; }
+.hel-grid--kpi        { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.hel-grid--split-4060 { grid-template-columns: 2fr 3fr; }
+
+@media (max-width: 1440px) {
+  .hel-grid--kpi { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* Focus ring */
+.hel-btn:focus-visible,
+.hel-sidebar__link:focus-visible {
+  outline: 2px solid var(--hel-accent);
+  outline-offset: 2px;
+}
+
+/* Utility: scroll container with soft gradient */
+.hel-scroll { overflow-y: auto; }
+
+/* Toast stack */
+.hel-toast-stack {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 360px;
+}
+.hel-toast {
+  background: var(--hel-surface);
+  border: 1px solid var(--hel-border);
+  border-left: 4px solid var(--hel-primary);
+  border-radius: 8px;
+  padding: 10px 14px;
+  box-shadow: 0 4px 16px rgba(11,37,69,0.08);
+  font-size: 13px;
+}
+.hel-toast--success { border-left-color: var(--hel-success); }
+.hel-toast--warning { border-left-color: var(--hel-warning); }
+.hel-toast--danger  { border-left-color: var(--hel-danger); }
+
+/* Evidence drawer */
+.hel-drawer-backdrop {
+  position: fixed; inset: 0; background: rgba(11,37,69,0.35); z-index: 900;
+}
+.hel-drawer {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: 520px; max-width: 100%;
+  background: var(--hel-surface);
+  border-left: 1px solid var(--hel-border);
+  z-index: 901;
+  display: flex; flex-direction: column;
+  box-shadow: -8px 0 24px rgba(11,37,69,0.1);
+}
+.hel-drawer__header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--hel-border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.hel-drawer__body { padding: 20px; overflow-y: auto; flex: 1; }

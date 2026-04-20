@@ -1,0 +1,63 @@
+/**
+ * A structured risk flag emitted by the optimizer.
+ *
+ * Rendered by the Dashboard alerts section (top demurrage + stockout risks)
+ * and attached to recommendations for inline display.
+ */
+type PsoRiskFlagOutput {
+  /**
+   * Flag type: "DEMURRAGE_RISK" | "STOCKOUT_RISK" | "OVERSTOCK_RISK" |
+   * "BLEND_VIOLATION" | "PIPELINE_CONFLICT" | "BERTH_CONFLICT".
+   *
+   * Note: field is named `flagType` (not `type`) because `type` is a
+   * reserved method on every C3 type.
+   */
+  flagType: !string
+
+  /**
+   * Severity on 1 (minor) – 5 (critical).
+   */
+  severity: !int
+
+  /**
+   * One-line summary for the Dashboard alerts list.
+   */
+  summary: !string
+
+  /**
+   * The recommended corrective action (e.g. "Re-time berth to 2026-04-22 or
+   * nominate T-103").
+   */
+  recommendedAction: !string
+
+  /**
+   * Cargo id the flag relates to, if any.
+   */
+  cargoId: string
+
+  /**
+   * Crude grade the flag relates to, if any.
+   */
+  crudeGrade: string
+
+  /**
+   * Tank id the flag relates to, if any.
+   */
+  tankId: string
+
+  /**
+   * CDU id the flag relates to, if any.
+   */
+  cduId: string
+
+  /**
+   * Day offset (from {@link PsoInput#startDate}) at which the risk
+   * materializes.
+   */
+  dayOffset: int
+
+  /**
+   * $ impact estimate (demurrage cost, opportunity loss, etc.).
+   */
+  impactUsd: double
+}

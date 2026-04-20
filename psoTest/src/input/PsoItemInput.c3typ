@@ -1,0 +1,68 @@
+/**
+ * Crude grade master data (an "item" in the PSO sense).
+ *
+ * Each row is a crude grade such as Arab Light, Urals, CPC Blend, or Azeri
+ * Light. Shared across facilities, so lives at the {@link PsoInput} top
+ * level, not inside a facility.
+ */
+type PsoItemInput {
+  /**
+   * Stable identifier for this grade, e.g. "ARAB_LIGHT".
+   */
+  itemId: !string
+
+  /**
+   * Display name, e.g. "Arab Light".
+   */
+  name: !string
+
+  /**
+   * Broad family for the global Crude-grade filter. Values: Arab Light |
+   * Urals | CPC Blend | Azeri | Other.
+   */
+  gradeFamily: !string
+
+  /**
+   * Country / basin of origin (e.g. "Saudi Arabia", "Russia", "Kazakhstan",
+   * "Azerbaijan").
+   */
+  originRegion: string
+
+  /**
+   * API gravity (degrees).
+   */
+  apiGravity: !double
+
+  /**
+   * Sulphur content as a percentage by weight.
+   */
+  sulphurPct: !double
+
+  /**
+   * Tank group this grade is compatible with: "HighSulphur" | "LowSulphur" |
+   * "Slops".
+   */
+  tankGroup: !string
+
+  /**
+   * Price differential vs marker, $/bbl. Negative means cheaper than marker.
+   * When missing, solver uses last available price and lowers confidence.
+   */
+  priceDifferentialUsdBbl: double
+
+  /**
+   * Timestamp of the price-differential source, used for evidence traceability.
+   */
+  priceDifferentialAsOf: datetime
+
+  /**
+   * Approximate GRM contribution ($/bbl) when this grade is run at Aspropyrgos.
+   * Used in the objective function.
+   */
+  grmContributionUsdBbl: double
+
+  /**
+   * Item classification — "CRUDE_GRADE" for all v1 rows.
+   */
+  itemType: !string
+}

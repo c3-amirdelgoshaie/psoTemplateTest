@@ -1,0 +1,78 @@
+[
+  {
+    "id": "REC-20260414-001",
+    "decision": "SUBSTITUTE",
+    "scenarioId": "BASELINE",
+    "runId": "OUT_ASPR_20260414_094212",
+    "cargoId": "",
+    "crudeGrade": "URALS",
+    "confidence": 87,
+    "priority": "HIGH",
+    "expectedImpactUsd": 105000,
+    "title": "Substitute Urals with CPC Blend on CDU-2",
+    "summary": "CDU-2 sulphur at 1.44% is 4pp over the 1.40% limit. Substituting 20 kbpd of Urals with CPC Blend clears the blend violation and lifts GRM by $0.29/bbl on CDU-2.",
+    "evidence": [
+      "CDU-2 sulphur currently 1.44% vs LE 1.40% (VIOLATED).",
+      "T-103 Urals ullage 210 kbbls; T-202 CPC Blend ullage 495 kbbls — substitution feasible.",
+      "CPC Blend price differential +$1.40/bbl (as of 14 Apr 06:00 UTC); GRM contribution $9.80/bbl vs Urals $8.95/bbl.",
+      "LP target for URALS on CDU-2: 20 kbpd; substitution keeps throughput at planned 65.5 kbpd.",
+      "Constraint version BC-2026-04-W2; LP version LP-2026-04-W2."
+    ],
+    "assumptions": [
+      "Lead time defaulted to vessel-class typical (Aframax ~20 days, Suezmax ~28 days).",
+      "Maintenance calendar stale (last updated 10 Apr) — CDU-1 inspection window 30 Apr–01 May assumed unchanged."
+    ],
+    "risks": [
+      "CPC Blend tank T-202 heel depth may require flushing before discharge.",
+      "Substitute grade's API (45.3) raises CDU-2 blend API — confirm downstream product slate is on-spec."
+    ],
+    "nextActions": [
+      "Validate CPC Blend availability with procurement for the next laycan.",
+      "Request LP re-optimization with substituted charge on CDU-2.",
+      "Confirm tank nomination: T-202 → CDU-2 feed header."
+    ],
+    "reorderPlan": null,
+    "riskFlags": [
+      {
+        "flagType": "BLEND_VIOLATION",
+        "severity": 4,
+        "summary": "CDU-2 Max Sulphur %: 1.44 vs ≤ 1.40",
+        "recommendedAction": "Substitute URALS with CPC_BLEND on CDU-2.",
+        "cargoId": "",
+        "crudeGrade": "URALS",
+        "tankId": "",
+        "cduId": "CDU-2",
+        "dayOffset": 0,
+        "impactUsd": 0.0
+      }
+    ],
+    "anomalies": [
+      {
+        "anomalyType": "BLEND_VIOLATION",
+        "description": "CDU-2 Max Sulphur limit breached.",
+        "severity": 4,
+        "dayOffset": 0,
+        "objectId": "CDU-2",
+        "objectKind": "CDU"
+      }
+    ],
+    "metadata": {
+      "dataSourcesUsed": ["inventory", "ais", "priceDifferentials", "lpTarget", "blendConstraints"],
+      "dataFreshness": {
+        "inventory": "2026-04-14T09:42:00Z",
+        "ais": "2026-04-14T09:30:00Z",
+        "priceDifferentials": "2026-04-14T06:00:00Z",
+        "lpTarget": "2026-04-13T18:00:00Z",
+        "blendConstraints": "2026-04-14T07:15:00Z",
+        "maintenanceCalendar": "2026-04-10T08:00:00Z"
+      },
+      "lpTargetVersion": "LP-2026-04-W2",
+      "missingFields": [],
+      "generatedAt": "2026-04-14T09:42:12Z",
+      "cduId": "CDU-2",
+      "constraintId": "CDU2_SULPHUR_MAX"
+    },
+    "status": "Proposed",
+    "createdAt": "2026-04-14T09:42:12Z"
+  }
+]

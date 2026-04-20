@@ -1,0 +1,10 @@
+{
+  "author": "{{author}}",
+  "name": "psoTest",
+  "description": "A production scheduling optimization application",
+  "dependencies": {
+    "mcpServer": "8.10",
+    "optim": "15.0"
+  },
+  "version": "1.0.0"
+}

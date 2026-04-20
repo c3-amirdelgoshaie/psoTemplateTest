@@ -1,0 +1,52 @@
+/**
+ * A physical storage tank at the terminal.
+ *
+ * Tanks are segregated into groups — HighSulphur, LowSulphur, or Slops — and
+ * only accept crude grades compatible with their group
+ * ({@link PsoItemInput#tankGroup}). Tank capacity, current volume, and grade
+ * drive the inventory heatmap on the Dashboard and the tank-nomination flow
+ * on the Crude Cargo Schedule page.
+ */
+type PsoTankInput {
+  /**
+   * Stable identifier for the tank, e.g. "T-101".
+   */
+  tankId: !string
+
+  /**
+   * Human-readable name for display.
+   */
+  name: string
+
+  /**
+   * Tank group: "HighSulphur" | "LowSulphur" | "Slops".
+   */
+  tankGroup: !string
+
+  /**
+   * Crude grade currently stored. Empty string if the tank is empty or a
+   * heel of an indeterminate blend.
+   */
+  crudeGrade: string
+
+  /**
+   * Current inventory in barrels.
+   */
+  currentVolumeBbls: !double
+
+  /**
+   * Total working capacity in barrels.
+   */
+  capacityBbls: !double
+
+  /**
+   * Remaining ullage (headspace) in barrels. Derived = capacity − current.
+   * Stored explicitly so the UI can render without recomputing.
+   */
+  ullageBbls: double
+
+  /**
+   * Timestamp of the inventory snapshot used (for evidence traceability).
+   */
+  lastUpdated: datetime
+}

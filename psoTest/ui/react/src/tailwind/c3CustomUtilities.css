@@ -1,0 +1,255 @@
+/*
+ * Copyright 2009-2026 C3 AI (www.c3.ai). All Rights Reserved.
+ * Confidential and Proprietary C3 Materials.
+ * This material, including without limitation any software, is the confidential trade secret and proprietary
+ * information of C3 and its licensors. Reproduction, use and/or distribution of this material in any form is
+ * strictly prohibited except as set forth in a written license agreement with C3 and/or its authorized distributors.
+ * This material may be covered by one or more patents or pending patent applications.
+ */
+
+/* Custom Utilities for C3 Design System - Tailwind CSS v4 */
+
+/* C3 Card Utility */
+@utility c3-card {
+  background-color: var(--color-bg-card);
+  border-width: var(--border-width-sm);
+  border-color: var(--color-border-weak);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-04);
+  box-shadow: var(--shadow-card);
+}
+
+/* C3 Logo Utility */
+@utility c3-logo {
+  /* Default (light mode) - black logo */
+  background-image: url("data:image/svg+xml,%3Csvg width='72' height='108' viewBox='0 0 72 108' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0)'%3E%3Cpath d='M0.000390626 0V8H64.0004V32H16.0004V40H64.0004V64H0.000390626V72H72.0004V0H0.000390626Z' fill='black'/%3E%3Cpath d='M56.0004 48H8.00039V24H56.0004V16H0.000390626V56H56.0004V48Z' fill='black'/%3E%3Cpath d='M15.3004 90.9C14.7004 89.9 13.8004 89.2 12.7004 88.8C12.1004 88.6 11.6004 88.5 11.0004 88.5C10.0004 88.5 9.10039 88.7 8.20039 89.1C7.40039 89.5 6.80039 90.1 6.30039 90.8C5.80039 91.6 5.50039 92.4 5.30039 93.3C5.10039 94.3 5.00039 95.2 5.00039 96.2C5.00039 97.1 5.10039 98 5.30039 98.9C5.50039 99.7 5.80039 100.6 6.30039 101.3C6.80039 102 7.40039 102.6 8.20039 103C9.10039 103.5 10.0004 103.7 11.0004 103.6C12.3004 103.7 13.6004 103.2 14.5004 102.2C15.2004 101.5 15.7004 100.6 15.9004 99.6H20.7004C20.6004 100.6 20.3004 101.5 19.9004 102.4C19.4004 103.5 18.7004 104.5 17.8004 105.3C16.9004 106.1 15.9004 106.7 14.8004 107.1C13.6004 107.5 12.3004 107.7 11.0004 107.7C9.40039 107.7 7.80039 107.4 6.40039 106.8C5.10039 106.2 3.90039 105.4 2.90039 104.3C1.90039 103.2 1.20039 102 0.700391 100.6C0.200391 99.1 -0.0996094 97.6 -0.0996094 96.1C-0.0996094 94.5 0.100391 92.9 0.700391 91.4C1.20039 90 1.90039 88.8 2.90039 87.7C3.90039 86.6 5.00039 85.8 6.40039 85.2C7.90039 84.6 9.40039 84.3 11.0004 84.3C12.2004 84.3 13.4004 84.5 14.5004 84.8C15.6004 85.1 16.6004 85.7 17.4004 86.4C18.3004 87.1 19.0004 88 19.5004 88.9C20.1004 90 20.4004 91.1 20.6004 92.3H15.8004C15.8004 91.9 15.6004 91.3 15.3004 90.9Z' fill='black'/%3E%3Cpath d='M30.6004 94.2C31.1004 94.2 31.6004 94 32.1004 93.8C32.5004 93.6 32.9004 93.3 33.3004 93C33.6004 92.6 33.8004 92 33.8004 91.5C33.9004 90.7 33.5004 89.9 32.9004 89.3C32.3004 88.8 31.5004 88.5 30.7004 88.5C29.7004 88.4 28.8004 88.9 28.2004 89.6C27.6004 90.4 27.3004 91.4 27.4004 92.4H23.0004C23.0004 91.3 23.2004 90.3 23.6004 89.3C23.9004 88.4 24.5004 87.6 25.1004 86.9C25.8004 86.2 26.6004 85.7 27.5004 85.3C28.5004 84.9 29.5004 84.7 30.6004 84.7C31.5004 84.7 32.4004 84.8 33.2004 85.1C34.1004 85.4 34.8004 85.7 35.6004 86.3C36.3004 86.8 36.9004 87.5 37.3004 88.2C37.8004 89 38.0004 89.9 38.0004 90.8C38.0004 91.8 37.8004 92.8 37.2004 93.6C36.7004 94.4 35.8004 95 34.9004 95.3V95.4C36.0004 95.6 37.0004 96.2 37.7004 97.2C38.4004 98.1 38.7004 99.3 38.7004 100.4C38.7004 101.5 38.5004 102.5 38.0004 103.5C37.6004 104.4 37.0004 105.1 36.2004 105.7C35.4004 106.3 34.5004 106.8 33.6004 107.1C32.6004 107.4 31.6004 107.6 30.5004 107.6C29.4004 107.6 28.2004 107.4 27.1004 107.1C26.1004 106.8 25.3004 106.3 24.5004 105.5C23.8004 104.8 23.2004 103.9 22.9004 103C22.5004 101.9 22.3004 100.8 22.4004 99.6H26.6004C26.6004 100.2 26.7004 100.7 26.9004 101.3C27.1004 101.8 27.3004 102.3 27.6004 102.7C27.9004 103.1 28.3004 103.4 28.8004 103.6C29.3004 103.8 29.9004 104 30.5004 103.9C31.4004 103.9 32.3004 103.6 33.0004 103C34.1004 101.8 34.4004 100 33.5004 98.6C33.2004 98.2 32.8004 97.8 32.3004 97.6C31.8004 97.4 31.2004 97.3 30.7004 97.3C30.1004 97.3 29.5004 97.3 29.0004 97.3V94.2C29.6004 94.3 30.1004 94.3 30.6004 94.2Z' fill='black'/%3E%3Cpath d='M46.0004 102.4V107.2H41.1004V102.4H46.0004Z' fill='black'/%3E%3Cpath d='M49.3004 96.1C49.3004 95.2 49.6004 94.3 50.1004 93.5C50.5004 92.8 51.1004 92.2 51.9004 91.8C52.6004 91.4 53.5004 91.1 54.3004 90.9C55.2004 90.7 56.1004 90.6 57.0004 90.6C57.8004 90.6 58.7004 90.7 59.5004 90.8C60.3004 90.9 61.1004 91.1 61.8004 91.5C62.5004 91.8 63.1004 92.3 63.5004 92.9C64.0004 93.6 64.2004 94.4 64.1004 95.3V103.7C64.1004 104.4 64.1004 105.1 64.2004 105.8C64.2004 106.3 64.4004 106.8 64.6004 107.3H60.1004C60.0004 107 59.9004 106.8 59.9004 106.5C59.8004 106.2 59.8004 106 59.8004 105.7C59.1004 106.4 58.3004 107 57.3004 107.2C56.3004 107.5 55.4004 107.6 54.4004 107.6C53.7004 107.6 52.9004 107.5 52.2004 107.3C51.6004 107.1 51.0004 106.8 50.4004 106.4C49.9004 106 49.5004 105.5 49.2004 104.9C48.9004 104.2 48.8004 103.5 48.8004 102.7C48.8004 101.9 48.9004 101.1 49.3004 100.4C49.6004 99.8 50.0004 99.3 50.5004 99C51.0004 98.6 51.6004 98.4 52.3004 98.2C53.0004 98 53.6004 97.9 54.3004 97.8C55.0004 97.7 55.6004 97.6 56.3004 97.6C56.9004 97.6 57.4004 97.5 58.0004 97.3C58.4004 97.2 58.8004 97 59.2004 96.7C59.5004 96.4 59.6004 96.1 59.6004 95.7C59.6004 95.3 59.5004 94.9 59.4004 94.6C59.2004 94.3 59.0004 94.1 58.8004 93.9C58.5004 93.7 58.2004 93.6 57.9004 93.6C57.5004 93.5 57.2004 93.5 56.8004 93.5C56.1004 93.5 55.3004 93.7 54.7004 94.1C54.2004 94.6 53.8004 95.2 53.8004 96L49.3004 96.1ZM59.6004 99.3C59.4004 99.5 59.2004 99.6 58.9004 99.7C58.6004 99.8 58.3004 99.9 58.0004 100C57.7004 100.1 57.3004 100.1 57.0004 100.2L55.9004 100.4C55.6004 100.5 55.2004 100.5 54.9004 100.6C54.6004 100.7 54.3004 100.8 54.1004 101C53.9004 101.2 53.7004 101.4 53.5004 101.7C53.3004 102 53.3004 102.4 53.3004 102.7C53.3004 103 53.4004 103.4 53.5004 103.7C53.6004 104 53.8004 104.2 54.1004 104.3C54.4004 104.5 54.7004 104.6 55.0004 104.6C55.3004 104.7 55.7004 104.7 56.0004 104.7C56.7004 104.7 57.4004 104.6 58.0004 104.3C58.4004 104 58.8004 103.7 59.1004 103.2C59.3004 102.8 59.5004 102.4 59.5004 102C59.5004 101.7 59.6004 101.3 59.6004 101V99.3Z' fill='black'/%3E%3Cpath d='M67.5004 88.6V84.9H72.0004V88.6H67.5004ZM72.0004 91.1V107.3H67.5004V91.1H72.0004Z' fill='black'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0'%3E%3Crect width='72' height='108' fill='black'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 48px;
+  height: 48px;
+}
+
+/* Dark mode variant - white logo */
+@layer utilities{
+  .dark .c3-logo {
+    background-image: url("data:image/svg+xml,%3Csvg width='72' height='108' viewBox='0 0 72 108' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0)'%3E%3Cpath d='M0.000390626 0V8H64.0004V32H16.0004V40H64.0004V64H0.000390626V72H72.0004V0H0.000390626Z' fill='white'/%3E%3Cpath d='M56.0004 48H8.00039V24H56.0004V16H0.000390626V56H56.0004V48Z' fill='white'/%3E%3Cpath d='M15.3004 90.9C14.7004 89.9 13.8004 89.2 12.7004 88.8C12.1004 88.6 11.6004 88.5 11.0004 88.5C10.0004 88.5 9.10039 88.7 8.20039 89.1C7.40039 89.5 6.80039 90.1 6.30039 90.8C5.80039 91.6 5.50039 92.4 5.30039 93.3C5.10039 94.3 5.00039 95.2 5.00039 96.2C5.00039 97.1 5.10039 98 5.30039 98.9C5.50039 99.7 5.80039 100.6 6.30039 101.3C6.80039 102 7.40039 102.6 8.20039 103C9.10039 103.5 10.0004 103.7 11.0004 103.6C12.3004 103.7 13.6004 103.2 14.5004 102.2C15.2004 101.5 15.7004 100.6 15.9004 99.6H20.7004C20.6004 100.6 20.3004 101.5 19.9004 102.4C19.4004 103.5 18.7004 104.5 17.8004 105.3C16.9004 106.1 15.9004 106.7 14.8004 107.1C13.6004 107.5 12.3004 107.7 11.0004 107.7C9.40039 107.7 7.80039 107.4 6.40039 106.8C5.10039 106.2 3.90039 105.4 2.90039 104.3C1.90039 103.2 1.20039 102 0.700391 100.6C0.200391 99.1 -0.0996094 97.6 -0.0996094 96.1C-0.0996094 94.5 0.100391 92.9 0.700391 91.4C1.20039 90 1.90039 88.8 2.90039 87.7C3.90039 86.6 5.00039 85.8 6.40039 85.2C7.90039 84.6 9.40039 84.3 11.0004 84.3C12.2004 84.3 13.4004 84.5 14.5004 84.8C15.6004 85.1 16.6004 85.7 17.4004 86.4C18.3004 87.1 19.0004 88 19.5004 88.9C20.1004 90 20.4004 91.1 20.6004 92.3H15.8004C15.8004 91.9 15.6004 91.3 15.3004 90.9Z' fill='white'/%3E%3Cpath d='M30.6004 94.2C31.1004 94.2 31.6004 94 32.1004 93.8C32.5004 93.6 32.9004 93.3 33.3004 93C33.6004 92.6 33.8004 92 33.8004 91.5C33.9004 90.7 33.5004 89.9 32.9004 89.3C32.3004 88.8 31.5004 88.5 30.7004 88.5C29.7004 88.4 28.8004 88.9 28.2004 89.6C27.6004 90.4 27.3004 91.4 27.4004 92.4H23.0004C23.0004 91.3 23.2004 90.3 23.6004 89.3C23.9004 88.4 24.5004 87.6 25.1004 86.9C25.8004 86.2 26.6004 85.7 27.5004 85.3C28.5004 84.9 29.5004 84.7 30.6004 84.7C31.5004 84.7 32.4004 84.8 33.2004 85.1C34.1004 85.4 34.8004 85.7 35.6004 86.3C36.3004 86.8 36.9004 87.5 37.3004 88.2C37.8004 89 38.0004 89.9 38.0004 90.8C38.0004 91.8 37.8004 92.8 37.2004 93.6C36.7004 94.4 35.8004 95 34.9004 95.3V95.4C36.0004 95.6 37.0004 96.2 37.7004 97.2C38.4004 98.1 38.7004 99.3 38.7004 100.4C38.7004 101.5 38.5004 102.5 38.0004 103.5C37.6004 104.4 37.0004 105.1 36.2004 105.7C35.4004 106.3 34.5004 106.8 33.6004 107.1C32.6004 107.4 31.6004 107.6 30.5004 107.6C29.4004 107.6 28.2004 107.4 27.1004 107.1C26.1004 106.8 25.3004 106.3 24.5004 105.5C23.8004 104.8 23.2004 103.9 22.9004 103C22.5004 101.9 22.3004 100.8 22.4004 99.6H26.6004C26.6004 100.2 26.7004 100.7 26.9004 101.3C27.1004 101.8 27.3004 102.3 27.6004 102.7C27.9004 103.1 28.3004 103.4 28.8004 103.6C29.3004 103.8 29.9004 104 30.5004 103.9C31.4004 103.9 32.3004 103.6 33.0004 103C34.1004 101.8 34.4004 100 33.5004 98.6C33.2004 98.2 32.8004 97.8 32.3004 97.6C31.8004 97.4 31.2004 97.3 30.7004 97.3C30.1004 97.3 29.5004 97.3 29.0004 97.3V94.2C29.6004 94.3 30.1004 94.3 30.6004 94.2Z' fill='white'/%3E%3Cpath d='M46.0004 102.4V107.2H41.1004V102.4H46.0004Z' fill='white'/%3E%3Cpath d='M49.3004 96.1C49.3004 95.2 49.6004 94.3 50.1004 93.5C50.5004 92.8 51.1004 92.2 51.9004 91.8C52.6004 91.4 53.5004 91.1 54.3004 90.9C55.2004 90.7 56.1004 90.6 57.0004 90.6C57.8004 90.6 58.7004 90.7 59.5004 90.8C60.3004 90.9 61.1004 91.1 61.8004 91.5C62.5004 91.8 63.1004 92.3 63.5004 92.9C64.0004 93.6 64.2004 94.4 64.1004 95.3V103.7C64.1004 104.4 64.1004 105.1 64.2004 105.8C64.2004 106.3 64.4004 106.8 64.6004 107.3H60.1004C60.0004 107 59.9004 106.8 59.9004 106.5C59.8004 106.2 59.8004 106 59.8004 105.7C59.1004 106.4 58.3004 107 57.3004 107.2C56.3004 107.5 55.4004 107.6 54.4004 107.6C53.7004 107.6 52.9004 107.5 52.2004 107.3C51.6004 107.1 51.0004 106.8 50.4004 106.4C49.9004 106 49.5004 105.5 49.2004 104.9C48.9004 104.2 48.8004 103.5 48.8004 102.7C48.8004 101.9 48.9004 101.1 49.3004 100.4C49.6004 99.8 50.0004 99.3 50.5004 99C51.0004 98.6 51.6004 98.4 52.3004 98.2C53.0004 98 53.6004 97.9 54.3004 97.8C55.0004 97.7 55.6004 97.6 56.3004 97.6C56.9004 97.6 57.4004 97.5 58.0004 97.3C58.4004 97.2 58.8004 97 59.2004 96.7C59.5004 96.4 59.6004 96.1 59.6004 95.7C59.6004 95.3 59.5004 94.9 59.4004 94.6C59.2004 94.3 59.0004 94.1 58.8004 93.9C58.5004 93.7 58.2004 93.6 57.9004 93.6C57.5004 93.5 57.2004 93.5 56.8004 93.5C56.1004 93.5 55.3004 93.7 54.7004 94.1C54.2004 94.6 53.8004 95.2 53.8004 96L49.3004 96.1ZM59.6004 99.3C59.4004 99.5 59.2004 99.6 58.9004 99.7C58.6004 99.8 58.3004 99.9 58.0004 100C57.7004 100.1 57.3004 100.1 57.0004 100.2L55.9004 100.4C55.6004 100.5 55.2004 100.5 54.9004 100.6C54.6004 100.7 54.3004 100.8 54.1004 101C53.9004 101.2 53.7004 101.4 53.5004 101.7C53.3004 102 53.3004 102.4 53.3004 102.7C53.3004 103 53.4004 103.4 53.5004 103.7C53.6004 104 53.8004 104.2 54.1004 104.3C54.4004 104.5 54.7004 104.6 55.0004 104.6C55.3004 104.7 55.7004 104.7 56.0004 104.7C56.7004 104.7 57.4004 104.6 58.0004 104.3C58.4004 104 58.8004 103.7 59.1004 103.2C59.3004 102.8 59.5004 102.4 59.5004 102C59.5004 101.7 59.6004 101.3 59.6004 101V99.3Z' fill='white'/%3E%3Cpath d='M67.5004 88.6V84.9H72.0004V88.6H67.5004ZM72.0004 91.1V107.3H67.5004V91.1H72.0004Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0'%3E%3Crect width='72' height='108' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+  }
+}
+
+/* Base Styles - Applied globally */
+@layer base {
+  body {
+    color: var(--color-text-primary);
+    background-color: var(--c3-style-pageBackgroundColor);
+  }
+
+  input, select, textarea {
+    color: var(--color-text-primary);
+    padding-left: var(--spacing-04);
+    padding-right: var(--spacing-04);
+    padding-top: var(--spacing-02);
+    padding-bottom: var(--spacing-02);
+    background-color: var(--c3-style-formFieldBackgroundColor);
+    border-color: var(--c3-style-formFieldBorderColor);
+    border-width: var(--border-width-sm);
+    border-radius: 0;
+    font-family: var(--font-default);
+    font-size: var(--text-base);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+  }
+}
+
+/* Animation Utilities */
+@utility animate-fade-in {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@utility animate-fade-out {
+  animation: fadeOut 0.2s ease-in-out;
+}
+
+@utility animate-slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+@utility animate-slide-down {
+  animation: slideDown 0.3s ease-out;
+}
+
+@utility animate-scale-in {
+  animation: scaleIn 0.2s ease-out;
+}
+
+@utility animate-scale-out {
+  animation: scaleOut 0.2s ease-out;
+}
+
+/* Background Utilities */
+
+/*
+  Override native Tailwind utilities to use proper C3 background colors.
+  Using @layer utilities ensures these take precedence over native utilities.
+*/
+@layer utilities {
+  .bg-primary {
+    background-color: var(--color-primary-bg);
+  }
+
+  .bg-secondary {
+    background-color: var(--color-secondary-bg);
+  }
+}
+
+@utility bg-tertiary {
+  background-color: var(--color-tertiary);
+}
+
+@utility bg-tertiary-inverse {
+  background-color: var(--color-tertiary-inverse);
+}
+
+@utility bg-accent {
+  background-color: var(--color-bg-accent);
+}
+
+@utility bg-accent-weak {
+  background-color: var(--color-accent-weak);
+}
+
+@utility bg-accent-strong {
+  background-color: var(--color-accent-strong);
+}
+
+@utility bg-accent-hover {
+  background-color: var(--color-accent-hover);
+}
+
+@utility bg-success {
+  background-color: var(--color-bg-success);
+}
+
+@utility bg-success-weak {
+  background-color: var(--color-success-weak);
+}
+
+@utility bg-success-strong {
+  background-color: var(--color-success-strong);
+}
+
+@utility bg-warning {
+  background-color: var(--color-bg-warning);
+}
+
+@utility bg-warning-weak {
+  background-color: var(--color-warning-weak);
+}
+
+@utility bg-warning-strong {
+  background-color: var(--color-warning-strong);
+}
+
+@utility bg-danger {
+  background-color: var(--color-bg-danger);
+}
+
+@utility bg-danger-weak {
+  background-color: var(--color-danger-weak);
+}
+
+@utility bg-danger-strong {
+  background-color: var(--color-danger-strong);
+}
+
+@utility bg-danger-hover {
+  background-color: var(--color-danger-hover);
+}
+
+/* Text Utilities - Only add custom ones that aren't handled by theme variables */
+@utility text-accent {
+  color: var(--color-text-accent);
+}
+
+@utility text-success {
+  color: var(--color-text-success);
+}
+
+@utility text-warning {
+  color: var(--color-text-warning);
+}
+
+@utility text-danger {
+  color: var(--color-text-danger);
+}
+
+/* Border Utilities */
+@utility border-primary {
+  border-color: var(--color-border);
+}
+
+@utility border-weak {
+  border-color: var(--color-border-weak);
+}
+
+@utility border-strong {
+  border-color: var(--color-border-strong);
+}
+
+@utility border-accent {
+  border-color: var(--color-border-accent);
+}
+
+@utility border-success {
+  border-color: var(--color-border-success);
+}
+
+@utility border-warning {
+  border-color: var(--color-border-warning);
+}
+
+@utility border-danger {
+  border-color: var(--color-border-danger);
+}
+
+/* Shadow Utilities */
+@utility shadow-light-01 {
+  box-shadow: var(--shadow-light-01);
+}
+
+@utility shadow-light-02 {
+  box-shadow: var(--shadow-light-02);
+}
+
+@utility shadow-light-03 {
+  box-shadow: var(--shadow-light-03);
+}
+
+@utility shadow-light-04 {
+  box-shadow: var(--shadow-light-04);
+}
+
+@utility shadow-light-05 {
+  box-shadow: var(--shadow-light-05);
+}
+
+@utility shadow-dark-01 {
+  box-shadow: var(--shadow-dark-01);
+}
+
+@utility shadow-dark-02 {
+  box-shadow: var(--shadow-dark-02);
+}
+
+@utility shadow-dark-03 {
+  box-shadow: var(--shadow-dark-03);
+}
+
+@utility shadow-dark-04 {
+  box-shadow: var(--shadow-dark-04);
+}
+
+@utility shadow-dark-05 {
+  box-shadow: var(--shadow-dark-05);
+}

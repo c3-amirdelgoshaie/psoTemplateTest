@@ -1,0 +1,301 @@
+{
+  "id": "ASPROPYRGOS_APR2026_BASELINE",
+  "refineryId": "ASPROPYRGOS",
+  "planningHorizonDays": 30,
+  "startDate": "2026-04-14",
+  "endDate": "2026-05-13",
+  "lpTargetVersion": "LP-2026-04-W2",
+  "dataFreshness": {
+    "inventory":           "2026-04-14T09:42:00Z",
+    "ais":                 "2026-04-14T09:30:00Z",
+    "priceDifferentials":  "2026-04-14T06:00:00Z",
+    "lpTarget":            "2026-04-13T18:00:00Z",
+    "maintenanceCalendar": "2026-04-10T08:00:00Z",
+    "blendConstraints":    "2026-04-14T07:15:00Z"
+  },
+  "berthCount": 2,
+  "pipelineCapacityBblsPerDay": 2000000,
+  "flexDays": 2,
+
+  "items": [
+    {
+      "itemId": "ARAB_LIGHT",
+      "name": "Arab Light",
+      "gradeFamily": "Arab Light",
+      "originRegion": "Saudi Arabia",
+      "apiGravity": 32.8,
+      "sulphurPct": 1.80,
+      "tankGroup": "HighSulphur",
+      "priceDifferentialUsdBbl": -0.85,
+      "priceDifferentialAsOf": "2026-04-14T06:00:00Z",
+      "grmContributionUsdBbl": 8.10,
+      "itemType": "CRUDE_GRADE"
+    },
+    {
+      "itemId": "URALS",
+      "name": "Urals",
+      "gradeFamily": "Urals",
+      "originRegion": "Russia",
+      "apiGravity": 31.7,
+      "sulphurPct": 1.35,
+      "tankGroup": "HighSulphur",
+      "priceDifferentialUsdBbl": -2.10,
+      "priceDifferentialAsOf": "2026-04-14T06:00:00Z",
+      "grmContributionUsdBbl": 8.95,
+      "itemType": "CRUDE_GRADE"
+    },
+    {
+      "itemId": "CPC_BLEND",
+      "name": "CPC Blend",
+      "gradeFamily": "CPC Blend",
+      "originRegion": "Kazakhstan",
+      "apiGravity": 45.3,
+      "sulphurPct": 0.55,
+      "tankGroup": "LowSulphur",
+      "priceDifferentialUsdBbl": 1.40,
+      "priceDifferentialAsOf": "2026-04-14T06:00:00Z",
+      "grmContributionUsdBbl": 9.80,
+      "itemType": "CRUDE_GRADE"
+    },
+    {
+      "itemId": "AZERI_LIGHT",
+      "name": "Azeri Light",
+      "gradeFamily": "Azeri",
+      "originRegion": "Azerbaijan",
+      "apiGravity": 36.5,
+      "sulphurPct": 0.15,
+      "tankGroup": "LowSulphur",
+      "priceDifferentialUsdBbl": 2.15,
+      "priceDifferentialAsOf": "2026-04-14T06:00:00Z",
+      "grmContributionUsdBbl": 10.20,
+      "itemType": "CRUDE_GRADE"
+    }
+  ],
+
+  "facilities": [
+    {
+      "facilityId": "ASPROPYRGOS",
+      "name": "Aspropyrgos Refinery",
+
+      "tanks": [
+        {
+          "tankId": "T-101", "name": "T-101 (HS)", "tankGroup": "HighSulphur",
+          "crudeGrade": "ARAB_LIGHT", "currentVolumeBbls": 620000, "capacityBbls": 800000,
+          "ullageBbls": 180000, "lastUpdated": "2026-04-14T09:42:00Z"
+        },
+        {
+          "tankId": "T-102", "name": "T-102 (HS)", "tankGroup": "HighSulphur",
+          "crudeGrade": "ARAB_LIGHT", "currentVolumeBbls": 210000, "capacityBbls": 800000,
+          "ullageBbls": 590000, "lastUpdated": "2026-04-14T09:42:00Z"
+        },
+        {
+          "tankId": "T-103", "name": "T-103 (HS)", "tankGroup": "HighSulphur",
+          "crudeGrade": "URALS", "currentVolumeBbls": 540000, "capacityBbls": 750000,
+          "ullageBbls": 210000, "lastUpdated": "2026-04-14T09:42:00Z"
+        },
+        {
+          "tankId": "T-104", "name": "T-104 (HS)", "tankGroup": "HighSulphur",
+          "crudeGrade": "URALS", "currentVolumeBbls": 180000, "capacityBbls": 750000,
+          "ullageBbls": 570000, "lastUpdated": "2026-04-14T09:42:00Z"
+        },
+        {
+          "tankId": "T-201", "name": "T-201 (LS)", "tankGroup": "LowSulphur",
+          "crudeGrade": "CPC_BLEND", "currentVolumeBbls": 480000, "capacityBbls": 650000,
+          "ullageBbls": 170000, "lastUpdated": "2026-04-14T09:42:00Z"
+        },
+        {
+          "tankId": "T-202", "name": "T-202 (LS)", "tankGroup": "LowSulphur",
+          "crudeGrade": "CPC_BLEND", "currentVolumeBbls": 155000, "capacityBbls": 650000,
+          "ullageBbls": 495000, "lastUpdated": "2026-04-14T09:42:00Z"
+        },
+        {
+          "tankId": "T-203", "name": "T-203 (LS)", "tankGroup": "LowSulphur",
+          "crudeGrade": "AZERI_LIGHT", "currentVolumeBbls": 410000, "capacityBbls": 600000,
+          "ullageBbls": 190000, "lastUpdated": "2026-04-14T09:42:00Z"
+        },
+        {
+          "tankId": "T-204", "name": "T-204 (LS)", "tankGroup": "LowSulphur",
+          "crudeGrade": "AZERI_LIGHT", "currentVolumeBbls": 145000, "capacityBbls": 600000,
+          "ullageBbls": 455000, "lastUpdated": "2026-04-14T09:42:00Z"
+        }
+      ],
+
+      "cdus": [
+        {
+          "cduId": "CDU-1",
+          "name": "CDU-1 (HS train)",
+          "plannedThroughputBpd": 85000,
+          "minThroughputBpd": 60000,
+          "maxThroughputBpd": 95000,
+          "blendConstraints": [
+            {
+              "constraintId": "CDU1_SULPHUR_MAX", "name": "Max Sulphur %",
+              "metric": "sulphur", "limitType": "LE", "limitValue": 1.75,
+              "currentValue": 1.62, "status": "OK", "version": "BC-2026-04-W2"
+            },
+            {
+              "constraintId": "CDU1_API_MIN", "name": "Min API",
+              "metric": "api", "limitType": "GE", "limitValue": 30.0,
+              "currentValue": 32.1, "status": "OK", "version": "BC-2026-04-W2"
+            }
+          ],
+          "lpTargetByGrade": {
+            "ARAB_LIGHT": [50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000],
+            "URALS":      [35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000,35000]
+          }
+        },
+        {
+          "cduId": "CDU-2",
+          "name": "CDU-2 (LS + HS mix)",
+          "plannedThroughputBpd": 65500,
+          "minThroughputBpd": 45000,
+          "maxThroughputBpd": 75000,
+          "blendConstraints": [
+            {
+              "constraintId": "CDU2_SULPHUR_MAX", "name": "Max Sulphur %",
+              "metric": "sulphur", "limitType": "LE", "limitValue": 1.40,
+              "currentValue": 1.44, "status": "VIOLATED", "version": "BC-2026-04-W2"
+            },
+            {
+              "constraintId": "CDU2_API_MIN", "name": "Min API",
+              "metric": "api", "limitType": "GE", "limitValue": 33.0,
+              "currentValue": 34.8, "status": "OK", "version": "BC-2026-04-W2"
+            }
+          ],
+          "lpTargetByGrade": {
+            "URALS":       [20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000,20000],
+            "CPC_BLEND":   [25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000],
+            "AZERI_LIGHT": [20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500]
+          }
+        }
+      ],
+
+      "cargoes": [
+        {
+          "cargoId": "CRG-2026-001", "vesselName": "Ionian Star", "imoNumber": "9451234",
+          "vesselType": "Aframax", "crudeGrade": "ARAB_LIGHT", "originRegion": "Saudi Arabia",
+          "volumeBbls": 700000, "loadingPort": "Ras Tanura",
+          "laycanStart": "2026-04-16", "laycanEnd": "2026-04-18",
+          "etaTerminal": "2026-04-17T08:00:00Z", "destinationTerminal": "Aspropyrgos",
+          "charterPartyRef": "CP-HEL-ALPHA-221",
+          "status": "Confirmed",
+          "nominatedTanks": ["T-102"],
+          "currentLat": 36.21, "currentLon": 25.85,
+          "demurrageRiskLevel": "None", "demurrageRateUsdDay": 28000,
+          "freightCostUsd": 1250000, "isFixed": true
+        },
+        {
+          "cargoId": "CRG-2026-002", "vesselName": "Aegean Voyager", "imoNumber": "9487561",
+          "vesselType": "Suezmax", "crudeGrade": "URALS", "originRegion": "Russia",
+          "volumeBbls": 1000000, "loadingPort": "Novorossiysk",
+          "laycanStart": "2026-04-19", "laycanEnd": "2026-04-21",
+          "etaTerminal": "2026-04-22T14:00:00Z", "destinationTerminal": "Aspropyrgos",
+          "charterPartyRef": "CP-HEL-BETA-114",
+          "status": "At Risk",
+          "nominatedTanks": [],
+          "currentLat": 43.98, "currentLon": 29.73,
+          "demurrageRiskLevel": "High", "demurrageRateUsdDay": 42000,
+          "freightCostUsd": 1950000, "isFixed": false
+        },
+        {
+          "cargoId": "CRG-2026-003", "vesselName": "Kithira Pride", "imoNumber": "9512478",
+          "vesselType": "Aframax", "crudeGrade": "CPC_BLEND", "originRegion": "Kazakhstan",
+          "volumeBbls": 720000, "loadingPort": "Novorossiysk",
+          "laycanStart": "2026-04-22", "laycanEnd": "2026-04-25",
+          "etaTerminal": "2026-04-24T06:30:00Z", "destinationTerminal": "Aspropyrgos",
+          "charterPartyRef": "CP-HEL-GAMMA-089",
+          "status": "Confirmed",
+          "nominatedTanks": ["T-202"],
+          "currentLat": 41.02, "currentLon": 28.98,
+          "demurrageRiskLevel": "Low", "demurrageRateUsdDay": 28000,
+          "freightCostUsd": 1310000, "isFixed": true
+        },
+        {
+          "cargoId": "CRG-2026-004", "vesselName": "Olympia Trident", "imoNumber": "9488002",
+          "vesselType": "Suezmax", "crudeGrade": "AZERI_LIGHT", "originRegion": "Azerbaijan",
+          "volumeBbls": 950000, "loadingPort": "Ceyhan",
+          "laycanStart": "2026-04-27", "laycanEnd": "2026-04-30",
+          "etaTerminal": "2026-04-28T22:00:00Z", "destinationTerminal": "Aspropyrgos",
+          "charterPartyRef": "CP-HEL-DELTA-302",
+          "status": "Provisional",
+          "nominatedTanks": [],
+          "currentLat": 36.85, "currentLon": 35.92,
+          "demurrageRiskLevel": "Medium", "demurrageRateUsdDay": 42000,
+          "freightCostUsd": 1780000, "isFixed": false
+        },
+        {
+          "cargoId": "CRG-2026-005", "vesselName": "Poseidon Kappa", "imoNumber": "9534891",
+          "vesselType": "Aframax", "crudeGrade": "ARAB_LIGHT", "originRegion": "Saudi Arabia",
+          "volumeBbls": 680000, "loadingPort": "Ras Tanura",
+          "laycanStart": "2026-05-02", "laycanEnd": "2026-05-05",
+          "etaTerminal": "2026-05-03T11:00:00Z", "destinationTerminal": "Aspropyrgos",
+          "charterPartyRef": "CP-HEL-ALPHA-224",
+          "status": "Provisional",
+          "nominatedTanks": [],
+          "currentLat": 25.10, "currentLon": 55.01,
+          "demurrageRiskLevel": "None", "demurrageRateUsdDay": 28000,
+          "freightCostUsd": 1260000, "isFixed": false
+        },
+        {
+          "cargoId": "CRG-2026-006", "vesselName": "Thrace Meridian", "imoNumber": "9551023",
+          "vesselType": "Aframax", "crudeGrade": "URALS", "originRegion": "Russia",
+          "volumeBbls": 730000, "loadingPort": "Novorossiysk",
+          "laycanStart": "2026-05-07", "laycanEnd": "2026-05-10",
+          "etaTerminal": "2026-05-08T16:00:00Z", "destinationTerminal": "Aspropyrgos",
+          "charterPartyRef": "CP-HEL-BETA-118",
+          "status": "Confirmed",
+          "nominatedTanks": ["T-104"],
+          "currentLat": 44.61, "currentLon": 37.79,
+          "demurrageRiskLevel": "Low", "demurrageRateUsdDay": 28000,
+          "freightCostUsd": 1280000, "isFixed": false
+        }
+      ],
+
+      "maintenanceWindows": [
+        {
+          "windowId": "CDU1_INSP_APR26",
+          "cduId": "CDU-1",
+          "startDate": "2026-04-30",
+          "endDate": "2026-05-01",
+          "reason": "INSPECTION",
+          "description": "Planned 48-hour internal inspection"
+        }
+      ],
+
+      "items": [
+        {
+          "itemId": "ARAB_LIGHT",
+          "initialInventoryBbls": 830000,
+          "arrivalsBblsByDay": [0,0,0,700000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,680000,0,0,0,0,0,0,0,0,0,0],
+          "demandBblsByDay":  [50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,0,0,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000,50000],
+          "safetyStockBbls": 250000,
+          "holdingCostUsdBblDay": 0.05
+        },
+        {
+          "itemId": "URALS",
+          "initialInventoryBbls": 720000,
+          "arrivalsBblsByDay": [0,0,0,0,0,0,0,1000000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,730000,0,0,0,0,0],
+          "demandBblsByDay":  [55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,35000,35000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000,55000],
+          "safetyStockBbls": 300000,
+          "holdingCostUsdBblDay": 0.05
+        },
+        {
+          "itemId": "CPC_BLEND",
+          "initialInventoryBbls": 635000,
+          "arrivalsBblsByDay": [0,0,0,0,0,0,0,0,0,0,720000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          "demandBblsByDay":  [25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,0,0,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000,25000],
+          "safetyStockBbls": 200000,
+          "holdingCostUsdBblDay": 0.05
+        },
+        {
+          "itemId": "AZERI_LIGHT",
+          "initialInventoryBbls": 555000,
+          "arrivalsBblsByDay": [0,0,0,0,0,0,0,0,0,0,0,0,0,0,950000,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+          "demandBblsByDay":  [20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,0,0,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500,20500],
+          "safetyStockBbls": 180000,
+          "holdingCostUsdBblDay": 0.05
+        }
+      ]
+    }
+  ]
+}

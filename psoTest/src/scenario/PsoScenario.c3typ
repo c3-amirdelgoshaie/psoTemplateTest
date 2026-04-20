@@ -1,0 +1,90 @@
+/**
+ * A Crude Diet Optimizer scenario — a named, persistable what-if.
+ *
+ * Users create scenarios on the Crude Diet Optimizer page and compare them
+ * on the "Saved Scenarios" table + side-by-side Compare modal. Each scenario
+ * captures the delta from the baseline input
+ * ({@link PsoScenario#parameterChanges}) and the optimizer output
+ * ({@link PsoScenario#output}).
+ *
+ * Seeded scenarios per spec lines 198–200:
+ *   - "Base April Plan"                (status Complete, no changes)
+ *   - "Urals Substitution"             (+$0.29/bbl GRM delta)
+ *   - "Vessel Re-timing"               (−$104K demurrage)
+ */
+entity type PsoScenario {
+  /**
+   * User-friendly display name.
+   */
+  name: !string
+
+  /**
+   * Free-text description rendered on the scenario card.
+   */
+  description: string
+
+  /**
+   * Optimization objective mode selected for this scenario:
+   * "MaxGRM" | "MinDemurrage" | "MinLogistics" | "Balanced".
+   */
+  objective: !string
+
+  /**
+   * Lifecycle status: "Draft" | "Running" | "Complete" | "Failed".
+   */
+  status: !string
+
+  /**
+   * UTC timestamp of creation.
+   */
+  createdAt: !datetime
+
+  /**
+   * UTC timestamp of the most recent optimizer run on this scenario.
+   */
+  lastRunAt: datetime
+
+  /**
+   * Parameter deltas applied to the baseline input. Supported keys:
+   *   delayVesselDays (map<cargoId, int>),
+   *   priceOverride (map<grade, double>),
+   *   removeGrades ([grade]),
+   *   cduThroughputPct (map<cduId, double>),
+   *   tankCapacityBbls (map<tankId, double>),
+   *   constraintsToggles (json),
+   *   flexDays (int),
+   *   fixedCargoes (boolean).
+   */
+  parameterChanges: json
+
+  /**
+   * Frozen copy of the modified input used for the run, for reproducibility.
+   */
+  inputSnapshot: json
+
+  /**
+   * Embedded optimizer output (status, objective, schedules, recs, KPIs).
+   */
+  output: PsoScenarioOutput
+
+  /**
+   * Baseline KPIs snapshot at the time the scenario was run (for delta
+   * comparisons).
+   */
+  baselineKpis: json
+
+  /**
+   * Scenario KPIs after optimization.
+   */
+  scenarioKpis: json
+
+  /**
+   * Per-KPI delta = scenario − baseline, pre-computed server-side.
+   */
+  kpiDeltas: json
+
+  /**
+   * User who created this scenario.
+   */
+  createdBy: string
+}

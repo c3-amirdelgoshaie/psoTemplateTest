@@ -1,0 +1,2612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C3 Design System - Tailwind CSS Theme Demo</title>
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="../../c3-theme.css">
+
+    <style>
+        .theme-toggle {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 50;
+        }
+
+        .color-swatch {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            border-width: 1px;
+            border-style: solid;
+        }
+
+        .border-swatch {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Toggle -->
+    <button id="theme-toggle" class="theme-toggle bg-primary border border-border px-4 py-2 text-sm font-medium hover:bg-gray-10 transition-colors">
+        Toggle Theme
+    </button>
+
+    <div class="container mx-auto px-8 py-12 space-y-8">
+        <header class="mb-8">
+            <h1 class="text-4xl font-bold mb-2">C3 Design System</h1>
+        </header>
+
+        <!-- Color Palette Demo -->
+        <section class="c3-card mb-4">
+            <h2 class="font-semibold">Color Palette</h2>
+
+            <!-- Core Colors -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Core Colors</h3>
+
+                <!-- Gray Scale -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-medium mb-3">Gray Scale</h4>
+                    <div class="grid grid-cols-12 gap-2">
+                        <div class="text-center">
+                            <div class="color-swatch bg-gray-5 mx-auto mb-2"></div>
+                            <span class="text-xs">5</span>
+                            <p class="text-xs text-secondary">bg-gray-5</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-gray-10 mx-auto mb-2"></div>
+                            <span class="text-xs">10</span>
+                            <p class="text-xs text-secondary">bg-gray-10</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-gray-20 mx-auto mb-2"></div>
+                            <span class="text-xs">20</span>
+                            <p class="text-xs text-secondary">bg-gray-20</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-gray-30 mx-auto mb-2"></div>
+                            <span class="text-xs">30</span>
+                            <p class="text-xs text-secondary">bg-gray-30</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-gray-40 mx-auto mb-2"></div>
+                            <span class="text-xs">40</span>
+                            <p class="text-xs text-secondary">bg-gray-40</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-gray-50 mx-auto mb-2"></div>
+                            <span class="text-xs">50</span>
+                            <p class="text-xs text-secondary">bg-gray-50</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-gray-60 mx-auto mb-2"></div>
+                            <span class="text-xs">60</span>
+                            <p class="text-xs text-secondary">bg-gray-60</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-gray-70 mx-auto mb-2"></div>
+                            <span class="text-xs">70</span>
+                            <p class="text-xs text-secondary">bg-gray-70</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-gray-80 mx-auto mb-2"></div>
+                            <span class="text-xs">80</span>
+                            <p class="text-xs text-secondary">bg-gray-80</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-gray-90 mx-auto mb-2"></div>
+                            <span class="text-xs">90</span>
+                            <p class="text-xs text-secondary">bg-gray-90</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-gray-95 mx-auto mb-2"></div>
+                            <span class="text-xs">95</span>
+                            <p class="text-xs text-secondary">bg-gray-95</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-gray-100 mx-auto mb-2"></div>
+                            <span class="text-xs">100</span>
+                            <p class="text-xs text-secondary">bg-gray-100</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Blue Scale -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-medium mb-3">Blue Scale</h4>
+                    <div class="grid grid-cols-12 gap-2">
+                        <div class="text-center">
+                            <div class="color-swatch bg-blue-5 mx-auto mb-2"></div>
+                            <span class="text-xs">5</span>
+                            <p class="text-xs text-secondary">bg-blue-5</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-blue-10 mx-auto mb-2"></div>
+                            <span class="text-xs">10</span>
+                            <p class="text-xs text-secondary">bg-blue-10</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-blue-20 mx-auto mb-2"></div>
+                            <span class="text-xs">20</span>
+                            <p class="text-xs text-secondary">bg-blue-20</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-blue-30 mx-auto mb-2"></div>
+                            <span class="text-xs">30</span>
+                            <p class="text-xs text-secondary">bg-blue-30</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-blue-40 mx-auto mb-2"></div>
+                            <span class="text-xs">40</span>
+                            <p class="text-xs text-secondary">bg-blue-40</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-blue-50 mx-auto mb-2"></div>
+                            <span class="text-xs">50</span>
+                            <p class="text-xs text-secondary">bg-blue-50</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-blue-60 mx-auto mb-2"></div>
+                            <span class="text-xs">60</span>
+                            <p class="text-xs text-secondary">bg-blue-60</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-blue-70 mx-auto mb-2"></div>
+                            <span class="text-xs">70</span>
+                            <p class="text-xs text-secondary">bg-blue-70</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-blue-80 mx-auto mb-2"></div>
+                            <span class="text-xs">80</span>
+                            <p class="text-xs text-secondary">bg-blue-80</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-blue-90 mx-auto mb-2"></div>
+                            <span class="text-xs">90</span>
+                            <p class="text-xs text-secondary">bg-blue-90</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-blue-95 mx-auto mb-2"></div>
+                            <span class="text-xs">95</span>
+                            <p class="text-xs text-secondary">bg-blue-95</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-blue-100 mx-auto mb-2"></div>
+                            <span class="text-xs">100</span>
+                            <p class="text-xs text-secondary">bg-blue-100</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Green Scale -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-medium mb-3">Green Scale</h4>
+                    <div class="grid grid-cols-12 gap-2">
+                        <div class="text-center">
+                            <div class="color-swatch bg-green-5 mx-auto mb-2"></div>
+                            <span class="text-xs">5</span>
+                            <p class="text-xs text-secondary">bg-green-5</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-green-10 mx-auto mb-2"></div>
+                            <span class="text-xs">10</span>
+                            <p class="text-xs text-secondary">bg-green-10</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-green-20 mx-auto mb-2"></div>
+                            <span class="text-xs">20</span>
+                            <p class="text-xs text-secondary">bg-green-20</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-green-30 mx-auto mb-2"></div>
+                            <span class="text-xs">30</span>
+                            <p class="text-xs text-secondary">bg-green-30</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-green-40 mx-auto mb-2"></div>
+                            <span class="text-xs">40</span>
+                            <p class="text-xs text-secondary">bg-green-40</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-green-50 mx-auto mb-2"></div>
+                            <span class="text-xs">50</span>
+                            <p class="text-xs text-secondary">bg-green-50</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-green-60 mx-auto mb-2"></div>
+                            <span class="text-xs">60</span>
+                            <p class="text-xs text-secondary">bg-green-60</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-green-70 mx-auto mb-2"></div>
+                            <span class="text-xs">70</span>
+                            <p class="text-xs text-secondary">bg-green-70</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-green-80 mx-auto mb-2"></div>
+                            <span class="text-xs">80</span>
+                            <p class="text-xs text-secondary">bg-green-80</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-green-90 mx-auto mb-2"></div>
+                            <span class="text-xs">90</span>
+                            <p class="text-xs text-secondary">bg-green-90</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-green-95 mx-auto mb-2"></div>
+                            <span class="text-xs">95</span>
+                            <p class="text-xs text-secondary">bg-green-95</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-green-100 mx-auto mb-2"></div>
+                            <span class="text-xs">100</span>
+                            <p class="text-xs text-secondary">bg-green-100</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Red Scale -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-medium mb-3">Red Scale</h4>
+                    <div class="grid grid-cols-12 gap-2">
+                        <div class="text-center">
+                            <div class="color-swatch bg-red-5 mx-auto mb-2"></div>
+                            <span class="text-xs">5</span>
+                            <p class="text-xs text-secondary">bg-red-5</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-red-10 mx-auto mb-2"></div>
+                            <span class="text-xs">10</span>
+                            <p class="text-xs text-secondary">bg-red-10</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-red-20 mx-auto mb-2"></div>
+                            <span class="text-xs">20</span>
+                            <p class="text-xs text-secondary">bg-red-20</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-red-30 mx-auto mb-2"></div>
+                            <span class="text-xs">30</span>
+                            <p class="text-xs text-secondary">bg-red-30</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-red-40 mx-auto mb-2"></div>
+                            <span class="text-xs">40</span>
+                            <p class="text-xs text-secondary">bg-red-40</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-red-50 mx-auto mb-2"></div>
+                            <span class="text-xs">50</span>
+                            <p class="text-xs text-secondary">bg-red-50</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-red-60 mx-auto mb-2"></div>
+                            <span class="text-xs">60</span>
+                            <p class="text-xs text-secondary">bg-red-60</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-red-70 mx-auto mb-2"></div>
+                            <span class="text-xs">70</span>
+                            <p class="text-xs text-secondary">bg-red-70</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-red-80 mx-auto mb-2"></div>
+                            <span class="text-xs">80</span>
+                            <p class="text-xs text-secondary">bg-red-80</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-red-90 mx-auto mb-2"></div>
+                            <span class="text-xs">90</span>
+                            <p class="text-xs text-secondary">bg-red-90</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-red-95 mx-auto mb-2"></div>
+                            <span class="text-xs">95</span>
+                            <p class="text-xs text-secondary">bg-red-95</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-red-100 mx-auto mb-2"></div>
+                            <span class="text-xs">100</span>
+                            <p class="text-xs text-secondary">bg-red-100</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yellow Scale -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-medium mb-3">Yellow Scale</h4>
+                    <div class="grid grid-cols-12 gap-2">
+                        <div class="text-center">
+                            <div class="color-swatch bg-yellow-5 mx-auto mb-2"></div>
+                            <span class="text-xs">5</span>
+                            <p class="text-xs text-secondary">bg-yellow-5</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-yellow-10 mx-auto mb-2"></div>
+                            <span class="text-xs">10</span>
+                            <p class="text-xs text-secondary">bg-yellow-10</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-yellow-20 mx-auto mb-2"></div>
+                            <span class="text-xs">20</span>
+                            <p class="text-xs text-secondary">bg-yellow-20</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-yellow-30 mx-auto mb-2"></div>
+                            <span class="text-xs">30</span>
+                            <p class="text-xs text-secondary">bg-yellow-30</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-yellow-40 mx-auto mb-2"></div>
+                            <span class="text-xs">40</span>
+                            <p class="text-xs text-secondary">bg-yellow-40</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-yellow-50 mx-auto mb-2"></div>
+                            <span class="text-xs">50</span>
+                            <p class="text-xs text-secondary">bg-yellow-50</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-yellow-60 mx-auto mb-2"></div>
+                            <span class="text-xs">60</span>
+                            <p class="text-xs text-secondary">bg-yellow-60</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-yellow-70 mx-auto mb-2"></div>
+                            <span class="text-xs">70</span>
+                            <p class="text-xs text-secondary">bg-yellow-70</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-yellow-80 mx-auto mb-2"></div>
+                            <span class="text-xs">80</span>
+                            <p class="text-xs text-secondary">bg-yellow-80</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-yellow-90 mx-auto mb-2"></div>
+                            <span class="text-xs">90</span>
+                            <p class="text-xs text-secondary">bg-yellow-90</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-yellow-95 mx-auto mb-2"></div>
+                            <span class="text-xs">95</span>
+                            <p class="text-xs text-secondary">bg-yellow-95</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-yellow-100 mx-auto mb-2"></div>
+                            <span class="text-xs">100</span>
+                            <p class="text-xs text-secondary">bg-yellow-100</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decorative Colors -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Decorative Colors</h3>
+
+                <!-- Orange Scale -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-medium mb-3">Orange Scale</h4>
+                    <div class="grid grid-cols-12 gap-2">
+                        <div class="text-center">
+                            <div class="color-swatch bg-orange-5 mx-auto mb-2"></div>
+                            <span class="text-xs">5</span>
+                            <p class="text-xs text-secondary">bg-orange-5</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-orange-10 mx-auto mb-2"></div>
+                            <span class="text-xs">10</span>
+                            <p class="text-xs text-secondary">bg-orange-10</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-orange-20 mx-auto mb-2"></div>
+                            <span class="text-xs">20</span>
+                            <p class="text-xs text-secondary">bg-orange-20</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-orange-30 mx-auto mb-2"></div>
+                            <span class="text-xs">30</span>
+                            <p class="text-xs text-secondary">bg-orange-30</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-orange-40 mx-auto mb-2"></div>
+                            <span class="text-xs">40</span>
+                            <p class="text-xs text-secondary">bg-orange-40</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-orange-50 mx-auto mb-2"></div>
+                            <span class="text-xs">50</span>
+                            <p class="text-xs text-secondary">bg-orange-50</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-orange-60 mx-auto mb-2"></div>
+                            <span class="text-xs">60</span>
+                            <p class="text-xs text-secondary">bg-orange-60</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-orange-70 mx-auto mb-2"></div>
+                            <span class="text-xs">70</span>
+                            <p class="text-xs text-secondary">bg-orange-70</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-orange-80 mx-auto mb-2"></div>
+                            <span class="text-xs">80</span>
+                            <p class="text-xs text-secondary">bg-orange-80</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-orange-90 mx-auto mb-2"></div>
+                            <span class="text-xs">90</span>
+                            <p class="text-xs text-secondary">bg-orange-90</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-orange-95 mx-auto mb-2"></div>
+                            <span class="text-xs">95</span>
+                            <p class="text-xs text-secondary">bg-orange-95</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-orange-100 mx-auto mb-2"></div>
+                            <span class="text-xs">100</span>
+                            <p class="text-xs text-secondary">bg-orange-100</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Decorative Colors -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="text-center">
+                        <div class="color-swatch bg-olive-60 mx-auto mb-2"></div>
+                        <span class="text-sm font-medium">Olive 60</span>
+                        <p class="text-xs text-secondary">bg-olive-60</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="color-swatch bg-lime-60 mx-auto mb-2"></div>
+                        <span class="text-sm font-medium">Lime 60</span>
+                        <p class="text-xs text-secondary">bg-lime-60</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="color-swatch bg-forest-60 mx-auto mb-2"></div>
+                        <span class="text-sm font-medium">Forest 60</span>
+                        <p class="text-xs text-secondary">bg-forest-60</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="color-swatch bg-cyan-60 mx-auto mb-2"></div>
+                        <span class="text-sm font-medium">Cyan 60</span>
+                        <p class="text-xs text-secondary">bg-cyan-60</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="color-swatch bg-slate-60 mx-auto mb-2"></div>
+                        <span class="text-sm font-medium">Slate 60</span>
+                        <p class="text-xs text-secondary">bg-slate-60</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="color-swatch bg-purple-60 mx-auto mb-2"></div>
+                        <span class="text-sm font-medium">Purple 60</span>
+                        <p class="text-xs text-secondary">bg-purple-60</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="color-swatch bg-plum-60 mx-auto mb-2"></div>
+                        <span class="text-sm font-medium">Plum 60</span>
+                        <p class="text-xs text-secondary">bg-plum-60</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="color-swatch bg-choco-60 mx-auto mb-2"></div>
+                        <span class="text-sm font-medium">Choco 60</span>
+                        <p class="text-xs text-secondary">bg-choco-60</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semantic Colors -->
+            <div>
+                <h3 class="text-xl font-medium mb-4">Semantic Colors</h3>
+
+                <!-- Background Colors -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-medium mb-3">Background Colors</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center">
+                            <div class="color-swatch bg-primary mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Primary</span>
+                            <p class="text-xs text-secondary">bg-primary</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-secondary mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Secondary</span>
+                            <p class="text-xs text-secondary">bg-secondary</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-tertiary mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Tertiary</span>
+                            <p class="text-xs text-secondary">bg-tertiary</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-accent mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Accent</span>
+                            <p class="text-xs text-secondary">bg-accent</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-accent-weak mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Accent Weak</span>
+                            <p class="text-xs text-secondary">bg-accent-weak</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-accent-strong mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Accent Strong</span>
+                            <p class="text-xs text-secondary">bg-accent-strong</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-success mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Success</span>
+                            <p class="text-xs text-secondary">bg-success</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-success-weak mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Success Weak</span>
+                            <p class="text-xs text-secondary">bg-success-weak</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-success-strong mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Success Strong</span>
+                            <p class="text-xs text-secondary">bg-success-strong</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-warning mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Warning</span>
+                            <p class="text-xs text-secondary">bg-warning</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-warning-weak mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Warning Weak</span>
+                            <p class="text-xs text-secondary">bg-warning-weak</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-warning-strong mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Warning Strong</span>
+                            <p class="text-xs text-secondary">bg-warning-strong</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-danger mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Danger</span>
+                            <p class="text-xs text-secondary">bg-danger</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-danger-weak mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Danger Weak</span>
+                            <p class="text-xs text-secondary">bg-danger-weak</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="color-swatch bg-danger-strong mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Danger Strong</span>
+                            <p class="text-xs text-secondary">bg-danger-strong</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Colors -->
+                <div class="mb-6">
+                    <h4 class="text-lg font-medium mb-3">Text Colors</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center p-4 border rounded">
+                            <p class="text-primary text-lg font-medium mb-2">Text Primary</p>
+                            <span class="text-xs text-secondary">text-primary</span>
+                        </div>
+                        <div class="text-center p-4 border rounded">
+                            <p class="text-secondary text-lg font-medium mb-2">Text Secondary</p>
+                            <span class="text-xs text-secondary">text-secondary</span>
+                        </div>
+                        <div class="text-center p-4 border rounded">
+                            <p class="text-inverse text-lg font-medium mb-2 bg-primary-inverse">Text Inverse</p>
+                            <span class="text-xs text-secondary">text-inverse</span>
+                        </div>
+                        <div class="text-center p-4 border rounded">
+                            <p class="text-accent text-lg font-medium mb-2">Text Accent</p>
+                            <span class="text-xs text-secondary">text-accent</span>
+                        </div>
+                        <div class="text-center p-4 border rounded">
+                            <p class="text-success text-lg font-medium mb-2">Text Success</p>
+                            <span class="text-xs text-secondary">text-success</span>
+                        </div>
+                        <div class="text-center p-4 border rounded">
+                            <p class="text-warning text-lg font-medium mb-2">Text Warning</p>
+                            <span class="text-xs text-secondary">text-warning</span>
+                        </div>
+                        <div class="text-center p-4 border rounded">
+                            <p class="text-danger text-lg font-medium mb-2">Text Danger</p>
+                            <span class="text-xs text-secondary">text-danger</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Border Colors -->
+                <div>
+                    <h4 class="text-lg font-medium mb-3">Border Colors</h4>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="text-center">
+                            <div class="border-swatch border border-sm mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Border</span>
+                            <p class="text-xs text-secondary">border border-sm</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="border-swatch border border-weak border-sm mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Border Weak</span>
+                            <p class="text-xs text-secondary">border border-weak border-sm</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="border-swatch border border-strong border-sm mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Border Strong</span>
+                            <p class="text-xs text-secondary">border border-strong border-sm</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="border-swatch border border-accent border-sm mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Border Accent</span>
+                            <p class="text-xs text-secondary">border border-accent border-sm</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="border-swatch border border-success border-sm mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Border Success</span>
+                            <p class="text-xs text-secondary">border border-success border-sm</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="border-swatch border border-warning border-sm mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Border Warning</span>
+                            <p class="text-xs text-secondary">border border-warning border-sm</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="border-swatch border border-danger border-sm mx-auto mb-2"></div>
+                            <span class="text-sm font-medium">Border Danger</span>
+                            <p class="text-xs text-secondary">border border-danger border-sm</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- Typography Demo -->
+        <section class="c3-card mb-4">
+            <h2 class="font-semibold">Typography</h2>
+
+            <!-- Font Sizes -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Font Sizes</h3>
+                <div class="space-y-4">
+                    <div class="mb-4">
+                        <p class="text-xs">text-xs - Font Size 01 (0.75rem)</p>
+                        <p class="text-xs text-secondary">text-xs</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-sm">text-sm - Font Size 02 (0.875rem)</p>
+                        <p class="text-xs text-secondary">text-sm</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-base">text-base - Font Size 03 (1rem)</p>
+                        <p class="text-xs text-secondary">text-base</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-md">text-md - Font Size 04 (1.125rem)</p>
+                        <p class="text-xs text-secondary">text-md</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg">text-lg - Font Size 05 (1.25rem)</p>
+                        <p class="text-xs text-secondary">text-lg</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-xl">text-xl - Font Size 06 (1.5rem)</p>
+                        <p class="text-xs text-secondary">text-xl</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-2xl">text-2xl - Font Size 07 (1.875rem)</p>
+                        <p class="text-xs text-secondary">text-2xl</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-3xl">text-3xl - Font Size 08 (2.25rem)</p>
+                        <p class="text-xs text-secondary">text-3xl</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-4xl">text-4xl - Font Size 09 (3rem)</p>
+                        <p class="text-xs text-secondary">text-4xl</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-5xl">text-5xl - Font Size 10 (3.75rem)</p>
+                        <p class="text-xs text-secondary">text-5xl</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-6xl">text-6xl - Font Size 11 (4.5rem)</p>
+                        <p class="text-xs text-secondary">text-6xl</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-7xl">text-7xl - Font Size 12 (6rem)</p>
+                        <p class="text-xs text-secondary">text-7xl</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-8xl">text-8xl - Font Size 13 (8rem)</p>
+                        <p class="text-xs text-secondary">text-8xl</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-9xl">text-9xl - Font Size 14 (9rem)</p>
+                        <p class="text-xs text-secondary">text-9xl</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-10xl">text-10xl - Font Size 15 (10rem)</p>
+                        <p class="text-xs text-secondary">text-10xl</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-11xl">text-11xl - Font Size 16 (12rem)</p>
+                        <p class="text-xs text-secondary">text-11xl</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-12xl">text-12xl - Font Size 17 (14rem)</p>
+                        <p class="text-xs text-secondary">text-12xl</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Font Weights -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Font Weights</h3>
+                <div class="space-y-4">
+                    <div class="mb-4">
+                        <p class="text-lg font-light">font-light - Light Weight</p>
+                        <p class="text-xs text-secondary">font-light</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg font-normal">font-normal - Regular Weight</p>
+                        <p class="text-xs text-secondary">font-normal</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg font-medium">font-medium - Medium Weight</p>
+                        <p class="text-xs text-secondary">font-medium</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg font-semibold">font-semibold - Semi Bold Weight</p>
+                        <p class="text-xs text-secondary">font-semibold</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg font-bold">font-bold - Bold Weight</p>
+                        <p class="text-xs text-secondary">font-bold</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg font-black">font-black - Black Weight</p>
+                        <p class="text-xs text-secondary">font-black</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Font Families -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Font Families</h3>
+                <div class="space-y-4">
+                    <div class="mb-4">
+                        <p class="text-lg font-sans">font-sans - Inter (Default Sans)</p>
+                        <p class="text-xs text-secondary">font-sans</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg font-default">font-default - Inter (Default)</p>
+                        <p class="text-xs text-secondary">font-default</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg font-heading">font-heading - Inter (Heading)</p>
+                        <p class="text-xs text-secondary">font-heading</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg font-mono">font-mono - Roboto Mono (Monospace)</p>
+                        <p class="text-xs text-secondary">font-mono</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg font-icon">font-icon - Font Awesome 6 Pro (Icons)</p>
+                        <p class="text-xs text-secondary">font-icon</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Line Heights -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Line Heights</h3>
+                <div class="space-y-4">
+                    <div class="mb-4">
+                        <p class="text-lg leading-sm">leading-sm - Small Line Height</p>
+                        <p class="text-xs text-secondary">leading-sm</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg leading-md">leading-md - Medium Line Height</p>
+                        <p class="text-xs text-secondary">leading-md</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg leading-lg">leading-lg - Large Line Height</p>
+                        <p class="text-xs text-secondary">leading-lg</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Letter Spacing -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Letter Spacing</h3>
+                <div class="space-y-4">
+                    <div class="mb-4">
+                        <p class="text-lg tracking-xs">tracking-xs - Extra Small Letter Spacing</p>
+                        <p class="text-xs text-secondary">tracking-xs</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg tracking-sm">tracking-sm - Small Letter Spacing</p>
+                        <p class="text-xs text-secondary">tracking-sm</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg tracking-md">tracking-md - Medium Letter Spacing</p>
+                        <p class="text-xs text-secondary">tracking-md</p>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-lg tracking-lg">tracking-lg - Large Letter Spacing</p>
+                        <p class="text-xs text-secondary">tracking-lg</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buttons Demo -->
+        <section class="c3-card mb-4">
+            <h2 class="font-semibold">Button Examples</h2>
+            <div class="flex w-full justify-between items-center gap-6">
+                <!-- Blue (Primary) Filled -->
+                <div class="text-center">
+                    <button class="py-2 px-6 text-base bg-accent text-inverse focus:outline-none hover:bg-accent-hover transition-colors">Button</button>
+                    <p class="text-xs text-secondary mt-2">py-2 px-6 text-base bg-accent text-inverse focus:outline-none hover:bg-accent-hover transition-colors</p>
+                </div>
+                <!-- Blue (Primary) Outlined -->
+                <div class="text-center">
+                    <button class="py-2 px-6 text-base border border-accent text-accent hover:bg-accent hover:text-inverse transition-colors">Button</button>
+                    <p class="text-xs text-secondary mt-2">py-2 px-6 text-base border border-accent text-accent hover:bg-accent hover:text-inverse transition-colors</p>
+                </div>
+                <!-- Blue (Primary) Text -->
+                <div class="text-center">
+                    <button class="py-2 px-6 text-base text-accent hover:underline focus:outline-none">Button</button>
+                    <p class="text-xs text-secondary mt-2">py-2 px-6 text-base text-accent hover:underline focus:outline-none</p>
+                </div>
+                <!-- Red (Danger) Filled -->
+                <div class="text-center">
+                    <button class="py-2 px-6 text-base bg-danger text-inverse transition-colors hover:bg-danger-hover transition-colors">Button</button>
+                    <p class="text-xs text-secondary mt-2">py-2 px-6 text-base bg-danger text-inverse transition-colors hover:bg-danger-hover transition-colors</p>
+                </div>
+                <!-- Red (Danger) Outlined -->
+                <div class="text-center">
+                    <button class="py-2 px-6 text-base border border-danger hover:bg-danger hover:text-inverse text-danger transition-colors focus:outline-none">Button</button>
+                    <p class="text-xs text-secondary mt-2">py-2 px-6 text-base border border-danger hover:bg-danger hover:text-inverse text-danger transition-colors focus:outline-none</p>
+                </div>
+                <!-- Red (Danger) Text -->
+                <div class="text-center">
+                    <button class="py-2 px-6 text-base text-danger hover:underline focus:outline-none">Button</button>
+                    <p class="text-xs text-secondary mt-2">py-2 px-6 text-base text-danger hover:underline focus:outline-none</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cards Demo -->
+        <section class="c3-card mb-4">
+            <h2 class="font-semibold">Cards</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Regular Card -->
+                <div class="c3-card flex flex-col justify-between">
+                    <div>
+                        <h3 class="font-semibold">Card Title</h3>
+                        <p class="text-secondary mb-1">This is a basic card component with border (no default shadow; add e.g. <code class="text-xs">shadow-light-02</code> for elevation).</p>
+                        <p class="text-secondary text-sm">Secondary</p>
+                    </div>
+                </div>
+                <!-- Elevated Card -->
+                <div class="c3-card flex flex-col justify-between shadow-light-02">
+                    <div>
+                        <h3 class="font-semibold">Elevated Card</h3>
+                        <p class="text-secondary mb-1">This card has a more prominent shadow for higher elevation.</p>
+                        <p class="text-secondary text-sm">Secondary</p>
+                    </div>
+                </div>
+                <!-- Accent Card -->
+                <div class="c3-card flex flex-col justify-between bg-accent-weak border-accent">
+                    <div>
+                        <h3 class="font-semibold">Accent Card</h3>
+                        <p class="text-secondary mb-1">This card uses accent colors for special content.</p>
+                        <p class="text-secondary text-sm">Secondary</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Form Elements Demo -->
+        <section class="c3-card mb-4">
+            <h2 class="font-semibold">Form Elements</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Text Input</label>
+                        <input
+                            type="text"
+                            placeholder="Enter text..."
+                        />
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Select</label>
+                        <select>
+                            <option>Option 1</option>
+                            <option>Option 2</option>
+                            <option>Option 3</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Textarea</label>
+                        <textarea
+                            rows="3"
+                            placeholder="Enter description..."
+                        ></textarea>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <input
+                            type="checkbox"
+                            class="w-4 h-4 text-accent bg-primary border border-border rounded focus:ring-accent"
+                        />
+                        <label class="text-sm">Checkbox option</label>
+                    </div>
+
+                    <div class="flex items-center space-x-3">
+                        <input
+                            type="radio"
+                            name="radio-group"
+                            class="w-4 h-4 text-accent bg-primary border border-border focus:ring-accent"
+                        />
+                        <label class="text-sm">Radio option 1</label>
+                    </div>
+
+                    <div class="flex items-center space-x-3">
+                        <input
+                            type="radio"
+                            name="radio-group"
+                            class="w-4 h-4 text-accent bg-primary border border-border focus:ring-accent"
+                        />
+                        <label class="text-sm">Radio option 2</label>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium mb-2">Range Slider</label>
+                        <input
+                            type="range"
+                            class="w-full h-2 bg-gray-20 rounded-lg appearance-none cursor-pointer"
+                            min="0"
+                            max="100"
+                            value="50"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Alerts Demo -->
+        <section class="c3-card mb-4">
+            <h2 class="font-semibold">Alerts</h2>
+            <div class="space-y-4">
+                <!-- Success Alert -->
+                <div class="flex items-center bg-success-weak border border-success text-success px-6 py-4 mb-4">
+                    <span class="mr-3 text-2xl">✓</span>
+                    <div>
+                        <div class="font-semibold">Success!</div>
+                        <div class="text-sm">Your action was completed successfully.</div>
+                    </div>
+                </div>
+                <div class="text-xs text-secondary">
+                    flex items-center bg-success-weak border border-success text-success px-6 py-4 mb-4
+                </div>
+
+                <!-- Warning Alert -->
+                <div class="flex items-center bg-warning-weak border border-warning text-warning px-6 py-4 mb-4">
+                    <span class="mr-3 text-2xl">⚠️</span>
+                    <div>
+                        <div class="font-semibold">Warning</div>
+                        <div class="text-sm">Please review your input before proceeding.</div>
+                    </div>
+                </div>
+                <div class="text-xs text-secondary">
+                    flex items-center bg-warning-weak border border-warning text-warning px-6 py-4 mb-4
+                </div>
+
+                <!-- Error Alert -->
+                <div class="flex items-center bg-danger-weak border border-danger text-danger px-6 py-4 mb-4">
+                    <span class="mr-3 text-2xl">✕</span>
+                    <div>
+                        <div class="font-semibold">Error</div>
+                        <div class="text-sm">Something went wrong. Please try again.</div>
+                    </div>
+                </div>
+                <div class="text-xs text-secondary">
+                    flex items-center bg-danger-weak border border-danger text-danger px-6 py-4 mb-4
+                </div>
+
+                <!-- Info Alert -->
+                <div class="flex items-center bg-accent-weak border border-accent text-accent px-6 py-4 mb-4">
+                    <span class="mr-3 text-2xl">ℹ️</span>
+                    <div>
+                        <div class="font-semibold">Information</div>
+                        <div class="text-sm">Here's some helpful information for you.</div>
+                    </div>
+                </div>
+                <div class="text-xs text-secondary">
+                    flex items-center bg-accent-weak border border-accent text-accent px-6 py-4 mb-4
+                </div>
+            </div>
+        </section>
+
+        <!-- Border Radius Demo -->
+        <section class="c3-card mb-4">
+            <h2 class="font-semibold">Border Radius</h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-accent-weak p-6 rounded-none">
+                    <h4 class="font-medium mb-2">rounded-none</h4>
+                    <p class="text-sm text-secondary">No border radius</p>
+                    <p class="text-xs text-secondary">rounded-none</p>
+                </div>
+                <div class="bg-accent-weak p-6 rounded">
+                    <h4 class="font-medium mb-2">rounded</h4>
+                    <p class="text-sm text-secondary">Rounded</p>
+                    <p class="text-xs text-secondary">rounded</p>
+                </div>
+                <div class="bg-accent-weak p-6 rounded-sm">
+                    <h4 class="font-medium mb-2">rounded-sm</h4>
+                    <p class="text-sm text-secondary">4px border radius</p>
+                    <p class="text-xs text-secondary">rounded-sm</p>
+                </div>
+                <div class="bg-accent-weak p-6 rounded-md">
+                    <h4 class="font-medium mb-2">rounded-md</h4>
+                    <p class="text-sm text-secondary">8px border radius</p>
+                    <p class="text-xs text-secondary">rounded-md</p>
+                </div>
+                <div class="bg-accent-weak p-6 rounded-lg">
+                    <h4 class="font-medium mb-2">rounded-lg</h4>
+                    <p class="text-sm text-secondary">12px border radius</p>
+                    <p class="text-xs text-secondary">rounded-lg</p>
+                </div>
+                <div class="bg-accent-weak p-6 rounded-xl">
+                    <h4 class="font-medium mb-2">rounded-xl</h4>
+                    <p class="text-sm text-secondary">16px border radius</p>
+                    <p class="text-xs text-secondary">rounded-xl</p>
+                </div>
+                <div class="bg-accent-weak p-6 rounded-2xl">
+                    <h4 class="font-medium mb-2">rounded-2xl</h4>
+                    <p class="text-sm text-secondary">32px border radius</p>
+                    <p class="text-xs text-secondary">rounded-2xl</p>
+                </div>
+                <div class="bg-accent-weak p-6 rounded-full">
+                    <h4 class="font-medium mb-2">rounded-full</h4>
+                    <p class="text-sm text-secondary">border radius for pill</p>
+                    <p class="text-xs text-secondary">rounded-full</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Shadows Demo -->
+        <section class="c3-card mb-4">
+            <h2 class="font-semibold">Shadows</h2>
+
+            <!-- Light Shadows -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Light Shadows</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-primary p-6 rounded-lg shadow-light-01">
+                        <h4 class="font-medium mb-2">shadow-light-01</h4>
+                        <p class="text-sm text-secondary">Subtle shadow for cards</p>
+                        <p class="text-xs text-secondary">shadow-light-01</p>
+                    </div>
+                    <div class="bg-primary p-6 rounded-lg shadow-light-02">
+                        <h4 class="font-medium mb-2">shadow-light-02</h4>
+                        <p class="text-sm text-secondary">Medium shadow for elevated elements</p>
+                        <p class="text-xs text-secondary">shadow-light-02</p>
+                    </div>
+                    <div class="bg-primary p-6 rounded-lg shadow-light-03">
+                        <h4 class="font-medium mb-2">shadow-light-03</h4>
+                        <p class="text-sm text-secondary">Strong shadow for modals</p>
+                        <p class="text-xs text-secondary">shadow-light-03</p>
+                    </div>
+                    <div class="bg-primary p-6 rounded-lg shadow-light-04">
+                        <h4 class="font-medium mb-2">shadow-light-04</h4>
+                        <p class="text-sm text-secondary">Very strong shadow for overlays</p>
+                        <p class="text-xs text-secondary">shadow-light-04</p>
+                    </div>
+                    <div class="bg-primary p-6 rounded-lg shadow-light-05">
+                        <h4 class="font-medium mb-2">shadow-light-05</h4>
+                        <p class="text-sm text-secondary">Maximum shadow for tooltips</p>
+                        <p class="text-xs text-secondary">shadow-light-05</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dark Shadows -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Dark Shadows</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-primary p-6 rounded-lg shadow-dark-01">
+                        <h4 class="font-medium mb-2">shadow-dark-01</h4>
+                        <p class="text-sm text-secondary">Dark subtle shadow</p>
+                        <p class="text-xs text-secondary">shadow-dark-01</p>
+                    </div>
+                    <div class="bg-primary p-6 rounded-lg shadow-dark-02">
+                        <h4 class="font-medium mb-2">shadow-dark-02</h4>
+                        <p class="text-sm text-secondary">Dark medium shadow</p>
+                        <p class="text-xs text-secondary">shadow-dark-02</p>
+                    </div>
+                    <div class="bg-primary p-6 rounded-lg shadow-dark-03">
+                        <h4 class="font-medium mb-2">shadow-dark-03</h4>
+                        <p class="text-sm text-secondary">Dark strong shadow</p>
+                        <p class="text-xs text-secondary">shadow-dark-03</p>
+                    </div>
+                    <div class="bg-primary p-6 rounded-lg shadow-dark-04">
+                        <h4 class="font-medium mb-2">shadow-dark-04</h4>
+                        <p class="text-sm text-secondary">Dark very strong shadow</p>
+                        <p class="text-xs text-secondary">shadow-dark-04</p>
+                    </div>
+                    <div class="bg-primary p-6 rounded-lg shadow-dark-05">
+                        <h4 class="font-medium mb-2">shadow-dark-05</h4>
+                        <p class="text-sm text-secondary">Dark maximum shadow</p>
+                        <p class="text-xs text-secondary">shadow-dark-05</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Brightness Demo -->
+        <section class="c3-card mb-4">
+            <h2 class="font-semibold">Brightness</h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="bg-accent p-6 brightness-08">
+                    <h4 class="font-medium mb-2">brightness-08</h4>
+                    <p class="text-sm text-secondary">80% brightness</p>
+                    <p class="text-xs text-secondary">brightness-08</p>
+                </div>
+                <div class="bg-accent p-6 brightness-09">
+                    <h4 class="font-medium mb-2">brightness-09</h4>
+                    <p class="text-sm text-secondary">90% brightness</p>
+                    <p class="text-xs text-secondary">brightness-09</p>
+                </div>
+                <div class="bg-accent p-6 brightness-11">
+                    <h4 class="font-medium mb-2">brightness-11</h4>
+                    <p class="text-sm text-secondary">110% brightness</p>
+                    <p class="text-xs text-secondary">brightness-11</p>
+                </div>
+                <div class="bg-accent p-6 brightness-12">
+                    <h4 class="font-medium mb-2">brightness-12</h4>
+                    <p class="text-sm text-secondary">120% brightness</p>
+                    <p class="text-xs text-secondary">brightness-12</p>
+                </div>
+                <div class="bg-accent p-6 brightness-action-hover">
+                    <h4 class="font-medium mb-2">brightness-action-hover</h4>
+                    <p class="text-sm text-secondary">Action hover brightness</p>
+                    <p class="text-xs text-secondary">brightness-action-hover</p>
+                </div>
+                <div class="bg-accent p-6 brightness-action-hover-inverse">
+                    <h4 class="font-medium mb-2">brightness-action-hover-inverse</h4>
+                    <p class="text-sm text-secondary">Action hover inverse brightness</p>
+                    <p class="text-xs text-secondary">brightness-action-hover-inverse</p>
+                </div>
+                <div class="bg-accent p-6 brightness-action-pressed">
+                    <h4 class="font-medium mb-2">brightness-action-pressed</h4>
+                    <p class="text-sm text-secondary">Action pressed brightness</p>
+                    <p class="text-xs text-secondary">brightness-action-pressed</p>
+                </div>
+                <div class="bg-accent p-6 brightness-action-pressed-inverse">
+                    <h4 class="font-medium mb-2">brightness-action-pressed-inverse</h4>
+                    <p class="text-sm text-secondary">Action pressed inverse brightness</p>
+                    <p class="text-xs text-secondary">brightness-action-pressed-inverse</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Z-Index Demo -->
+        <section class="c3-card mb-4">
+            <h2 class="font-semibold">Z-Index</h2>
+
+            <div class="relative h-32 bg-gray-20 rounded-lg p-4">
+                <div class="absolute top-2 left-2 bg-accent p-2 rounded z-dropdown">
+                    <span class="text-xs">z-dropdown (1000)</span>
+                    <p class="text-xs text-secondary">z-dropdown</p>
+                </div>
+                <div class="absolute top-8 left-8 bg-success p-2 rounded z-sticky">
+                    <span class="text-xs">z-sticky (1020)</span>
+                    <p class="text-xs text-secondary">z-sticky</p>
+                </div>
+                <div class="absolute top-14 left-14 bg-warning p-2 rounded z-fixed">
+                    <span class="text-xs">z-fixed (1030)</span>
+                    <p class="text-xs text-secondary">z-fixed</p>
+                </div>
+                <div class="absolute top-20 left-20 bg-danger p-2 rounded z-modal-backdrop">
+                    <span class="text-xs">z-modal-backdrop (1040)</span>
+                    <p class="text-xs text-secondary">z-modal-backdrop</p>
+                </div>
+                <div class="absolute top-26 left-26 bg-purple-60 p-2 rounded z-modal">
+                    <span class="text-xs">z-modal (1050)</span>
+                    <p class="text-xs text-secondary">z-modal</p>
+                </div>
+                <div class="absolute top-32 left-32 bg-cyan-60 p-2 rounded z-popover">
+                    <span class="text-xs">z-popover (1060)</span>
+                    <p class="text-xs text-secondary">z-popover</p>
+                </div>
+                <div class="absolute top-38 left-38 bg-choco-60 p-2 rounded z-tooltip">
+                    <span class="text-xs">z-tooltip (1070)</span>
+                    <p class="text-xs text-secondary">z-tooltip</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples Section -->
+        <section class="c3-card mb-4">
+            <h2 class="font-semibold">Examples</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Full Page Examples -->
+                <div>
+                    <h3 class="text-xl font-medium mb-4">C3 React UI (shadcn + Tailwind)</h3>
+                    <div class="space-y-3">
+                        <div class="block p-4 border border-border bg-gray-10">
+                            <h4 class="font-medium mb-1">C3 application with Tailwind v4 and shadcn-style components</h4>
+                            <p class="text-sm text-secondary mb-3">Example pages live under <code class="bg-gray-20 px-1 rounded">resources/examples</code>; primitives are in <code class="bg-gray-20 px-1 rounded">src/components/ui</code>.</p>
+                            <div class="bg-primary p-3 rounded border border-border">
+                                <p class="text-sm font-mono mb-2">To run the React app:</p>
+                                <ol class="text-sm text-secondary space-y-1 ml-4">
+                                    <li>1. From the <code class="bg-gray-20 px-1 rounded">ui/react</code> folder, configure <code class="bg-gray-20 px-1 rounded">VITE_*</code> env vars (see README)</li>
+                                    <li>2. Run <code class="bg-gray-20 px-1 rounded">npm run dev</code></li>
+                                    <li>3. Open the dev server URL shown in the terminal</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Complete Tailwind CSS Class Reference -->
+        <section class="c3-card mb-4">
+            <h2 class="font-semibold">Complete Tailwind CSS Class Reference</h2>
+            <p class="text-secondary mb-6">This section lists all available Tailwind CSS classes from the safelist in tailwind.config.js. These classes are guaranteed to be available in your CSS build.</p>
+
+            <!-- Layout & Display -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Layout & Display</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">block</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">inline-block</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">inline</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">flex</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">inline-flex</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">inline-grid</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">hidden</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">visible</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">collapse</span>
+                </div>
+            </div>
+
+            <!-- Flexbox -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Flexbox</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">flex-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">flex-row</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">flex-row-reverse</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">flex-col</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">flex-col-reverse</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">flex-wrap</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">flex-wrap-reverse</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">flex-nowrap</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">items-start</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">items-end</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">items-center</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">items-baseline</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">items-stretch</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">justify-start</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">justify-end</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">justify-center</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">justify-between</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">justify-around</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">justify-evenly</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">content-start</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">content-end</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">content-center</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">content-between</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">content-around</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">content-evenly</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">self-auto</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">self-start</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">self-end</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">self-center</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">self-stretch</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">self-baseline</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-x-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-x-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-x-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-x-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-x-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-x-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-x-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-x-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-x-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-x-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-x-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-x-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-y-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-y-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-y-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-y-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-y-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-y-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-y-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-y-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-y-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-y-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-y-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">gap-y-20</span>
+                </div>
+            </div>
+
+            <!-- Grid -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Grid</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-cols-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-cols-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-cols-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-cols-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-cols-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-cols-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-cols-7</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-cols-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-cols-9</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-cols-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-cols-11</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-cols-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-rows-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-rows-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-rows-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-rows-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-rows-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">grid-rows-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">col-span-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">col-span-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">col-span-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">col-span-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">col-span-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">col-span-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">col-span-7</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">col-span-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">col-span-9</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">col-span-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">col-span-11</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">col-span-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">row-span-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">row-span-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">row-span-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">row-span-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">row-span-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">row-span-6</span>
+                </div>
+            </div>
+
+            <!-- Sizing -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Sizing</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <!-- Width -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-9</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-11</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-96</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-auto</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-full</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-screen</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-min</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-max</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">w-fit</span>
+                    <!-- Min Width -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">min-w-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">min-w-full</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">min-w-min</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">min-w-max</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">min-w-fit</span>
+                    <!-- Max Width -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-xs</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-sm</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-md</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-lg</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-2xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-3xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-4xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-5xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-6xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-7xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-full</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-min</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-max</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-fit</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-prose</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-screen-sm</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-screen-md</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-screen-lg</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-screen-xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-w-screen-2xl</span>
+                    <!-- Height -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-9</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-11</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-96</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-auto</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-full</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-screen</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-min</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-max</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">h-fit</span>
+                    <!-- Min Height -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">min-h-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">min-h-full</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">min-h-screen</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">min-h-min</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">min-h-max</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">min-h-fit</span>
+                    <!-- Max Height -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-xs</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-sm</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-md</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-lg</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-2xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-3xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-4xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-5xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-6xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-7xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-full</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-min</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-max</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-fit</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">max-h-screen</span>
+                </div>
+            </div>
+
+            <!-- Positioning -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Positioning</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">static</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">fixed</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">absolute</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">relative</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">sticky</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">inset-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">inset-x-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">inset-y-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">inset-x-auto</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">inset-y-auto</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-auto</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-1/2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-1/3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-2/3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-1/4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-3/4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">top-full</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-auto</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-1/2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-1/3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-2/3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-1/4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-3/4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">right-full</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-auto</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-1/2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-1/3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-2/3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-1/4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-3/4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bottom-full</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-auto</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-1/2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-1/3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-2/3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-1/4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-3/4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">left-full</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">z-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">z-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">z-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">z-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">z-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">z-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">z-auto</span>
+                </div>
+            </div>
+
+            <!-- Spacing -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Spacing (Padding & Margin)</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <!-- Padding -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">p-96</span>
+
+                    <!-- Padding X -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">px-96</span>
+
+                    <!-- Padding Y -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">py-96</span>
+
+                    <!-- Padding Top -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pt-96</span>
+
+                    <!-- Padding Right -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pr-96</span>
+
+                    <!-- Padding Bottom -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pb-96</span>
+
+                    <!-- Padding Left -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">pl-96</span>
+
+                    <!-- Margin -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">m-96</span>
+
+                    <!-- Margin X -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-96</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mx-auto</span>
+
+                    <!-- Margin Y -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">my-96</span>
+
+                    <!-- Margin Top -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-96</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mt-auto</span>
+
+                    <!-- Margin Right -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mr-96</span>
+
+                    <!-- Margin Bottom -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">mb-96</span>
+
+                    <!-- Margin Left -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-16</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-24</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-32</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-48</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-56</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-64</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ml-96</span>
+
+                    <!-- Space -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-7</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-9</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-11</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-x-12</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-1</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-3</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-6</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-7</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-9</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-11</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">space-y-12</span>
+                </div>
+            </div>
+
+            <!-- Typography -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Typography</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <!-- Font Size -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-xs</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-sm</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-base</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-md</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lg</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-2xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-3xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-4xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-5xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-6xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-7xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-8xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-9xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-10xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-11xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-12xl</span>
+                    <!-- Font Weight -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">font-light</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">font-normal</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">font-medium</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">font-semibold</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">font-bold</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">font-black</span>
+                    <!-- Font Family -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">font-default</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">font-heading</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">font-mono</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">font-icon</span>
+                    <!-- Line Height -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">leading-none</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">leading-tight</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">leading-snug</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">leading-normal</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">leading-relaxed</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">leading-loose</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">leading-sm</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">leading-md</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">leading-lg</span>
+                    <!-- Letter Spacing -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">tracking-xs</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">tracking-sm</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">tracking-md</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">tracking-lg</span>
+                    <!-- Text Alignment -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-left</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-center</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-right</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-justify</span>
+                    <!-- Text Style -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">italic</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">not-italic</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">uppercase</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">lowercase</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">capitalize</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">normal-case</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">underline</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">no-underline</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">line-through</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">no-line-through</span>
+                    <!-- Lists -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">list-none</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">list-disc</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">list-decimal</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">list-inside</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">list-outside</span>
+                </div>
+            </div>
+
+            <!-- Background Colors -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Background Colors</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <!-- Standard Colors -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-transparent</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-current</span>
+                    <!-- Gray Scale -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-gray-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-gray-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-gray-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-gray-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-gray-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-gray-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-gray-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-gray-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-gray-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-gray-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-gray-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-gray-100</span>
+                    <!-- Core Colors -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-blue-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-blue-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-blue-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-blue-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-blue-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-blue-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-blue-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-blue-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-blue-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-blue-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-blue-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-blue-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-green-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-green-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-green-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-green-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-green-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-green-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-green-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-green-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-green-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-green-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-green-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-green-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-red-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-red-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-red-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-red-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-red-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-red-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-red-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-red-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-red-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-red-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-red-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-red-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-yellow-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-yellow-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-yellow-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-yellow-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-yellow-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-yellow-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-yellow-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-yellow-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-yellow-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-yellow-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-yellow-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-yellow-100</span>
+                    <!-- Decorative Colors -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-orange-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-orange-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-orange-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-orange-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-orange-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-orange-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-orange-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-orange-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-orange-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-orange-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-orange-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-orange-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-olive-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-olive-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-olive-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-olive-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-olive-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-olive-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-olive-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-olive-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-olive-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-olive-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-olive-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-olive-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-lime-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-lime-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-lime-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-lime-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-lime-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-lime-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-lime-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-lime-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-lime-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-lime-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-lime-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-lime-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-forest-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-forest-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-forest-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-forest-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-forest-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-forest-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-forest-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-forest-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-forest-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-forest-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-forest-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-forest-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-cyan-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-cyan-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-cyan-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-cyan-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-cyan-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-cyan-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-cyan-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-cyan-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-cyan-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-cyan-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-cyan-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-cyan-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-slate-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-slate-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-slate-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-slate-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-slate-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-slate-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-slate-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-slate-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-slate-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-slate-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-slate-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-slate-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-purple-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-purple-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-purple-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-purple-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-purple-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-purple-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-purple-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-purple-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-purple-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-purple-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-purple-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-purple-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-plum-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-plum-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-plum-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-plum-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-plum-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-plum-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-plum-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-plum-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-plum-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-plum-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-plum-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-plum-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-choco-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-choco-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-choco-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-choco-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-choco-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-choco-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-choco-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-choco-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-choco-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-choco-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-choco-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-choco-100</span>
+                    <!-- Semantic Colors -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-primary</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-primary-inverse</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-secondary</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-secondary-inverse</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-tertiary</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-tertiary-inverse</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-accent</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-accent-weak</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-accent-strong</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-success</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-success-weak</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-success-strong</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-warning</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-warning-weak</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-warning-strong</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-danger</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-danger-weak</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">bg-danger-strong</span>
+                </div>
+            </div>
+
+            <!-- Text Colors -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Text Colors</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <!-- Standard Colors -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-transparent</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-current</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-white</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-black</span>
+                    <!-- Gray Scale -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-gray-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-gray-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-gray-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-gray-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-gray-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-gray-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-gray-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-gray-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-gray-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-gray-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-gray-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-gray-100</span>
+                    <!-- Core Colors -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-blue-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-blue-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-blue-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-blue-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-blue-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-blue-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-blue-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-blue-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-blue-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-blue-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-blue-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-blue-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-green-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-green-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-green-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-green-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-green-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-green-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-green-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-green-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-green-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-green-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-green-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-green-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-red-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-red-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-red-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-red-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-red-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-red-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-red-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-red-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-red-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-red-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-red-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-red-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-yellow-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-yellow-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-yellow-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-yellow-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-yellow-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-yellow-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-yellow-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-yellow-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-yellow-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-yellow-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-yellow-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-yellow-100</span>
+                    <!-- Decorative Colors -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-orange-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-orange-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-orange-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-orange-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-orange-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-orange-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-orange-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-orange-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-orange-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-orange-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-orange-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-orange-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-olive-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-olive-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-olive-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-olive-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-olive-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-olive-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-olive-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-olive-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-olive-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-olive-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-olive-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-olive-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lime-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lime-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lime-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lime-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lime-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lime-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lime-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lime-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lime-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lime-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lime-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-lime-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-forest-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-forest-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-forest-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-forest-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-forest-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-forest-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-forest-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-forest-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-forest-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-forest-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-forest-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-forest-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-cyan-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-cyan-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-cyan-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-cyan-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-cyan-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-cyan-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-cyan-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-cyan-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-cyan-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-cyan-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-cyan-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-cyan-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-slate-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-slate-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-slate-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-slate-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-slate-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-slate-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-slate-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-slate-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-slate-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-slate-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-slate-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-slate-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-purple-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-purple-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-purple-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-purple-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-purple-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-purple-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-purple-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-purple-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-purple-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-purple-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-purple-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-purple-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-plum-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-plum-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-plum-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-plum-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-plum-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-plum-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-plum-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-plum-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-plum-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-plum-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-plum-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-plum-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-choco-5</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-choco-10</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-choco-20</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-choco-30</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-choco-40</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-choco-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-choco-60</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-choco-70</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-choco-80</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-choco-90</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-choco-95</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-choco-100</span>
+                    <!-- Semantic Colors -->
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-primary</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-secondary</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-inverse</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-accent</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-success</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-warning</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">text-danger</span>
+                </div>
+            </div>
+
+            <!-- Borders -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Borders</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">border</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">border-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">border-2</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">border-4</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">border-8</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">border-t</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">border-b</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">border-l</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">border-r</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">rounded</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">rounded-sm</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">rounded-md</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">rounded-lg</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">rounded-xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">rounded-full</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">border-primary</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">border-accent</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">border-gray-10</span>
+                </div>
+            </div>
+
+            <!-- Effects -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Effects</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">shadow</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">shadow-sm</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">shadow-md</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">shadow-lg</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">shadow-xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">shadow-2xl</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">opacity-0</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">opacity-50</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">opacity-100</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">brightness-08</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">brightness-09</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">brightness-11</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">brightness-12</span>
+                </div>
+            </div>
+
+            <!-- Transitions -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Transitions & Animations</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">transition</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">transition-all</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">transition-colors</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">duration-200</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">duration-300</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">ease-in-out</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">animate-fade-in</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">animate-fade-out</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">animate-slide-up</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">animate-slide-down</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">animate-scale-in</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">animate-scale-out</span>
+                </div>
+            </div>
+
+            <!-- Interactivity -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Interactivity</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">cursor-pointer</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">cursor-default</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">select-none</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">select-text</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">resize-none</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">overflow-auto</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">overflow-hidden</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">whitespace-nowrap</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">truncate</span>
+                </div>
+            </div>
+
+            <!-- Hover & Focus States -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Hover & Focus States</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">hover:bg-accent</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">hover:bg-danger</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">hover:text-accent</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">hover:underline</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">focus:outline-none</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">focus:ring-accent</span>
+                </div>
+            </div>
+
+            <!-- Custom Components -->
+            <div class="mb-8">
+                <h3 class="text-xl font-medium mb-4">Custom Components</h3>
+                <div class="grid grid-cols-6 gap-2">
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">c3-card</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">c3-input</span>
+                    <span class="text-sm font-mono bg-gray-10 p-2 rounded">c3-logo</span>
+                </div>
+            </div>
+
+            <div class="bg-accent-weak p-4 rounded border border-accent">
+                <h4 class="font-medium mb-2">Note:</h4>
+                <p class="text-sm text-secondary">
+                    This is a comprehensive list of all Tailwind CSS classes that are currently safelisted in the configuration. These classes are guaranteed to be included in your final CSS build.
+                    For the full list of available Tailwind CSS utility classes, please refer to the <a href="https://tailwindcss.com/docs" class="text-accent hover:underline" target="_blank">official Tailwind CSS documentation</a>.
+                </p>
+                <p class="text-sm text-secondary">
+                    If you notice any missing classes that should be safelisted, feel free to report them and I’ll make sure they get added.</p>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to light
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        // Apply the saved theme on page load
+        if (currentTheme === 'dark') {
+            html.classList.add('dark');
+        }
+
+        // Update button text based on current theme
+        function updateButtonText() {
+            const isDark = html.classList.contains('dark');
+            themeToggle.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        }
+
+        // Initialize button text
+        updateButtonText();
+
+        // Theme toggle click handler
+        themeToggle.addEventListener('click', () => {
+            const isDark = html.classList.contains('dark');
+
+            if (isDark) {
+                // Switch to light mode
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                // Switch to dark mode
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+
+            updateButtonText();
+
+            // Dispatch custom event for theme change
+            const event = new CustomEvent('c3-theme-changed', {
+                detail: { theme: isDark ? 'light' : 'dark' }
+            });
+            document.dispatchEvent(event);
+        });
+
+        // Listen for theme changes to update UI
+        document.addEventListener('c3-theme-changed', (event) => {
+            console.log('Theme changed to:', event.detail.theme);
+            // You can add additional UI updates here
+        });
+    </script>
+</body>
+</html>

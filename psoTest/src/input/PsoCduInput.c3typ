@@ -1,0 +1,45 @@
+/**
+ * A Crude Distillation Unit (CDU) at the refinery.
+ *
+ * v1 models two CDUs at Aspropyrgos (CDU-1, CDU-2). Each has a planned daily
+ * throughput target, a min/max operating envelope, a set of blend
+ * constraints, and an LP target charge per crude grade per day.
+ */
+type PsoCduInput {
+  /**
+   * Stable CDU identifier, e.g. "CDU-1".
+   */
+  cduId: !string
+
+  /**
+   * Display name.
+   */
+  name: string
+
+  /**
+   * Planned daily throughput target (bpd) from the APS schedule.
+   */
+  plannedThroughputBpd: !double
+
+  /**
+   * Minimum stable operating throughput (bpd).
+   */
+  minThroughputBpd: !double
+
+  /**
+   * Maximum sustainable throughput (bpd).
+   */
+  maxThroughputBpd: !double
+
+  /**
+   * Blend constraints active on this CDU (sulphur cap, API band, etc.).
+   */
+  blendConstraints: [PsoBlendConstraintInput]
+
+  /**
+   * LP target charge per day per grade. Shape:
+   * { "ARAB_LIGHT": [bpd_day0, bpd_day1, …], "URALS": [...] }.
+   * Array length must equal {@link PsoInput#planningHorizonDays}.
+   */
+  lpTargetByGrade: map<string, [double]>
+}

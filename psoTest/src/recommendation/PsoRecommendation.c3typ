@@ -1,0 +1,138 @@
+/**
+ * A persisted optimizer recommendation with full feedback lifecycle.
+ *
+ * Every run of the optimizer creates zero or more {@link PsoRecommendation}
+ * rows (one per {@link PsoRecommendationOutput}). Operators Accept / Reject
+ * / Modify these rows on the Recommendations page (decision history) and
+ * inline on the Dashboard; status + notes are persisted so all decisions
+ * are auditable and traceable.
+ *
+ * All JSON fields mirror the strict contract from the business prompt
+ * (lines 178–186) so the UI renders from this single source of truth.
+ */
+entity type PsoRecommendation {
+  /**
+   * Top-level decision: "REORDER" | "HOLD" | "SUBSTITUTE" | "DEFER" | "DROP"
+   * | "RETIME" | "NOMINATE_TANK".
+   */
+  decision: !string
+
+  /**
+   * Scenario id that produced this recommendation (or "BASELINE").
+   */
+  scenarioId: !string
+
+  /**
+   * Optimizer run id ({@link PsoOutput#id}).
+   */
+  runId: string
+
+  /**
+   * Cargo id this recommendation relates to.
+   */
+  cargoId: string
+
+  /**
+   * Crude grade this recommendation relates to.
+   */
+  crudeGrade: string
+
+  /**
+   * Confidence score in [0, 100].
+   */
+  confidence: !double
+
+  /**
+   * Priority tier: "HIGH" | "MEDIUM" | "LOW".
+   */
+  priority: !string
+
+  /**
+   * Expected $ impact vs prior plan.
+   */
+  expectedImpactUsd: double
+
+  /**
+   * Rendered headline.
+   */
+  title: !string
+
+  /**
+   * 1–2 sentence summary.
+   */
+  summary: string
+
+  /**
+   * Evidence bullets (3–6).
+   */
+  evidence: [string]
+
+  /**
+   * Explicit assumptions (see spec Missing Data Rules).
+   */
+  assumptions: [string]
+
+  /**
+   * Risks / downsides of acting on this recommendation.
+   */
+  risks: [string]
+
+  /**
+   * Operator-facing next-action checklist.
+   */
+  nextActions: [string]
+
+  /**
+   * Reorder / substitution plan JSON (totalQtyKbbls, crudeGrade, origin,
+   * orderByDate, expectedArrivalWindowStart/End).
+   */
+  reorderPlan: json
+
+  /**
+   * Risk flags (JSON array) attached inline on the card.
+   */
+  riskFlags: [json]
+
+  /**
+   * Anomaly flags (JSON array) attached inline.
+   */
+  anomalies: [json]
+
+  /**
+   * Evidence metadata snapshot (data sources, timestamps, missing fields,
+   * LP version, price source, lead-time assumption).
+   */
+  metadata: !json
+
+  /**
+   * Lifecycle status: "Proposed" | "Accepted" | "Rejected" | "Modified" |
+   * "Completed".
+   */
+  status: !string
+
+  /**
+   * UTC timestamp when the recommendation was first created.
+   */
+  createdAt: !datetime
+
+  /**
+   * UTC timestamp when the user provided feedback (Accept / Reject / Modify).
+   */
+  actedOnAt: datetime
+
+  /**
+   * User who acted on this recommendation.
+   */
+  actedOnBy: string
+
+  /**
+   * Feedback notes (free text) added by the operator.
+   */
+  feedbackNotes: string
+
+  /**
+   * Realized outcome in USD (when known) — for the optional
+   * "realized vs projected" column on the Recommendations page.
+   */
+  realizedOutcomeUsd: double
+}

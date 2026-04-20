@@ -1,0 +1,41 @@
+/**
+ * Per-item state at a facility.
+ *
+ * Holds everything about a crude grade that is specific to one facility:
+ * initial inventory (aggregated across all tanks of that grade), scheduled
+ * arrivals (daily array over the horizon), and demand (daily LP pull).
+ * Used by the flow-balance constraints in the MILP.
+ */
+type PsoItemFacilityInput {
+  /**
+   * Grade reference — matches {@link PsoItemInput#itemId}.
+   */
+  itemId: !string
+
+  /**
+   * Initial inventory in bbls at time 0 (aggregated across tanks of this grade).
+   */
+  initialInventoryBbls: double
+
+  /**
+   * Scheduled arrivals in bbls per day over the planning horizon. Length =
+   * {@link PsoInput#planningHorizonDays}.
+   */
+  arrivalsBblsByDay: [double]
+
+  /**
+   * Daily demand pull from CDUs (bbls/day), summed across all CDUs. Length =
+   * horizon.
+   */
+  demandBblsByDay: [double]
+
+  /**
+   * Safety-stock floor in bbls. Solver keeps inventory at or above this value.
+   */
+  safetyStockBbls: double
+
+  /**
+   * Holding cost ($/bbl/day) used in the objective.
+   */
+  holdingCostUsdBblDay: double
+}

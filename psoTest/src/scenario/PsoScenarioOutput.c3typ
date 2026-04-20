@@ -1,0 +1,43 @@
+/**
+ * Embedded optimizer output attached to a {@link PsoScenario}.
+ *
+ * Mirrors a subset of {@link PsoOutput} that the Optimizer results panel
+ * needs for rendering, kept on the scenario entity itself so the side-by-
+ * side Compare Scenarios modal can load everything with one fetch.
+ */
+type PsoScenarioOutput {
+  /**
+   * Solve status string (see {@link PsoOutput#status}).
+   */
+  status: !string
+
+  /**
+   * Composite objective value.
+   */
+  objectiveValue: double
+
+  /**
+   * Per-cargo schedules (shape: {@link PsoScheduleOutput}).
+   */
+  schedules: [json]
+
+  /**
+   * All recommendations (shape: {@link PsoRecommendationOutput}).
+   */
+  recommendations: [json]
+
+  /**
+   * Scenario KPIs (same shape as {@link PsoOutput#kpis}).
+   */
+  kpis: json
+
+  /**
+   * Seconds spent solving.
+   */
+  solveTimeSeconds: double
+
+  /**
+   * Solver used: "gurobi" | "heuristic".
+   */
+  solver: string
+}

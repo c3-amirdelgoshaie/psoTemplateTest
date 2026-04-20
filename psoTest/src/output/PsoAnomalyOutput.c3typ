@@ -1,0 +1,42 @@
+/**
+ * A detected anomaly worth surfacing to the operator.
+ *
+ * Examples per spec: sudden CDU throughput change, cargo delay, blend
+ * constraint violation, price spike. Anomalies are informational; they do
+ * not directly change the schedule but may accompany a recommendation.
+ */
+type PsoAnomalyOutput {
+  /**
+   * Anomaly type: "CDU_THROUGHPUT_SPIKE" | "CARGO_DELAY" |
+   * "BLEND_VIOLATION" | "PRICE_SPIKE" | "AIS_STALE" | "CUSTOM".
+   *
+   * Note: field is named `anomalyType` (not `type`) because `type` is a
+   * reserved method on every C3 type.
+   */
+  anomalyType: !string
+
+  /**
+   * Human-readable description rendered verbatim.
+   */
+  description: !string
+
+  /**
+   * Severity 1–5, consistent with {@link PsoRiskFlagOutput#severity}.
+   */
+  severity: !int
+
+  /**
+   * Day offset from horizon start when the anomaly is observed / predicted.
+   */
+  dayOffset: int
+
+  /**
+   * Object id (cargo / tank / CDU / grade) this anomaly relates to.
+   */
+  objectId: string
+
+  /**
+   * Object kind: "CARGO" | "TANK" | "CDU" | "GRADE".
+   */
+  objectKind: string
+}

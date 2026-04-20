@@ -1,0 +1,106 @@
+[
+  {
+    "id": "SCN_BASE_APRIL_PLAN",
+    "name": "Base April Plan",
+    "description": "Baseline run of the April 2026 plan — no overrides. Starting point for comparisons.",
+    "objective": "Balanced",
+    "status": "Complete",
+    "createdAt": "2026-04-12T08:00:00Z",
+    "lastRunAt": "2026-04-14T09:45:00Z",
+    "parameterChanges": {},
+    "baselineKpis": {
+      "throughputBpd": 150500,
+      "daysOfCoverHs": 9.1,
+      "daysOfCoverLs": 10.4,
+      "scheduledArrivalsNext14d": 4,
+      "openDemurrageRiskUsd": 168000,
+      "grmUsdPerBbl": 7.12,
+      "grmUsdAnnualizedMM": 391.3,
+      "opportunityUsdAnnualizedMM": 0.0,
+      "blendViolationCount": 1
+    },
+    "scenarioKpis": {
+      "throughputBpd": 150500,
+      "daysOfCoverHs": 9.1,
+      "daysOfCoverLs": 10.4,
+      "scheduledArrivalsNext14d": 4,
+      "openDemurrageRiskUsd": 168000,
+      "grmUsdPerBbl": 7.12,
+      "grmUsdAnnualizedMM": 391.3,
+      "opportunityUsdAnnualizedMM": 0.0,
+      "blendViolationCount": 1
+    },
+    "kpiDeltas": {
+      "throughputBpd": 0, "daysOfCoverHs": 0, "daysOfCoverLs": 0,
+      "scheduledArrivalsNext14d": 0, "openDemurrageRiskUsd": 0,
+      "grmUsdPerBbl": 0, "grmUsdAnnualizedMM": 0,
+      "opportunityUsdAnnualizedMM": 0, "blendViolationCount": 0
+    },
+    "createdBy": "system"
+  },
+  {
+    "id": "SCN_URALS_SUBSTITUTION",
+    "name": "Urals Substitution",
+    "description": "Substitute a portion of Urals with CPC Blend on CDU-2 to clear the sulphur-limit violation and lift GRM.",
+    "objective": "MaxGRM",
+    "status": "Complete",
+    "createdAt": "2026-04-13T14:22:00Z",
+    "lastRunAt": "2026-04-14T09:47:00Z",
+    "parameterChanges": {
+      "priceOverride": { "CPC_BLEND": 1.20 },
+      "cduThroughputPct": { "CDU-2": 1.00 },
+      "constraintsToggles": { "tankSegregation": true, "qualitySpecs": true, "cduBlendLimits": true }
+    },
+    "baselineKpis": {
+      "throughputBpd": 150500, "daysOfCoverHs": 9.1, "daysOfCoverLs": 10.4,
+      "scheduledArrivalsNext14d": 4, "openDemurrageRiskUsd": 168000,
+      "grmUsdPerBbl": 7.12, "grmUsdAnnualizedMM": 391.3,
+      "opportunityUsdAnnualizedMM": 0.0, "blendViolationCount": 1
+    },
+    "scenarioKpis": {
+      "throughputBpd": 150500, "daysOfCoverHs": 9.0, "daysOfCoverLs": 10.8,
+      "scheduledArrivalsNext14d": 4, "openDemurrageRiskUsd": 168000,
+      "grmUsdPerBbl": 7.41, "grmUsdAnnualizedMM": 407.3,
+      "opportunityUsdAnnualizedMM": 15.9, "blendViolationCount": 0
+    },
+    "kpiDeltas": {
+      "throughputBpd": 0, "daysOfCoverHs": -0.1, "daysOfCoverLs": 0.4,
+      "scheduledArrivalsNext14d": 0, "openDemurrageRiskUsd": 0,
+      "grmUsdPerBbl": 0.29, "grmUsdAnnualizedMM": 15.9,
+      "opportunityUsdAnnualizedMM": 15.9, "blendViolationCount": -1
+    },
+    "createdBy": "j.papadakis"
+  },
+  {
+    "id": "SCN_VESSEL_RETIMING",
+    "name": "Vessel Re-timing",
+    "description": "Shift Aegean Voyager (CRG-2026-002) berth by +2 days to resolve berth conflict and reduce demurrage exposure.",
+    "objective": "MinDemurrage",
+    "status": "Complete",
+    "createdAt": "2026-04-14T07:05:00Z",
+    "lastRunAt": "2026-04-14T09:49:00Z",
+    "parameterChanges": {
+      "delayVesselDays": { "CRG-2026-002": 2 },
+      "flexDays": 3
+    },
+    "baselineKpis": {
+      "throughputBpd": 150500, "daysOfCoverHs": 9.1, "daysOfCoverLs": 10.4,
+      "scheduledArrivalsNext14d": 4, "openDemurrageRiskUsd": 168000,
+      "grmUsdPerBbl": 7.12, "grmUsdAnnualizedMM": 391.3,
+      "opportunityUsdAnnualizedMM": 0.0, "blendViolationCount": 1
+    },
+    "scenarioKpis": {
+      "throughputBpd": 150500, "daysOfCoverHs": 9.1, "daysOfCoverLs": 10.4,
+      "scheduledArrivalsNext14d": 4, "openDemurrageRiskUsd": 64000,
+      "grmUsdPerBbl": 7.10, "grmUsdAnnualizedMM": 390.2,
+      "opportunityUsdAnnualizedMM": 0.1, "blendViolationCount": 1
+    },
+    "kpiDeltas": {
+      "throughputBpd": 0, "daysOfCoverHs": 0, "daysOfCoverLs": 0,
+      "scheduledArrivalsNext14d": 0, "openDemurrageRiskUsd": -104000,
+      "grmUsdPerBbl": -0.02, "grmUsdAnnualizedMM": -1.1,
+      "opportunityUsdAnnualizedMM": 0.1, "blendViolationCount": 0
+    },
+    "createdBy": "a.karras"
+  }
+]

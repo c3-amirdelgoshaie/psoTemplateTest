@@ -1,0 +1,59 @@
+/**
+ * Per-cargo scheduling outcome from an optimizer run.
+ *
+ * One row per cargo in the input. Drives the timeline-diff view on the
+ * Optimizer page and the post-optimization Gantt on the Crude Cargo
+ * Schedule page.
+ */
+type PsoScheduleOutput {
+  /**
+   * Cargo id — matches {@link PsoCargoInput#cargoId}.
+   */
+  cargoId: !string
+
+  /**
+   * Top-level decision: "REORDER" | "HOLD" | "SUBSTITUTE" | "DEFER" | "DROP".
+   */
+  decision: !string
+
+  /**
+   * Day offset from {@link PsoInput#startDate} at which the cargo is berthed
+   * (continuous; may be fractional for intra-day scheduling).
+   */
+  berthStartDay: double
+
+  /**
+   * Day offset at which discharge ends.
+   */
+  berthEndDay: double
+
+  /**
+   * Tanks nominated for discharge (tankIds).
+   */
+  assignedTanks: [string]
+
+  /**
+   * If SUBSTITUTE, the replacement crude grade id.
+   */
+  substitutedWithGrade: string
+
+  /**
+   * If DEFER, the new berth target day (offset from startDate).
+   */
+  deferredToDay: double
+
+  /**
+   * Realized demurrage days for this cargo (0 if on time).
+   */
+  demurrageDays: double
+
+  /**
+   * Realized demurrage cost in USD.
+   */
+  demurrageCostUsd: double
+
+  /**
+   * True if the cargo was berthed strictly inside its original laycan window.
+   */
+  isOnTime: !boolean
+}

@@ -1,0 +1,102 @@
+/**
+ * A single optimizer recommendation, rendered verbatim by the UI.
+ *
+ * Shape follows the strict JSON contract in the business prompt (spec
+ * lines 178–186). Every recommendation carries enough context for the
+ * operator to make an accept / reject / modify decision without leaving
+ * the page.
+ */
+type PsoRecommendationOutput {
+  /**
+   * Stable recommendation id, e.g. "REC-2026-04-14-001".
+   */
+  recommendationId: !string
+
+  /**
+   * Cargo this recommendation relates to, if any. Empty for
+   * grade-aggregate REORDER or blend-violation recs.
+   */
+  cargoId: string
+
+  /**
+   * Crude grade this recommendation relates to, if applicable.
+   */
+  crudeGrade: string
+
+  /**
+   * Top-level decision: "REORDER" | "HOLD" | "SUBSTITUTE" | "DEFER" |
+   * "DROP" | "RETIME" | "NOMINATE_TANK".
+   */
+  decision: !string
+
+  /**
+   * Confidence score in [0, 100]. Lowered when assumptions were necessary
+   * (see spec Missing Data Rules).
+   */
+  confidence: !double
+
+  /**
+   * Expected $ impact versus the prior plan (positive = good, negative =
+   * cost avoided shown as positive in copy).
+   */
+  expectedImpactUsd: double
+
+  /**
+   * Rendered as a headline on the recommendation card.
+   */
+  title: !string
+
+  /**
+   * Short natural-language summary (1–2 sentences) rendered below the title.
+   */
+  summary: string
+
+  /**
+   * 3–6 evidence bullets grounded in available data. Each string is a
+   * ready-to-render line (e.g. "T-104 at 24% fill as of 14 Apr 09:42 UTC").
+   */
+  evidence: ![string]
+
+  /**
+   * Explicit assumptions where data was missing or approximated.
+   */
+  assumptions: [string]
+
+  /**
+   * Explicit risks / downsides of this recommendation.
+   */
+  risks: [string]
+
+  /**
+   * Next actions checklist for the operator.
+   */
+  nextActions: [string]
+
+  /**
+   * Reorder / Substitution plan when decision is REORDER or SUBSTITUTE.
+   * Shape: { totalQtyKbbls, crudeGrade, originRegion, orderByDate,
+   *          expectedArrivalWindowStart, expectedArrivalWindowEnd }.
+   */
+  reorderPlan: json
+
+  /**
+   * Risk flags attached to this recommendation.
+   */
+  riskFlags: [PsoRiskFlagOutput]
+
+  /**
+   * Anomaly flags attached (optional).
+   */
+  anomalies: [PsoAnomalyOutput]
+
+  /**
+   * Priority tier: "HIGH" | "MEDIUM" | "LOW".
+   */
+  priority: !string
+
+  /**
+   * Evidence metadata snapshot — data sources used, timestamps, missing
+   * fields. Rendered by the Evidence drawer.
+   */
+  metadata: !json
+}

@@ -1,0 +1,35 @@
+/**
+ * Crude Schedule Optimizer solver service.
+ *
+ * Defines the Gurobi-backed MILP entry point used by both the C3 server
+ * (via `c3.Lambda.fromPyFunc`) and the local `test_solver.py` script. When
+ * Gurobi is unavailable or errors out, the same `solve_milp()` function
+ * produces a deterministic rule-based result with the identical JSON
+ * shape — the UI is unaffected by which code path ran.
+ *
+ * See {@link PsoOutput} for the output contract and
+ * `resource/formulations/psoTest-formulation.md` for the full MILP.
+ */
+type PsoOptimizer {
+  /**
+   * Run the optimizer against a {@link PsoInput} JSON document.
+   *
+   * Returns the {@link PsoOutput} shape as JSON (recommendations,
+   * schedules, KPIs, risk flags, metadata).
+   */
+  runOptimization: function(
+    psoInput: !json,
+    objectiveMode: string = "Balanced",
+    mipGap: double = 0.01,
+    timeLimit: double = 120,
+    flexDays: int = 2,
+    parameterOverrides: json = null
+  ): !json py
+
+  /**
+   * Lightweight input validation — checks required fields, array-length
+   * invariants, tank-group / grade compatibility. Returns a JSON
+   * `{ valid, issues: [string], warnings: [string] }`.
+   */
+  validateInput: function(psoInput: !json): !json py
+}

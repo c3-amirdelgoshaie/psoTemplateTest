@@ -1,0 +1,135 @@
+/**
+ * UI-facing service for the Crude Schedule Optimizer.
+ *
+ * Every screen in the React UI reads from and writes to this service. It
+ * encapsulates the input-loading, optimizer-running, scenario-CRUD, and
+ * recommendation-feedback flows so the frontend never has to reach into
+ * the PSO internals directly.
+ *
+ * See `instructions/pso-ui-c3.md` for the contract the UI is written against.
+ */
+type CrudePsoService {
+
+  // ---- Input / Output ----
+
+  /**
+   * Load the baseline {@link PsoInput} document from seed.
+   */
+  getInputData: function(): !json py
+
+  /**
+   * Load the most recent baseline {@link PsoOutput} (from etl mount).
+   * Returns null when the optimizer has not yet been run.
+   */
+  getOutputData: function(): json py
+
+  /**
+   * Run the optimizer on the baseline input. Persists recommendations as
+   * {@link PsoRecommendation} rows and saves the output to the etl mount.
+   */
+  runOptimizer: function(objectiveMode: string = "Balanced"): !json py
+
+  /**
+   * Run the optimizer against an arbitrary input document — used by the
+   * Optimizer page's what-if preview.
+   */
+  runOptimizerWithInput: function(
+    inputData: !json,
+    objectiveMode: string = "Balanced",
+    flexDays: int = 2
+  ): !json py
+
+  // ---- Scenarios ----
+
+  /**
+   * Create a scenario row. Does NOT run the optimizer — call
+   * {@link CrudePsoService#runScenario} next.
+   */
+  createScenario: function(
+    name: !string,
+    description: string,
+    objective: string,
+    parameterChanges: json
+  ): !json py
+
+  /**
+   * List scenarios ordered by createdAt desc.
+   */
+  getScenarios: function(limit: int = 20): ![json] py
+
+  /**
+   * Fetch a scenario by id.
+   */
+  getScenario: function(scenarioId: !string): json py
+
+  /**
+   * Run the optimizer for a scenario: applies parameterChanges to the
+   * baseline input, runs the solver, saves output + scenario/baseline KPIs
+   * + KPI deltas.
+   */
+  runScenario: function(scenarioId: !string): !json py
+
+  /**
+   * Delete a scenario.
+   */
+  deleteScenario: function(scenarioId: !string): boolean py
+
+  /**
+   * Baseline KPI snapshot (same keys as {@link PsoOutput#kpis}) used as
+   * the reference for scenario deltas.
+   */
+  getBaselineKpis: function(): !json py
+
+  /**
+   * Build a side-by-side KPI comparison for the Compare Scenarios modal.
+   */
+  compareScenarios: function(scenarioIdA: !string, scenarioIdB: !string): !json py
+
+  // ---- Recommendations / Feedback ----
+
+  /**
+   * Fetch recommendations with optional filters. Filters JSON shape:
+   * { status: [string], decision: [string], crudeGrade: [string],
+   *   cargoId: [string], dateFrom: date, dateTo: date }.
+   */
+  getRecommendations: function(filter: json = null, limit: int = 200): ![json] py
+
+  /**
+   * Mark a recommendation Accepted and record actor / timestamp / optional
+   * notes. Returns the updated row.
+   */
+  acceptRecommendation: function(
+    recommendationId: !string,
+    notes: string = "",
+    actor: string = "operator"
+  ): !json py
+
+  /**
+   * Mark a recommendation Rejected.
+   */
+  rejectRecommendation: function(
+    recommendationId: !string,
+    notes: string = "",
+    actor: string = "operator"
+  ): !json py
+
+  /**
+   * Mark a recommendation Modified and attach the modified reorder-plan /
+   * next-actions JSON.
+   */
+  modifyRecommendation: function(
+    recommendationId: !string,
+    modifications: json,
+    notes: string = "",
+    actor: string = "operator"
+  ): !json py
+
+  /**
+   * Append an operator note without changing status.
+   */
+  addRecommendationNote: function(
+    recommendationId: !string,
+    note: !string,
+    actor: string = "operator"
+  ): !json py
+}

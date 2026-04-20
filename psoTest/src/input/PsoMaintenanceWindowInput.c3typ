@@ -1,0 +1,38 @@
+/**
+ * A scheduled CDU maintenance window (shutdown or turnaround).
+ *
+ * During a maintenance window the CDU's throughput is forced to zero by the
+ * solver ({@link PsoCduInput} constraint on daily throughput). The
+ * maintenance calendar feed is flagged "Stale" in the mock data per spec.
+ */
+type PsoMaintenanceWindowInput {
+  /**
+   * Stable identifier for this window, e.g. "CDU2_TA_APR26".
+   */
+  windowId: !string
+
+  /**
+   * CDU affected.
+   */
+  cduId: !string
+
+  /**
+   * First day of the shutdown (inclusive).
+   */
+  startDate: !date
+
+  /**
+   * Last day of the shutdown (inclusive).
+   */
+  endDate: !date
+
+  /**
+   * Short reason code: "TURNAROUND" | "CATALYST" | "INSPECTION" | "OTHER".
+   */
+  reason: string
+
+  /**
+   * Free-text description for display.
+   */
+  description: string
+}

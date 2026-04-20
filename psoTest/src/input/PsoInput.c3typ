@@ -1,0 +1,72 @@
+/**
+ * Top-level container for Crude Schedule Optimizer input (Aspropyrgos refinery).
+ *
+ * Seeded from APS (Aspen Petroleum Scheduler), live AIS feeds, the LP system,
+ * and the maintenance calendar. Every optimizer run reads an instance of this
+ * type and emits a {@link PsoOutput} with schedules, KPIs, and recommendations.
+ *
+ * The v1 scope is limited to Aspropyrgos; {@link PsoInput#facilities} therefore
+ * typically contains a single {@link PsoFacilityInput}.
+ */
+entity type PsoInput {
+  /**
+   * Refinery that this input instance is for. Always "ASPROPYRGOS" in v1.
+   */
+  refineryId: !string
+
+  /**
+   * Planning horizon in days (must match the length of every time-indexed
+   * array in the nested input types). Valid values per UI: 7, 14, 30.
+   */
+  planningHorizonDays: !int
+
+  /**
+   * First day of the planning horizon (inclusive, UTC midnight).
+   */
+  startDate: !date
+
+  /**
+   * Last day of the planning horizon (inclusive, UTC midnight).
+   */
+  endDate: !date
+
+  /**
+   * Version tag for the LP (Linear Program) target this plan is aligned with.
+   * Missing value triggers the "LP target missing" assumption path in the
+   * solver (uses prior week LP, lowers confidence).
+   */
+  lpTargetVersion: string
+
+  /**
+   * Map of data-source name to last-updated ISO timestamp. Drives the
+   * sidebar data-feed health indicator and the evidence-traceability panel.
+   * Example keys: "inventory", "ais", "priceDifferentials", "lpTarget",
+   * "maintenanceCalendar", "blendConstraints".
+   */
+  dataFreshness: json
+
+  /**
+   * Facilities in scope. v1: one entry for Aspropyrgos.
+   */
+  facilities: ![PsoFacilityInput]
+
+  /**
+   * Master list of crude grades (items). Shared across facilities.
+   */
+  items: ![PsoItemInput]
+
+  /**
+   * Number of concurrent berths available at the terminal. Default 2.
+   */
+  berthCount: !int
+
+  /**
+   * Pipeline capacity from berth to tank farm in barrels per day.
+   */
+  pipelineCapacityBblsPerDay: double
+
+  /**
+   * Default vessel arrival flexibility in days (the Optimizer slider: 0–5).
+   */
+  flexDays: !int
+}

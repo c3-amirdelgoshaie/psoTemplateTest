@@ -1,0 +1,52 @@
+/**
+ * An operational / quality limit on a CDU blend.
+ *
+ * Examples: sulphur ≤ 1.5 %, API ∈ [30, 35], acid number ≤ 0.5. The Blend
+ * Constraints Table on the Refinery Feedstock Plan page renders one row per
+ * instance. A violation (status = "VIOLATED") becomes the trigger for a
+ * SUBSTITUTE or DEFER recommendation.
+ */
+type PsoBlendConstraintInput {
+  /**
+   * Stable constraint identifier, e.g. "CDU-2_SULPHUR_MAX".
+   */
+  constraintId: !string
+
+  /**
+   * Human-readable name, e.g. "Max Sulphur".
+   */
+  name: !string
+
+  /**
+   * Quality / operational metric being bounded: "sulphur" | "api" | "acid" |
+   * "nitrogen" | custom.
+   */
+  metric: !string
+
+  /**
+   * Inequality direction: "LE" (≤), "GE" (≥), or "EQ" (=).
+   */
+  limitType: !string
+
+  /**
+   * The numeric limit value, in the metric's natural unit.
+   */
+  limitValue: !double
+
+  /**
+   * Most-recent observed / scheduled value for comparison against the limit.
+   * Used only for display on the Feedstock Plan page; the solver recomputes.
+   */
+  currentValue: double
+
+  /**
+   * Status string: "OK" | "WARNING" | "VIOLATED". Must agree with the
+   * limitType / limitValue / currentValue triple.
+   */
+  status: string
+
+  /**
+   * Version tag for this constraint row (drives evidence traceability).
+   */
+  version: string
+}

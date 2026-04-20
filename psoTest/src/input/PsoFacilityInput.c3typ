@@ -1,0 +1,44 @@
+/**
+ * Facility-level input for the Crude Schedule Optimizer.
+ *
+ * In v1 there is a single facility — Aspropyrgos. Holds the tanks, CDUs,
+ * incoming cargoes, maintenance windows, and per-item facility state used by
+ * the solver's flow-balance and capacity constraints.
+ */
+type PsoFacilityInput {
+  /**
+   * Unique identifier for the facility (e.g. "ASPROPYRGOS").
+   */
+  facilityId: !string
+
+  /**
+   * Human-readable name shown in the UI (e.g. "Aspropyrgos Refinery").
+   */
+  name: string
+
+  /**
+   * Tanks at this facility. Each tank belongs to one tankGroup (HS / LS / Slops).
+   */
+  tanks: ![PsoTankInput]
+
+  /**
+   * Crude Distillation Units at this facility.
+   */
+  cdus: ![PsoCduInput]
+
+  /**
+   * Inbound cargoes nominated for this facility within the planning horizon.
+   */
+  cargoes: ![PsoCargoInput]
+
+  /**
+   * Scheduled CDU maintenance windows (shutdowns, turnarounds).
+   */
+  maintenanceWindows: [PsoMaintenanceWindowInput]
+
+  /**
+   * Per-item state at this facility — demand, arrivals, initial inventory —
+   * keyed by {@link PsoItemInput#itemId}.
+   */
+  items: [PsoItemFacilityInput]
+}

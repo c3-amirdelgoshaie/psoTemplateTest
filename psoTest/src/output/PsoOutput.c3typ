@@ -1,0 +1,96 @@
+/**
+ * Top-level output of a Crude Schedule Optimizer run.
+ *
+ * Persisted so every optimizer invocation leaves an audit trail. The UI
+ * renders cards, tables, Gantts, and recommendation drawers from this
+ * document — **all** display is driven by the structured JSON contract
+ * defined below (see spec lines 178–186).
+ */
+entity type PsoOutput {
+  /**
+   * Solve status: "optimal" | "time_limit" | "infeasible" | "fallback" |
+   * "error". The "fallback" status is set when the Gurobi license is
+   * unavailable and the deterministic rule-based optimizer produced the
+   * result.
+   */
+  status: !string
+
+  /**
+   * Composite objective value ($/horizon). Higher is better.
+   */
+  objectiveValue: double
+
+  /**
+   * Elapsed solve time (seconds).
+   */
+  solveTimeSeconds: double
+
+  /**
+   * UTC timestamp at which the solver finished.
+   */
+  solvedAt: datetime
+
+  /**
+   * Scenario id (or "BASELINE") that was solved. Enables linking outputs
+   * back to a {@link PsoScenario}.
+   */
+  scenarioId: string
+
+  /**
+   * Optimization objective mode: "MaxGRM" | "MinDemurrage" | "MinLogistics"
+   * | "Balanced".
+   */
+  objectiveMode: !string
+
+  /**
+   * Per-cargo decisions (one per cargo in scope).
+   */
+  schedules: ![PsoScheduleOutput]
+
+  /**
+   * All recommendations emitted by this run — cargo decisions, reorders,
+   * substitutions, berth re-timings, blend-violation corrective actions.
+   */
+  recommendations: ![PsoRecommendationOutput]
+
+  /**
+   * High-level KPIs surfaced on the Dashboard and the Optimizer results
+   * pane. Shape (baseline runs populate the whole map):
+   *   grmUsdPerBbl, grmUsdAnnualizedMM, demurrageCostUsd,
+   *   logisticsCostUsd, opportunityUsdAnnualizedMM,
+   *   throughputBpd, daysOfCoverHs, daysOfCoverLs,
+   *   scheduledArrivalsNext14d, openDemurrageRiskUsd,
+   *   blendViolationCount.
+   */
+  kpis: !json
+
+  /**
+   * Global risk flags not attached to a specific cargo (e.g. an aggregate
+   * STOCKOUT_RISK on a grade).
+   */
+  riskFlags: [PsoRiskFlagOutput]
+
+  /**
+   * Detected anomalies (sudden CDU throughput change, cargo delay, blend
+   * violation, price spike).
+   */
+  anomalies: [PsoAnomalyOutput]
+
+  /**
+   * Daily CDU charge per grade (used by the Feedstock Plan page).
+   * Shape:  { "CDU-1": { "ARAB_LIGHT": [bpd…], "URALS": [bpd…] }, "CDU-2": {…} }.
+   */
+  cduChargeByDay: json
+
+  /**
+   * Daily tank inventory by grade. Shape:
+   * { "T-101": { "ARAB_LIGHT": [bbls…] }, … }.
+   */
+  tankInventoryByDay: json
+
+  /**
+   * Metadata snapshot for evidence traceability (data sources used,
+   * timestamps, fields missing from the input).
+   */
+  metadata: !json
+}
