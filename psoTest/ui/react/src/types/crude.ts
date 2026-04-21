@@ -100,6 +100,18 @@ export interface MaintenanceWindow {
   description?: string;
 }
 
+export interface TankTransfer {
+  transferId: string;
+  fromTankId: string;
+  toTankId: string;
+  crudeGrade: string;
+  volumeBbls: number;
+  startDate: string;
+  endDate: string;
+  status: 'Scheduled' | 'In Progress' | 'Completed';
+  reason?: string;
+}
+
 export interface ItemFacility {
   itemId: string;
   initialInventoryBbls?: number;
@@ -116,6 +128,7 @@ export interface Facility {
   cdus: Cdu[];
   cargoes: Cargo[];
   maintenanceWindows?: MaintenanceWindow[];
+  tankTransfers?: TankTransfer[];
   items?: ItemFacility[];
 }
 

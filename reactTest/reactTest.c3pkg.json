@@ -1,0 +1,7 @@
+{
+  "author": "{{author}}",
+  "name": "reactTest",
+  "description": "{{description}}",
+  "dependencies": {},
+  "version": "1.0.0"
+}

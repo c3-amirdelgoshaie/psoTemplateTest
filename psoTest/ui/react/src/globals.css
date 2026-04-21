@@ -124,6 +124,11 @@
   body {
     color: var(--color-text-primary);
     background-color: var(--c3-style-pageBackgroundColor);
+    overflow: hidden;
+  }
+
+  html {
+    overflow: hidden;
   }
 }
 

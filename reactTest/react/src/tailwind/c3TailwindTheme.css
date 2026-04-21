@@ -1,0 +1,435 @@
+/*
+ * Copyright 2009-2026 C3 AI (www.c3.ai). All Rights Reserved.
+ * Confidential and Proprietary C3 Materials.
+ * This material, including without limitation any software, is the confidential trade secret and proprietary
+ * information of C3 and its licensors. Reproduction, use and/or distribution of this material in any form is
+ * strictly prohibited except as set forth in a written license agreement with C3 and/or its authorized distributors.
+ * This material may be covered by one or more patents or pending patent applications.
+ */
+
+/* Tailwind CSS v4 Theme Configuration for C3 Design System */
+@theme {
+  /* Core Gray Scale - Mapped to Tailwind scale */
+  --color-gray-50: var(--c3-style-color-core-gray-10);
+  --color-gray-100: var(--c3-style-color-core-gray-20);
+  --color-gray-200: var(--c3-style-color-core-gray-30);
+  --color-gray-300: var(--c3-style-color-core-gray-40);
+  --color-gray-400: var(--c3-style-color-core-gray-50);
+  --color-gray-500: var(--c3-style-color-core-gray-60);
+  --color-gray-600: var(--c3-style-color-core-gray-70);
+  --color-gray-700: var(--c3-style-color-core-gray-80);
+  --color-gray-800: var(--c3-style-color-core-gray-90);
+  --color-gray-900: var(--c3-style-color-core-gray-95);
+  --color-gray-950: var(--c3-style-color-core-gray-100);
+
+  /* Core Blue Scale - Mapped to Tailwind scale */
+  --color-blue-50: var(--c3-style-color-core-blue-10);
+  --color-blue-100: var(--c3-style-color-core-blue-20);
+  --color-blue-200: var(--c3-style-color-core-blue-30);
+  --color-blue-300: var(--c3-style-color-core-blue-40);
+  --color-blue-400: var(--c3-style-color-core-blue-50);
+  --color-blue-500: var(--c3-style-color-core-blue-60);
+  --color-blue-600: var(--c3-style-color-core-blue-70);
+  --color-blue-700: var(--c3-style-color-core-blue-80);
+  --color-blue-800: var(--c3-style-color-core-blue-90);
+  --color-blue-900: var(--c3-style-color-core-blue-95);
+  --color-blue-950: var(--c3-style-color-core-blue-100);
+
+  /* Core Green Scale - Mapped to Tailwind scale */
+  --color-green-50: var(--c3-style-color-core-green-10);
+  --color-green-100: var(--c3-style-color-core-green-20);
+  --color-green-200: var(--c3-style-color-core-green-30);
+  --color-green-300: var(--c3-style-color-core-green-40);
+  --color-green-400: var(--c3-style-color-core-green-50);
+  --color-green-500: var(--c3-style-color-core-green-60);
+  --color-green-600: var(--c3-style-color-core-green-70);
+  --color-green-700: var(--c3-style-color-core-green-80);
+  --color-green-800: var(--c3-style-color-core-green-90);
+  --color-green-900: var(--c3-style-color-core-green-95);
+  --color-green-950: var(--c3-style-color-core-green-100);
+
+  /* Core Red Scale - Mapped to Tailwind scale */
+  --color-red-50: var(--c3-style-color-core-red-10);
+  --color-red-100: var(--c3-style-color-core-red-20);
+  --color-red-200: var(--c3-style-color-core-red-30);
+  --color-red-300: var(--c3-style-color-core-red-40);
+  --color-red-400: var(--c3-style-color-core-red-50);
+  --color-red-500: var(--c3-style-color-core-red-60);
+  --color-red-600: var(--c3-style-color-core-red-70);
+  --color-red-700: var(--c3-style-color-core-red-80);
+  --color-red-800: var(--c3-style-color-core-red-90);
+  --color-red-900: var(--c3-style-color-core-red-95);
+  --color-red-950: var(--c3-style-color-core-red-100);
+
+  /* Core Yellow Scale - Mapped to Tailwind scale */
+  --color-yellow-50: var(--c3-style-color-core-yellow-10);
+  --color-yellow-100: var(--c3-style-color-core-yellow-20);
+  --color-yellow-200: var(--c3-style-color-core-yellow-30);
+  --color-yellow-300: var(--c3-style-color-core-yellow-40);
+  --color-yellow-400: var(--c3-style-color-core-yellow-50);
+  --color-yellow-500: var(--c3-style-color-core-yellow-60);
+  --color-yellow-600: var(--c3-style-color-core-yellow-70);
+  --color-yellow-700: var(--c3-style-color-core-yellow-80);
+  --color-yellow-800: var(--c3-style-color-core-yellow-90);
+  --color-yellow-900: var(--c3-style-color-core-yellow-95);
+  --color-yellow-950: var(--c3-style-color-core-yellow-100);
+
+  /* Decorative Colors - Mapped to Tailwind scale */
+  --color-orange-50: var(--c3-style-color-decorative-orange-10);
+  --color-orange-100: var(--c3-style-color-decorative-orange-20);
+  --color-orange-200: var(--c3-style-color-decorative-orange-30);
+  --color-orange-300: var(--c3-style-color-decorative-orange-40);
+  --color-orange-400: var(--c3-style-color-decorative-orange-50);
+  --color-orange-500: var(--c3-style-color-decorative-orange-60);
+  --color-orange-600: var(--c3-style-color-decorative-orange-70);
+  --color-orange-700: var(--c3-style-color-decorative-orange-80);
+  --color-orange-800: var(--c3-style-color-decorative-orange-90);
+  --color-orange-900: var(--c3-style-color-decorative-orange-95);
+  --color-orange-950: var(--c3-style-color-decorative-orange-100);
+
+  --color-olive-50: var(--c3-style-color-decorative-olive-10);
+  --color-olive-100: var(--c3-style-color-decorative-olive-20);
+  --color-olive-200: var(--c3-style-color-decorative-olive-30);
+  --color-olive-300: var(--c3-style-color-decorative-olive-40);
+  --color-olive-400: var(--c3-style-color-decorative-olive-50);
+  --color-olive-500: var(--c3-style-color-decorative-olive-60);
+  --color-olive-600: var(--c3-style-color-decorative-olive-70);
+  --color-olive-700: var(--c3-style-color-decorative-olive-80);
+  --color-olive-800: var(--c3-style-color-decorative-olive-90);
+  --color-olive-900: var(--c3-style-color-decorative-olive-95);
+  --color-olive-950: var(--c3-style-color-decorative-olive-100);
+
+  --color-lime-50: var(--c3-style-color-decorative-lime-10);
+  --color-lime-100: var(--c3-style-color-decorative-lime-20);
+  --color-lime-200: var(--c3-style-color-decorative-lime-30);
+  --color-lime-300: var(--c3-style-color-decorative-lime-40);
+  --color-lime-400: var(--c3-style-color-decorative-lime-50);
+  --color-lime-500: var(--c3-style-color-decorative-lime-60);
+  --color-lime-600: var(--c3-style-color-decorative-lime-70);
+  --color-lime-700: var(--c3-style-color-decorative-lime-80);
+  --color-lime-800: var(--c3-style-color-decorative-lime-90);
+  --color-lime-900: var(--c3-style-color-decorative-lime-95);
+  --color-lime-950: var(--c3-style-color-decorative-lime-100);
+
+  --color-forest-50: var(--c3-style-color-decorative-forest-10);
+  --color-forest-100: var(--c3-style-color-decorative-forest-20);
+  --color-forest-200: var(--c3-style-color-decorative-forest-30);
+  --color-forest-300: var(--c3-style-color-decorative-forest-40);
+  --color-forest-400: var(--c3-style-color-decorative-forest-50);
+  --color-forest-500: var(--c3-style-color-decorative-forest-60);
+  --color-forest-600: var(--c3-style-color-decorative-forest-70);
+  --color-forest-700: var(--c3-style-color-decorative-forest-80);
+  --color-forest-800: var(--c3-style-color-decorative-forest-90);
+  --color-forest-900: var(--c3-style-color-decorative-forest-95);
+  --color-forest-950: var(--c3-style-color-decorative-forest-100);
+
+  --color-cyan-50: var(--c3-style-color-decorative-cyan-10);
+  --color-cyan-100: var(--c3-style-color-decorative-cyan-20);
+  --color-cyan-200: var(--c3-style-color-decorative-cyan-30);
+  --color-cyan-300: var(--c3-style-color-decorative-cyan-40);
+  --color-cyan-400: var(--c3-style-color-decorative-cyan-50);
+  --color-cyan-500: var(--c3-style-color-decorative-cyan-60);
+  --color-cyan-600: var(--c3-style-color-decorative-cyan-70);
+  --color-cyan-700: var(--c3-style-color-decorative-cyan-80);
+  --color-cyan-800: var(--c3-style-color-decorative-cyan-90);
+  --color-cyan-900: var(--c3-style-color-decorative-cyan-95);
+  --color-cyan-950: var(--c3-style-color-decorative-cyan-100);
+
+  --color-slate-50: var(--c3-style-color-decorative-slate-10);
+  --color-slate-100: var(--c3-style-color-decorative-slate-20);
+  --color-slate-200: var(--c3-style-color-decorative-slate-30);
+  --color-slate-300: var(--c3-style-color-decorative-slate-40);
+  --color-slate-400: var(--c3-style-color-decorative-slate-50);
+  --color-slate-500: var(--c3-style-color-decorative-slate-60);
+  --color-slate-600: var(--c3-style-color-decorative-slate-70);
+  --color-slate-700: var(--c3-style-color-decorative-slate-80);
+  --color-slate-800: var(--c3-style-color-decorative-slate-90);
+  --color-slate-900: var(--c3-style-color-decorative-slate-95);
+  --color-slate-950: var(--c3-style-color-decorative-slate-100);
+
+  --color-purple-50: var(--c3-style-color-decorative-purple-10);
+  --color-purple-100: var(--c3-style-color-decorative-purple-20);
+  --color-purple-200: var(--c3-style-color-decorative-purple-30);
+  --color-purple-300: var(--c3-style-color-decorative-purple-40);
+  --color-purple-400: var(--c3-style-color-decorative-purple-50);
+  --color-purple-500: var(--c3-style-color-decorative-purple-60);
+  --color-purple-600: var(--c3-style-color-decorative-purple-70);
+  --color-purple-700: var(--c3-style-color-decorative-purple-80);
+  --color-purple-800: var(--c3-style-color-decorative-purple-90);
+  --color-purple-900: var(--c3-style-color-decorative-purple-95);
+  --color-purple-950: var(--c3-style-color-decorative-purple-100);
+
+  --color-plum-50: var(--c3-style-color-decorative-plum-10);
+  --color-plum-100: var(--c3-style-color-decorative-plum-20);
+  --color-plum-200: var(--c3-style-color-decorative-plum-30);
+  --color-plum-300: var(--c3-style-color-decorative-plum-40);
+  --color-plum-400: var(--c3-style-color-decorative-plum-50);
+  --color-plum-500: var(--c3-style-color-decorative-plum-60);
+  --color-plum-600: var(--c3-style-color-decorative-plum-70);
+  --color-plum-700: var(--c3-style-color-decorative-plum-80);
+  --color-plum-800: var(--c3-style-color-decorative-plum-90);
+  --color-plum-900: var(--c3-style-color-decorative-plum-95);
+  --color-plum-950: var(--c3-style-color-decorative-plum-100);
+
+  --color-choco-50: var(--c3-style-color-decorative-choco-10);
+  --color-choco-100: var(--c3-style-color-decorative-choco-20);
+  --color-choco-200: var(--c3-style-color-decorative-choco-30);
+  --color-choco-300: var(--c3-style-color-decorative-choco-40);
+  --color-choco-400: var(--c3-style-color-decorative-choco-50);
+  --color-choco-500: var(--c3-style-color-decorative-choco-60);
+  --color-choco-600: var(--c3-style-color-decorative-choco-70);
+  --color-choco-700: var(--c3-style-color-decorative-choco-80);
+  --color-choco-800: var(--c3-style-color-decorative-choco-90);
+  --color-choco-900: var(--c3-style-color-decorative-choco-95);
+  --color-choco-950: var(--c3-style-color-decorative-choco-100);
+
+  /* Semantic Colors - These need to work for BOTH text AND backgrounds in Tailwind v4 */
+  /* For now, prioritize text readability - backgrounds can use specific utilities */
+  --color-primary: var(--c3-style-fontColor);
+  --color-secondary: var(--c3-style-secondaryFontColor);
+  --color-inverse: var(--c3-style-accentFontColor);
+
+  /* Specific background color variables for custom utilities */
+  --color-primary-bg: var(--c3-style-colorBgPrimary);
+  --color-primary-inverse: var(--c3-style-colorBgPrimaryInverse);
+  --color-secondary-bg: var(--c3-style-colorBgSecondary);
+  --color-secondary-inverse: var(--c3-style-colorBgSecondaryInverse);
+  --color-tertiary: var(--c3-style-colorBgTertiary);
+  --color-tertiary-inverse: var(--c3-style-colorBgTertiaryInverse);
+
+  --color-accent: var(--c3-style-colorBgAccent);
+  --color-accent-weak: var(--c3-style-colorBgAccentWeak);
+  --color-accent-strong: var(--c3-style-colorBgCoreAccentStrong);
+  --color-accent-hover: var(--c3-style-buttonPrimaryHoverBackgroundColor);
+
+  --color-success: var(--c3-style-colorBgSuccess);
+  --color-success-weak: var(--c3-style-colorBgSuccessWeak);
+  --color-success-strong: var(--c3-style-colorBgCoreSuccessStrong);
+
+  --color-warning: var(--c3-style-colorBgWarning);
+  --color-warning-weak: var(--c3-style-colorBgWarningWeak);
+  --color-warning-strong: var(--c3-style-colorBgCoreWarningStrong);
+
+  --color-danger: var(--c3-style-colorBgDanger);
+  --color-danger-weak: var(--c3-style-colorBgDangerWeak);
+  --color-danger-strong: var(--c3-style-colorBgCoreDangerStrong);
+  --color-danger-hover: var(--c3-style-buttonDangerPrimaryHoverBackgroundColor);
+
+  /* Border colors */
+  --color-border: var(--c3-style-colorBorder);
+  --color-border-weak: var(--c3-style-colorBorderWeak);
+  --color-border-strong: var(--c3-style-colorBorderStrong);
+  --color-border-accent: var(--c3-style-colorBorderAccent);
+  --color-border-success: var(--c3-style-colorBorderSuccess);
+  --color-border-warning: var(--c3-style-colorBorderWarning);
+  --color-border-danger: var(--c3-style-colorBorderDanger);
+
+  /* Text colors - Using colorFg prefix for foreground (text) colors */
+  --color-text-primary: var(--c3-style-colorFgPrimary);
+  --color-text-secondary: var(--c3-style-colorFgSecondary);
+  --color-text-inverse: var(--c3-style-colorFgPrimaryInverse);
+  --color-text-accent: var(--c3-style-colorFgAccent);
+  --color-text-success: var(--c3-style-colorFgSuccess);
+  --color-text-warning: var(--c3-style-colorFgWarning);
+  --color-text-danger: var(--c3-style-colorFgDanger);
+
+  /* Additional semantic background colors for components */
+  --color-bg-primary: var(--c3-style-colorBgPrimary);
+  --color-bg-secondary: var(--c3-style-colorBgSecondary);
+  --color-bg-tertiary: var(--c3-style-colorBgTertiary);
+  --color-bg-accent: var(--c3-style-colorBgAccent);
+  --color-bg-success: var(--c3-style-colorBgSuccess);
+  --color-bg-warning: var(--c3-style-colorBgWarning);
+  --color-bg-danger: var(--c3-style-colorBgDanger);
+  --color-bg-card: var(--c3-style-colorBgCardParent);
+  --color-bg-menu: var(--c3-style-colorBgMenu);
+  --color-bg-input: var(--c3-style-colorBgInputReadonly);
+  --color-bg-selected: var(--c3-style-colorBgSelected);
+  --color-bg-hover: var(--c3-style-colorBgActionHover);
+  --color-bg-pressed: var(--c3-style-colorBgActionPressed);
+
+  /* Additional foreground colors for components */
+  --color-fg-primary: var(--c3-style-colorFgPrimary);
+  --color-fg-secondary: var(--c3-style-colorFgSecondary);
+  --color-fg-accent: var(--c3-style-colorFgAccent);
+  --color-fg-success: var(--c3-style-colorFgSuccess);
+  --color-fg-warning: var(--c3-style-colorFgWarning);
+  --color-fg-danger: var(--c3-style-colorFgDanger);
+  --color-fg-readonly: var(--c3-style-colorFgReadonly);
+
+  /* Spacing */
+  --spacing-00: var(--c3-style-space-00);
+  --spacing-01: var(--c3-style-space-01);
+  --spacing-02: var(--c3-style-space-02);
+  --spacing-03: var(--c3-style-space-03);
+  --spacing-04: var(--c3-style-space-04);
+  --spacing-05: var(--c3-style-space-05);
+  --spacing-06: var(--c3-style-space-06);
+  --spacing-07: var(--c3-style-space-07);
+  --spacing-08: var(--c3-style-space-08);
+  --spacing-09: var(--c3-style-space-09);
+  --spacing-10: var(--c3-style-space-10);
+  --spacing-11: var(--c3-style-space-11);
+  --spacing-12: var(--c3-style-space-12);
+  --spacing-13: var(--c3-style-space-13);
+
+  /* Border Radius */
+  --radius-none: var(--c3-style-border-radius-none);
+  --radius-xs: var(--c3-style-border-radius-xs);
+  --radius-sm: var(--c3-style-border-radius-sm);
+  --radius-md: var(--c3-style-border-radius-md);
+  --radius-lg: var(--c3-style-border-radius-lg);
+  --radius-xl: var(--c3-style-border-radius-xl);
+  --radius-pill: var(--c3-style-border-radius-pill);
+  --radius-circle: var(--c3-style-border-radius-circle);
+  --radius-2002: var(--c3-style-border-radius-2002);
+  --radius-0220: var(--c3-style-border-radius-0220);
+
+  /* Border Width */
+  --border-width-none: var(--c3-style-border-width-none);
+  --border-width-sm: var(--c3-style-border-width-sm);
+  --border-width-md: var(--c3-style-border-width-md);
+  --border-width-lg: var(--c3-style-border-width-lg);
+  --border-width-xl: var(--c3-style-border-width-xl);
+
+  /* Font Family */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-default: 'Inter', sans-serif;
+  --font-heading: 'Inter', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+  --font-icon: 'Font Awesome 6 Pro', sans-serif;
+
+  /* Font Size */
+  --text-xs: var(--c3-style-font-size-01);
+  --text-sm: var(--c3-style-font-size-02);
+  --text-base: var(--c3-style-font-size-03);
+  --text-md: var(--c3-style-font-size-04);
+  --text-lg: var(--c3-style-font-size-05);
+  --text-xl: var(--c3-style-font-size-06);
+  --text-2xl: var(--c3-style-font-size-07);
+  --text-3xl: var(--c3-style-font-size-08);
+  --text-4xl: var(--c3-style-font-size-09);
+  --text-5xl: var(--c3-style-font-size-10);
+  --text-6xl: var(--c3-style-font-size-11);
+  --text-7xl: var(--c3-style-font-size-12);
+  --text-8xl: var(--c3-style-font-size-13);
+  --text-9xl: var(--c3-style-font-size-14);
+  --text-10xl: var(--c3-style-font-size-15);
+  --text-11xl: var(--c3-style-font-size-16);
+  --text-12xl: var(--c3-style-font-size-17);
+
+  /* Font Weight */
+  --font-weight-light: var(--c3-style-font-weight-light);
+  --font-weight-normal: var(--c3-style-font-weight-regular);
+  --font-weight-medium: var(--c3-style-font-weight-medium);
+  --font-weight-semibold: var(--c3-style-font-weight-semibold);
+  --font-weight-bold: var(--c3-style-font-weight-bold);
+  --font-weight-black: var(--c3-style-font-weight-black);
+
+  /* Line Height */
+  --line-height-sm: var(--c3-style-line-height-sm);
+  --line-height-md: var(--c3-style-line-height-md);
+  --line-height-lg: var(--c3-style-line-height-lg);
+
+  /* Letter Spacing */
+  --letter-spacing-xs: var(--c3-style-letter-spacing-xs);
+  --letter-spacing-sm: var(--c3-style-letter-spacing-sm);
+  --letter-spacing-md: var(--c3-style-letter-spacing-md);
+  --letter-spacing-lg: var(--c3-style-letter-spacing-lg);
+
+  /* Box Shadow */
+  --shadow-01: var(--c3-style-boxShadow01);
+  --shadow-02: var(--c3-style-boxShadow02);
+  --shadow-03: var(--c3-style-boxShadow03);
+  --shadow-04: var(--c3-style-boxShadow04);
+  --shadow-05: var(--c3-style-boxShadow05);
+  --shadow-card: var(--c3-style-boxShadowCardParent);
+  --shadow-menu: var(--c3-style-boxShadowMenu);
+
+  /* Light shadows */
+  --shadow-light-01: var(--c3-style-box-shadow-light-01);
+  --shadow-light-02: var(--c3-style-box-shadow-light-02);
+  --shadow-light-03: var(--c3-style-box-shadow-light-03);
+  --shadow-light-04: var(--c3-style-box-shadow-light-04);
+  --shadow-light-05: var(--c3-style-box-shadow-light-05);
+
+  /* Dark shadows */
+  --shadow-dark-01: var(--c3-style-box-shadow-dark-01);
+  --shadow-dark-02: var(--c3-style-box-shadow-dark-02);
+  --shadow-dark-03: var(--c3-style-box-shadow-dark-03);
+  --shadow-dark-04: var(--c3-style-box-shadow-dark-04);
+  --shadow-dark-05: var(--c3-style-box-shadow-dark-05);
+
+  /* Opacity */
+  --opacity-0: var(--c3-style-opacity-00);
+  --opacity-5: var(--c3-style-opacity-05);
+  --opacity-10: var(--c3-style-opacity-10);
+  --opacity-20: var(--c3-style-opacity-20);
+  --opacity-30: var(--c3-style-opacity-30);
+  --opacity-40: var(--c3-style-opacity-40);
+  --opacity-50: var(--c3-style-opacity-50);
+  --opacity-60: var(--c3-style-opacity-60);
+  --opacity-70: var(--c3-style-opacity-70);
+  --opacity-80: var(--c3-style-opacity-80);
+  --opacity-90: var(--c3-style-opacity-90);
+  --opacity-95: var(--c3-style-opacity-95);
+  --opacity-100: var(--c3-style-opacity-100);
+  --opacity-disabled: var(--c3-style-opacityDisabled);
+  --opacity-loading: var(--c3-style-opacityLoading);
+
+  /* Brightness */
+  --brightness-08: var(--c3-style-brightness-08);
+  --brightness-09: var(--c3-style-brightness-09);
+  --brightness-11: var(--c3-style-brightness-11);
+  --brightness-12: var(--c3-style-brightness-12);
+  --brightness-action-hover: var(--c3-style-brightnessActionHover);
+  --brightness-action-hover-inverse: var(--c3-style-brightnessActionHoverInverse);
+  --brightness-action-pressed: var(--c3-style-brightnessActionPressed);
+  --brightness-action-pressed-inverse: var(--c3-style-brightnessActionPressedInverse);
+
+  /* Z-Index */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-fixed: 1030;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+
+  /* Animation duration and timing */
+  --animation-duration-fast: 0.2s;
+  --animation-duration-normal: 0.3s;
+  --animation-timing-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --animation-timing-ease-out: cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes slideDown {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes scaleOut {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0; }
+}

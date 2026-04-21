@@ -5,9 +5,10 @@
  */
 
 import React, { useMemo } from 'react';
-import { Bell, CircleUser } from 'lucide-react';
+import { Bell, CircleUser, MessageCircle } from 'lucide-react';
 import { useQuery } from '@tanstack/react-query';
 import { useGlobalFilters } from '../../contexts/GlobalFiltersContext';
+import { useChat } from '../../contexts/ChatContext';
 import { getInputData, getRecommendations } from '../../shared/crudeApi';
 import { formatDateTime, formatRelative } from '../../lib/format';
 import type { HorizonDays } from '../../types/crude';
@@ -16,6 +17,7 @@ const HORIZON_OPTIONS: HorizonDays[] = [7, 14, 30];
 
 export default function TopBar() {
   const { filters, setHorizon, setRefinery } = useGlobalFilters();
+  const { toggleSidebar, isOpen: isChatOpen } = useChat();
 
   const { data: input } = useQuery({
     queryKey: ['psoInput'],
@@ -105,6 +107,21 @@ export default function TopBar() {
             {recs.length}
           </span>
         )}
+      </button>
+
+      {/* Chat toggle */}
+      <button
+        type="button"
+        aria-label="Toggle chat"
+        title="Chat with AI assistant"
+        className={`relative transition-colors ${
+          isChatOpen
+            ? 'text-accent'
+            : 'text-secondary hover:text-primary'
+        }`}
+        onClick={toggleSidebar}
+      >
+        <MessageCircle size={18} />
       </button>
 
       {/* User avatar */}

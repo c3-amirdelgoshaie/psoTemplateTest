@@ -12,6 +12,8 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SideNav from './components/SideNav/SideNav';
 import TopBar from './components/TopBar/TopBar';
+import ChatSidebar from './components/Chat/ChatSidebar';
+import { ChatProvider } from './contexts/ChatContext';
 import ErrorReporterProvider from './components/ErrorBoundary/ErrorBoundary';
 
 import DashboardPage from './pages/DashboardPage';
@@ -29,22 +31,27 @@ if (import.meta.env.MODE === 'development') {
 export default function App() {
   return (
     <ErrorReporterProvider>
-      <div className="h-screen flex max-w-full overflow-hidden">
-        <SideNav />
-        <div className="flex-1 flex flex-col min-w-0">
-          <TopBar />
-          <main className="flex-1 overflow-auto p-5">
-            <Routes>
-              <Route path="/" element={<DashboardPage />} />
-              <Route path="/schedule" element={<CargoSchedulePage />} />
-              <Route path="/feedstock" element={<FeedstockPlanPage />} />
-              <Route path="/optimizer" element={<OptimizerPage />} />
-              <Route path="/registry" element={<RegistryPage />} />
-              <Route path="/recommendations" element={<RecommendationsPage />} />
-            </Routes>
-          </main>
+      <ChatProvider>
+        <div className="h-screen flex max-w-full overflow-hidden">
+          <SideNav />
+          <div className="flex-1 flex flex-col min-w-0">
+            <TopBar />
+            <div className="flex-1 flex min-h-0">
+              <main className="flex-1 overflow-auto p-5 min-w-0">
+                <Routes>
+                  <Route path="/" element={<DashboardPage />} />
+                  <Route path="/schedule" element={<CargoSchedulePage />} />
+                  <Route path="/feedstock" element={<FeedstockPlanPage />} />
+                  <Route path="/optimizer" element={<OptimizerPage />} />
+                  <Route path="/registry" element={<RegistryPage />} />
+                  <Route path="/recommendations" element={<RecommendationsPage />} />
+                </Routes>
+              </main>
+              <ChatSidebar />
+            </div>
+          </div>
         </div>
-      </div>
+      </ChatProvider>
     </ErrorReporterProvider>
   );
 }

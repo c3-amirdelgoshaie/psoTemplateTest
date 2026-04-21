@@ -7,7 +7,7 @@
  *   - Flip to a table view for scanning / filtering
  *   - Open a cargo to its detail panel (edit / nominate tanks / flag / optimize)
  *   - Open a modal to add a new cargo
- *   - Inspect maintenance windows on a secondary Gantt strip
+ *   - Inspect maintenance windows and tank transfers on a secondary Gantt strip
  *
  * Constraint validation on drag:
  *   - Flag if the cargo has isFixed=true (charter-party locked).
@@ -25,14 +25,17 @@ import * as Dialog from '@radix-ui/react-dialog';
 import {
   AlertTriangle,
   Anchor,
+  ArrowRightLeft,
   CalendarRange,
   Flag,
   Layers,
+  Lock,
   Plus,
   RefreshCw,
   Rows3,
   Save,
   Undo2,
+  Wrench,
   X,
 } from 'lucide-react';
 
@@ -70,6 +73,7 @@ import type {
   PsoInput,
   Schedule,
   Tank,
+  TankTransfer,
   VesselType,
 } from '../types/crude';
 
@@ -100,8 +104,8 @@ export default function CargoSchedulePage() {
   );
 
   const facility = input?.facilities?.[0];
-  const cargoes = facility?.cargoes ?? [];
-  const items: CrudeItem[] = input?.items ?? [];
+  const cargoes = useMemo(() => facility?.cargoes ?? [], [facility]);
+  const items: CrudeItem[] = useMemo(() => input?.items ?? [], [input]);
   const itemsById = useMemo(() => {
     const m: Record<string, CrudeItem> = {};
     for (const i of items) m[i.itemId] = i;
@@ -184,7 +188,7 @@ export default function CargoSchedulePage() {
         subtitle={
           input
             ? `${cargoesInScope.length} / ${cargoes.length} cargoes · ${input.berthCount} berths · ${input.planningHorizonDays}-day horizon starting ${formatDate(input.startDate)}`
-            : 'Loading…'
+            : 'Loading...'
         }
         action={
           <div style={{ display: 'flex', gap: 8 }}>
@@ -203,7 +207,7 @@ export default function CargoSchedulePage() {
               onClick={() => reoptimize.mutate()}
               disabled={reoptimize.isPending}
             >
-              {reoptimize.isPending ? 'Re-optimizing…' : 'Re-optimize'}
+              {reoptimize.isPending ? 'Re-optimizing...' : 'Re-optimize'}
             </HelButton>
           </div>
         }
@@ -224,13 +228,13 @@ export default function CargoSchedulePage() {
 
       {!input || !facility ? (
         <Card>
-          <EmptyState title="Loading" message="Preparing schedule data…" />
+          <EmptyState title="Loading" message="Preparing schedule data..." />
         </Card>
       ) : view === 'gantt' ? (
         <>
           <Card
             title="Berth Gantt"
-            subtitle={`Drag a bar horizontally to re-time its laycan (${input.flexDays}-day flex window).`}
+            subtitle={`Drag a bar horizontally to re-time its laycan (${input.flexDays}-day flex window). Double-click to open details.`}
           >
             <BerthGantt
               cargoes={cargoesInScope}
@@ -246,12 +250,13 @@ export default function CargoSchedulePage() {
           <div style={{ height: 16 }} />
 
           <Card
-            title="Maintenance & tank transfers"
-            subtitle="Secondary Gantt — CDU maintenance windows and tank rebalancing activity."
+            title="Maintenance & Tank Transfers"
+            subtitle="CDU maintenance windows and inter-tank pipeline transfers."
           >
-            <MaintenanceStrip
+            <MaintenanceAndTransfersStrip
               input={input}
               horizonDays={input.planningHorizonDays}
+              itemsById={itemsById}
             />
           </Card>
         </>
@@ -293,7 +298,7 @@ export default function CargoSchedulePage() {
             push({
               kind: 'success',
               title: 'Tanks nominated',
-              message: `${nominating.vesselName} → ${picks.join(', ') || '—'}. Click Re-optimize to commit.`,
+              message: `${nominating.vesselName} → ${picks.join(', ') || '---'}. Click Re-optimize to commit.`,
             });
             setNominating(null);
           }}
@@ -353,21 +358,22 @@ function BerthGantt({
   const [dragId, setDragId] = useState<string | null>(null);
   const [dragDelta, setDragDelta] = useState(0);
 
+  // Label column width
+  const LABEL_W = 72;
+
   const onPointerDown = (e: React.PointerEvent, cargoId: string, isFixed: boolean) => {
-    if (isFixed) return; // Fixed cargoes can't be re-timed.
+    if (isFixed) return;
     e.preventDefault();
     (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
     setDragId(cargoId);
     setDragDelta(0);
   };
 
-  // Global pointer tracking so the drag keeps going even if the cursor
-  // leaves the bar.
   useEffect(() => {
     if (!dragId) return;
     const track = trackRef.current;
     if (!track) return;
-    const trackW = track.getBoundingClientRect().width;
+    const trackW = track.getBoundingClientRect().width - LABEL_W;
     const pxPerDay = trackW / H;
     let startX: number | null = null;
 
@@ -390,10 +396,13 @@ function BerthGantt({
     };
   }, [dragId, dragDelta, H, onCommitDrag]);
 
+  // Ensure we always show at least berthCount lanes (even if empty)
+  const displayLanes = Math.max(lanes.length, input.berthCount);
+
   return (
     <div>
       {overflow && (
-        <div style={{ marginBottom: 8 }}>
+        <div style={{ marginBottom: 12, padding: '8px 12px', background: 'rgba(239, 82, 82, 0.06)', borderRadius: 8, border: '1px solid rgba(239, 82, 82, 0.2)' }}>
           <StatusBadge kind="warning">
             <AlertTriangle size={12} style={{ marginRight: 4 }} />
             {lanes.length} concurrent lanes but only {input.berthCount} berths — conflicts flagged.
@@ -402,24 +411,341 @@ function BerthGantt({
       )}
 
       <div ref={trackRef} style={{ position: 'relative', userSelect: 'none' }}>
-        {/* Day axis */}
-        <div
-          style={{
-            position: 'relative',
-            height: 22,
-            marginBottom: 6,
-            borderBottom: '1px solid var(--hel-border)',
-          }}
-        >
-          {Array.from({ length: H + 1 }).map((_, d) => (
+        {/* Day axis header */}
+        <div style={{ display: 'flex' }}>
+          <div style={{ width: LABEL_W, minWidth: LABEL_W, flexShrink: 0 }} />
+          <div
+            style={{
+              flex: 1,
+              position: 'relative',
+              height: 28,
+              borderBottom: '2px solid var(--hel-border)',
+            }}
+          >
+            {Array.from({ length: H + 1 }).map((_, d) => {
+              const isWeekend = (() => {
+                const dt = new Date(input.startDate);
+                dt.setDate(dt.getDate() + d);
+                return dt.getDay() === 0 || dt.getDay() === 6;
+              })();
+              return (
+                <div
+                  key={d}
+                  style={{
+                    position: 'absolute',
+                    left: `${(d / H) * 100}%`,
+                    bottom: 0,
+                    transform: 'translateX(-50%)',
+                    fontSize: 10,
+                    fontWeight: d % 7 === 0 ? 600 : 400,
+                    color: isWeekend ? 'var(--hel-warning)' : 'var(--hel-text-muted)',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  {d % 2 === 0 ? dateLabel(input.startDate, d) : ''}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Today marker */}
+        {(() => {
+          const today = new Date();
+          const todayDay = (today.getTime() - startMs) / 86400000;
+          if (todayDay >= 0 && todayDay <= H) {
+            return (
+              <div
+                style={{
+                  position: 'absolute',
+                  left: `calc(${LABEL_W}px + ${(todayDay / H) * 100}% * (1 - ${LABEL_W}px / 100%))`,
+                  top: 28,
+                  bottom: 0,
+                  width: 2,
+                  background: 'var(--hel-danger)',
+                  opacity: 0.5,
+                  zIndex: 5,
+                  pointerEvents: 'none',
+                }}
+              >
+                <span
+                  style={{
+                    position: 'absolute',
+                    top: -2,
+                    left: 4,
+                    fontSize: 9,
+                    fontWeight: 600,
+                    color: 'var(--hel-danger)',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  TODAY
+                </span>
+              </div>
+            );
+          }
+          return null;
+        })()}
+
+        {/* Berth lanes */}
+        {Array.from({ length: displayLanes }).map((_, laneIdx) => {
+          const lane = lanes[laneIdx] ?? [];
+          const isOverflow = laneIdx >= input.berthCount;
+          return (
+            <div
+              key={laneIdx}
+              style={{
+                display: 'flex',
+                marginTop: laneIdx === 0 ? 6 : 4,
+              }}
+            >
+              {/* Lane label */}
+              <div
+                style={{
+                  width: LABEL_W,
+                  minWidth: LABEL_W,
+                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: 11,
+                  fontWeight: 600,
+                  color: isOverflow ? 'var(--hel-danger)' : 'var(--hel-text-muted)',
+                  letterSpacing: 0.3,
+                }}
+              >
+                <Anchor size={12} style={{ marginRight: 4, opacity: 0.5 }} />
+                Berth {laneIdx + 1}
+              </div>
+
+              {/* Lane track */}
+              <div
+                style={{
+                  flex: 1,
+                  position: 'relative',
+                  height: 52,
+                  background: isOverflow
+                    ? 'rgba(216, 90, 48, 0.04)'
+                    : laneIdx % 2 === 0
+                      ? 'var(--hel-surface-alt)'
+                      : 'var(--hel-surface)',
+                  border: `1px solid ${isOverflow ? 'var(--hel-danger)' : 'var(--hel-border)'}`,
+                  borderRadius: 8,
+                  overflow: 'hidden',
+                }}
+              >
+                {/* Gridlines */}
+                {Array.from({ length: Math.floor(H / 7) + 1 }).map((_, w) => (
+                  <div
+                    key={w}
+                    style={{
+                      position: 'absolute',
+                      left: `${((w * 7) / H) * 100}%`,
+                      top: 0,
+                      bottom: 0,
+                      width: 1,
+                      background: 'var(--hel-border)',
+                      opacity: 0.4,
+                      pointerEvents: 'none',
+                    }}
+                  />
+                ))}
+
+                {lane.map((c) => {
+                  const deltaDays = dragId === c.cargoId ? dragDelta : 0;
+                  const sDay = (new Date(c.laycanStart).getTime() - startMs) / 86400000 + deltaDays;
+                  const eDay = (new Date(c.laycanEnd).getTime() - startMs) / 86400000 + deltaDays;
+                  const left = Math.max(0, (sDay / H) * 100);
+                  const width = Math.max(((Math.min(H, eDay) - Math.max(0, sDay)) / H) * 100, 3);
+                  const item = itemsById[c.crudeGrade];
+                  const sch = schedulesById[c.cargoId];
+                  const isDragging = dragId === c.cargoId;
+                  const hasOverride = !!overrides[c.cargoId];
+                  const gradeColor = gradeFamilyColor(item?.gradeFamily);
+                  const statusBg =
+                    c.status === 'Confirmed'
+                      ? 'var(--hel-status-confirmed)'
+                      : c.status === 'Provisional'
+                        ? 'var(--hel-status-provisional)'
+                        : 'var(--hel-status-atrisk)';
+                  const textColor = c.status === 'Provisional' ? '#1a1a1a' : '#fff';
+
+                  return (
+                    <div
+                      key={c.cargoId}
+                      style={{
+                        position: 'absolute',
+                        left: `${left}%`,
+                        width: `${width}%`,
+                        top: 6,
+                        bottom: 6,
+                        background: statusBg,
+                        borderRadius: 6,
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '0 10px',
+                        fontSize: 11,
+                        fontWeight: 500,
+                        color: textColor,
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        cursor: c.isFixed ? 'not-allowed' : 'grab',
+                        outline: hasOverride ? '2px dashed var(--hel-accent)' : 'none',
+                        outlineOffset: hasOverride ? -2 : 0,
+                        opacity: isDragging ? 0.75 : 1,
+                        boxShadow: isDragging
+                          ? '0 4px 16px rgba(0,0,0,0.25)'
+                          : '0 1px 3px rgba(0,0,0,0.12)',
+                        transition: isDragging ? 'none' : 'box-shadow 0.15s ease, opacity 0.15s ease',
+                        zIndex: isDragging ? 10 : 1,
+                      }}
+                      onPointerDown={(e) => onPointerDown(e, c.cargoId, !!c.isFixed)}
+                      onDoubleClick={() => onOpenCargo(c)}
+                      title={`${c.vesselName} · ${item?.name ?? c.crudeGrade} · ${formatDate(c.laycanStart)} → ${formatDate(c.laycanEnd)} · ${formatKbbls(c.volumeBbls)}${c.isFixed ? ' (contract-fixed)' : ''}${hasOverride ? ' · local override' : ''}`}
+                    >
+                      {/* Grade color dot */}
+                      <span
+                        aria-hidden
+                        style={{
+                          display: 'inline-block',
+                          width: 8,
+                          height: 8,
+                          borderRadius: '50%',
+                          background: gradeColor,
+                          border: '1.5px solid rgba(255,255,255,0.6)',
+                          marginRight: 6,
+                          flexShrink: 0,
+                        }}
+                      />
+                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', flex: 1 }}>
+                        {c.vesselName}
+                      </span>
+                      <span style={{ marginLeft: 6, opacity: 0.85, fontSize: 10, flexShrink: 0 }}>
+                        {formatKbbls(c.volumeBbls)}
+                      </span>
+                      {c.isFixed && (
+                        <Lock size={10} style={{ marginLeft: 4, opacity: 0.7, flexShrink: 0 }} />
+                      )}
+                      {sch && (
+                        <span style={{ marginLeft: 6, flexShrink: 0 }}>
+                          <DecisionBadge decision={sch.decision} />
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Legend */}
+      <div
+        style={{
+          display: 'flex',
+          gap: 16,
+          marginTop: 14,
+          flexWrap: 'wrap',
+          fontSize: 11,
+          color: 'var(--hel-text-muted)',
+          alignItems: 'center',
+        }}
+      >
+        <LegendItem color="var(--hel-status-confirmed)" label="Confirmed" />
+        <LegendItem color="var(--hel-status-provisional)" label="Provisional" />
+        <LegendItem color="var(--hel-status-atrisk)" label="At Risk" />
+        <span style={{ width: 1, height: 14, background: 'var(--hel-border)', margin: '0 4px' }} />
+        <LegendItem color="var(--hel-grade-arab)" label="Arab Light" />
+        <LegendItem color="var(--hel-grade-urals)" label="Urals" />
+        <LegendItem color="var(--hel-grade-cpc)" label="CPC Blend" />
+        <LegendItem color="var(--hel-grade-azeri)" label="Azeri Light" />
+        <span style={{ marginLeft: 'auto', fontSize: 10, opacity: 0.7 }}>
+          <Lock size={10} style={{ verticalAlign: 'middle', marginRight: 3 }} />
+          = contract-fixed · Drag to re-time · Double-click to open
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function LegendItem({ color, label }: { color: string; label: string }) {
+  return (
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+      <span
+        style={{
+          display: 'inline-block',
+          width: 14,
+          height: 10,
+          borderRadius: 3,
+          background: color,
+        }}
+      />
+      {label}
+    </span>
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Maintenance & Tank Transfers strip                                   */
+/* ------------------------------------------------------------------ */
+
+function MaintenanceAndTransfersStrip({
+  input,
+  horizonDays,
+  itemsById,
+}: {
+  input: PsoInput;
+  horizonDays: number;
+  itemsById: Record<string, CrudeItem>;
+}) {
+  const facility = input.facilities?.[0];
+  const windows = facility?.maintenanceWindows ?? [];
+  const transfers: TankTransfer[] = facility?.tankTransfers ?? [];
+  const startMs = new Date(input.startDate).getTime();
+  const LABEL_W = 72;
+  const LANE_H = 44;
+
+  // Split transfers into lanes so concurrent ones don't overlap
+  const transferLanes = useMemo(() => assignTransferLanes(transfers), [transfers]);
+
+  const hasData = windows.length > 0 || transfers.length > 0;
+  if (!hasData) {
+    return <EmptyState title="No maintenance or transfers" message="No CDU maintenance or tank transfers scheduled for this horizon." />;
+  }
+
+  // Shared gridlines renderer
+  const renderGridlines = () =>
+    Array.from({ length: Math.floor(horizonDays / 7) + 1 }).map((_, w) => (
+      <div
+        key={w}
+        style={{
+          position: 'absolute',
+          left: `${((w * 7) / horizonDays) * 100}%`,
+          top: 0, bottom: 0, width: 1,
+          background: 'var(--hel-border)',
+          opacity: 0.4,
+          pointerEvents: 'none',
+        }}
+      />
+    ));
+
+  return (
+    <div>
+      {/* Day axis (mirroring Gantt) */}
+      <div style={{ display: 'flex' }}>
+        <div style={{ width: LABEL_W, minWidth: LABEL_W, flexShrink: 0 }} />
+        <div style={{ flex: 1, position: 'relative', height: 24, borderBottom: '1px solid var(--hel-border)' }}>
+          {Array.from({ length: horizonDays + 1 }).map((_, d) => (
             <div
               key={d}
               style={{
                 position: 'absolute',
-                left: `${(d / H) * 100}%`,
+                left: `${(d / horizonDays) * 100}%`,
                 bottom: 0,
                 transform: 'translateX(-50%)',
-                fontSize: 10,
+                fontSize: 9,
                 color: 'var(--hel-text-muted)',
                 whiteSpace: 'nowrap',
               }}
@@ -428,176 +754,164 @@ function BerthGantt({
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Lanes */}
-        {lanes.map((lane, laneIdx) => {
-          const isOverflow = laneIdx >= input.berthCount;
+      {/* Maintenance windows — one row per CDU (CDU-1, CDU-2) */}
+      {windows.length > 0 && (() => {
+        const cduIds = Array.from(new Set(windows.map((w) => w.cduId))).sort();
+        return cduIds.map((cduId, cduIdx) => {
+          const cduWindows = windows.filter((w) => w.cduId === cduId);
           return (
-            <div
-              key={laneIdx}
-              style={{
-                position: 'relative',
-                height: 44,
-                marginBottom: 4,
-                background: isOverflow
-                  ? 'rgba(239, 82, 82, 0.05)'
-                  : 'var(--hel-surface-alt)',
-                border: `1px solid ${isOverflow ? 'var(--hel-danger)' : 'var(--hel-border)'}`,
-                borderRadius: 6,
-              }}
-            >
+            <div key={cduId} style={{ display: 'flex', marginTop: cduIdx === 0 ? 6 : 3 }}>
               <div
                 style={{
-                  position: 'absolute',
-                  left: 6,
-                  top: 2,
-                  fontSize: 10,
-                  color: isOverflow ? 'var(--hel-danger)' : 'var(--hel-text-muted)',
-                  fontWeight: isOverflow ? 600 : 400,
-                  pointerEvents: 'none',
+                  width: LABEL_W, minWidth: LABEL_W, flexShrink: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontSize: 10, fontWeight: 600, color: 'var(--hel-text-muted)', letterSpacing: 0.3,
                 }}
               >
-                Berth {laneIdx + 1}
-                {isOverflow && ' (overflow)'}
+                <Wrench size={11} style={{ marginRight: 4, opacity: 0.5 }} />
+                {cduId}
               </div>
-              {lane.map((c) => {
-                const deltaDays = dragId === c.cargoId ? dragDelta : 0;
-                const sDay = (new Date(c.laycanStart).getTime() - startMs) / 86400000 + deltaDays;
-                const eDay = (new Date(c.laycanEnd).getTime() - startMs) / 86400000 + deltaDays;
-                const left = Math.max(0, (sDay / H) * 100);
-                const width = Math.max(((Math.min(H, eDay) - Math.max(0, sDay)) / H) * 100, 2);
-                const classBar =
-                  c.status === 'Confirmed'
-                    ? 'hel-gantt-bar--Confirmed'
-                    : c.status === 'Provisional'
-                      ? 'hel-gantt-bar--Provisional'
-                      : 'hel-gantt-bar--AtRisk';
-                const item = itemsById[c.crudeGrade];
-                const sch = schedulesById[c.cargoId];
-                const isDragging = dragId === c.cargoId;
-                const hasOverride = !!overrides[c.cargoId];
-                return (
-                  <div
-                    key={c.cargoId}
-                    className={`hel-gantt-bar ${classBar} ${isDragging ? 'hel-gantt-bar--dragging' : ''}`}
-                    style={{
-                      position: 'absolute',
-                      left: `${left}%`,
-                      width: `${width}%`,
-                      top: 10,
-                      display: 'flex',
-                      alignItems: 'center',
-                      padding: '0 8px',
-                      fontSize: 11,
-                      whiteSpace: 'nowrap',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      cursor: c.isFixed ? 'not-allowed' : 'grab',
-                      outline: hasOverride ? '2px dashed var(--hel-accent)' : 'none',
-                    }}
-                    onPointerDown={(e) => onPointerDown(e, c.cargoId, !!c.isFixed)}
-                    onDoubleClick={() => onOpenCargo(c)}
-                    title={`${c.vesselName} · ${item?.name ?? c.crudeGrade} · ${formatDate(c.laycanStart)} → ${formatDate(c.laycanEnd)}${c.isFixed ? ' (contract-fixed)' : ''}${hasOverride ? ' · local override' : ''}`}
-                  >
-                    <span
-                      aria-hidden
+              <div
+                style={{
+                  flex: 1, position: 'relative', height: LANE_H,
+                  background: 'var(--hel-surface-alt)',
+                  border: '1px solid var(--hel-border)',
+                  borderRadius: 8, overflow: 'hidden',
+                }}
+              >
+                {renderGridlines()}
+                {cduWindows.map((w: MaintenanceWindow) => {
+                  const sDay = (new Date(w.startDate).getTime() - startMs) / 86400000;
+                  const eDay = (new Date(w.endDate).getTime() - startMs) / 86400000;
+                  if (eDay < 0 || sDay > horizonDays) return null;
+                  const left = Math.max(0, (sDay / horizonDays) * 100);
+                  const width = Math.max(((Math.min(horizonDays, eDay) - Math.max(0, sDay)) / horizonDays) * 100, 2);
+                  return (
+                    <div
+                      key={w.windowId}
                       style={{
-                        display: 'inline-block',
-                        width: 8,
-                        height: 8,
-                        borderRadius: '50%',
-                        background: gradeFamilyColor(item?.gradeFamily),
-                        marginRight: 6,
+                        position: 'absolute',
+                        left: `${left}%`, width: `${width}%`,
+                        top: 6, bottom: 6,
+                        background: 'repeating-linear-gradient(45deg, #7a7a7a 0, #7a7a7a 4px, #8a8a8a 4px, #8a8a8a 8px)',
+                        borderRadius: 5, padding: '0 8px',
+                        fontSize: 10, fontWeight: 500, color: '#fff',
+                        display: 'flex', alignItems: 'center',
+                        overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis',
+                        boxShadow: '0 1px 3px rgba(0,0,0,0.15)',
                       }}
-                    />
-                    {c.vesselName} · {formatKbbls(c.volumeBbls)}
-                    {sch && (
-                      <span style={{ marginLeft: 8, opacity: 0.9 }}>
-                        <DecisionBadge decision={sch.decision} />
+                      title={`${w.cduId} · ${w.reason} · ${formatDate(w.startDate)} → ${formatDate(w.endDate)}${w.description ? '\n' + w.description : ''}`}
+                    >
+                      <Wrench size={10} style={{ marginRight: 4, flexShrink: 0 }} />
+                      <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        {w.reason?.replace(/_/g, ' ')}
                       </span>
-                    )}
-                  </div>
-                );
-              })}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           );
-        })}
-      </div>
+        });
+      })()}
 
-      <div style={{ display: 'flex', gap: 12, marginTop: 10, flexWrap: 'wrap', fontSize: 11, color: 'var(--hel-text-muted)' }}>
-        <span>
-          <span className="hel-gantt-bar hel-gantt-bar--Confirmed" style={{ display: 'inline-block', width: 18, height: 10, borderRadius: 3, verticalAlign: 'middle', marginRight: 6 }} />
-          Confirmed
-        </span>
-        <span>
-          <span className="hel-gantt-bar hel-gantt-bar--Provisional" style={{ display: 'inline-block', width: 18, height: 10, borderRadius: 3, verticalAlign: 'middle', marginRight: 6 }} />
-          Provisional
-        </span>
-        <span>
-          <span className="hel-gantt-bar hel-gantt-bar--AtRisk" style={{ display: 'inline-block', width: 18, height: 10, borderRadius: 3, verticalAlign: 'middle', marginRight: 6 }} />
-          At Risk
-        </span>
-        <span style={{ marginLeft: 'auto' }}>
-          Drag bars horizontally to re-time · double-click to open detail · contract-fixed cargoes are locked.
-        </span>
-      </div>
-    </div>
-  );
-}
+      {/* Tank transfer lanes — one row per concurrent group */}
+      {transferLanes.map((lane, laneIdx) => (
+        <div key={laneIdx} style={{ display: 'flex', marginTop: 3 }}>
+          <div
+            style={{
+              width: LABEL_W, minWidth: LABEL_W, flexShrink: 0,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontSize: 10, fontWeight: 600, color: 'var(--hel-text-muted)', letterSpacing: 0.3,
+            }}
+          >
+            <ArrowRightLeft size={11} style={{ marginRight: 4, opacity: 0.5 }} />
+            {laneIdx === 0 ? 'Transfers' : `Row ${laneIdx + 1}`}
+          </div>
+          <div
+            style={{
+              flex: 1, position: 'relative', height: LANE_H,
+              background: laneIdx % 2 === 0 ? 'var(--hel-surface)' : 'var(--hel-surface-alt)',
+              border: '1px solid var(--hel-border)',
+              borderRadius: 8, overflow: 'hidden',
+            }}
+          >
+            {renderGridlines()}
+            {lane.map((t: TankTransfer) => {
+              const sDay = (new Date(t.startDate).getTime() - startMs) / 86400000;
+              const eDay = (new Date(t.endDate).getTime() - startMs) / 86400000;
+              if (eDay < 0 || sDay > horizonDays) return null;
+              const left = Math.max(0, (sDay / horizonDays) * 100);
+              const width = Math.max(((Math.min(horizonDays, eDay) - Math.max(0, sDay)) / horizonDays) * 100, 2);
+              const gradeColor = gradeFamilyColor(itemsById[t.crudeGrade]?.gradeFamily);
+              const statusColor = t.status === 'Completed'
+                ? 'var(--hel-accent)'
+                : t.status === 'In Progress'
+                  ? 'var(--hel-warning)'
+                  : 'var(--hel-primary)';
+              return (
+                <div
+                  key={t.transferId}
+                  style={{
+                    position: 'absolute',
+                    left: `${left}%`, width: `${width}%`,
+                    top: 6, bottom: 6,
+                    background: statusColor,
+                    borderRadius: 5, padding: '0 8px',
+                    fontSize: 10, fontWeight: 500, color: '#fff',
+                    display: 'flex', alignItems: 'center',
+                    overflow: 'hidden', whiteSpace: 'nowrap', textOverflow: 'ellipsis',
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
+                    opacity: t.status === 'Completed' ? 0.75 : 1,
+                  }}
+                  title={`${t.fromTankId} → ${t.toTankId} · ${formatKbbls(t.volumeBbls)} ${itemsById[t.crudeGrade]?.name ?? t.crudeGrade} · ${formatDate(t.startDate)} → ${formatDate(t.endDate)} · ${t.status}${t.reason ? '\n' + t.reason : ''}`}
+                >
+                  <span
+                    aria-hidden
+                    style={{
+                      display: 'inline-block', width: 7, height: 7, borderRadius: '50%',
+                      background: gradeColor, border: '1px solid rgba(255,255,255,0.5)',
+                      marginRight: 5, flexShrink: 0,
+                    }}
+                  />
+                  <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                    {t.fromTankId} → {t.toTankId}
+                  </span>
+                  <span style={{ marginLeft: 4, fontSize: 9, opacity: 0.8, flexShrink: 0 }}>
+                    {formatKbbls(t.volumeBbls)}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ))}
 
-/* Maintenance + (placeholder) tank transfer strip */
-function MaintenanceStrip({
-  input,
-  horizonDays,
-}: {
-  input: PsoInput;
-  horizonDays: number;
-}) {
-  const windows = input.facilities?.[0]?.maintenanceWindows ?? [];
-  if (windows.length === 0) {
-    return <EmptyState title="No maintenance scheduled" message="CDU maintenance calendar is empty for this horizon." />;
-  }
-  const startMs = new Date(input.startDate).getTime();
-  return (
-    <div style={{ position: 'relative' }}>
+      {/* Legend */}
       <div
         style={{
-          position: 'relative',
-          height: 40,
-          background: 'var(--hel-surface-alt)',
-          border: '1px solid var(--hel-border)',
-          borderRadius: 6,
+          display: 'flex', gap: 14, marginTop: 10, flexWrap: 'wrap',
+          fontSize: 10, color: 'var(--hel-text-muted)', alignItems: 'center',
+          paddingLeft: LABEL_W,
         }}
       >
-        {windows.map((w: MaintenanceWindow) => {
-          const sDay = (new Date(w.startDate).getTime() - startMs) / 86400000;
-          const eDay = (new Date(w.endDate).getTime() - startMs) / 86400000;
-          if (eDay < 0 || sDay > horizonDays) return null;
-          const left = Math.max(0, (sDay / horizonDays) * 100);
-          const width = Math.max(((Math.min(horizonDays, eDay) - Math.max(0, sDay)) / horizonDays) * 100, 2);
-          return (
-            <div
-              key={w.windowId}
-              className="hel-gantt-bar hel-gantt-bar--maint"
-              style={{
-                position: 'absolute',
-                left: `${left}%`,
-                width: `${width}%`,
-                top: 6,
-                padding: '0 8px',
-                fontSize: 11,
-                display: 'flex',
-                alignItems: 'center',
-              }}
-              title={`${w.cduId} · ${w.reason} · ${formatDate(w.startDate)} → ${formatDate(w.endDate)}`}
-            >
-              {w.cduId} · {w.reason}
-            </div>
-          );
-        })}
-      </div>
-      <div style={{ fontSize: 11, color: 'var(--hel-text-muted)', marginTop: 6 }}>
-        Tank transfers: no pipeline transfer feed wired in v1.
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+          <span style={{ display: 'inline-block', width: 12, height: 8, borderRadius: 2, background: 'repeating-linear-gradient(45deg, #7a7a7a 0, #7a7a7a 3px, #8a8a8a 3px, #8a8a8a 6px)' }} />
+          CDU Maintenance
+        </span>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+          <span style={{ display: 'inline-block', width: 12, height: 8, borderRadius: 2, background: 'var(--hel-primary)' }} />
+          Scheduled Transfer
+        </span>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+          <span style={{ display: 'inline-block', width: 12, height: 8, borderRadius: 2, background: 'var(--hel-accent)', opacity: 0.7 }} />
+          Completed Transfer
+        </span>
+        <span style={{ marginLeft: 'auto', opacity: 0.7 }}>
+          {windows.length} maintenance window{windows.length !== 1 ? 's' : ''} · {transfers.length} tank transfer{transfers.length !== 1 ? 's' : ''} · {transferLanes.length} row{transferLanes.length !== 1 ? 's' : ''}
+        </span>
       </div>
     </div>
   );
@@ -676,19 +990,19 @@ function ScheduleTable({
                     {formatDate(c.laycanStart)} → {formatDate(c.laycanEnd)}
                   </td>
                   <td style={{ fontSize: 12 }}>
-                    {c.nominatedTanks && c.nominatedTanks.length > 0 ? c.nominatedTanks.join(', ') : <span style={{ color: 'var(--hel-text-muted)' }}>—</span>}
+                    {c.nominatedTanks && c.nominatedTanks.length > 0 ? c.nominatedTanks.join(', ') : <span style={{ color: 'var(--hel-text-muted)' }}>---</span>}
                   </td>
                   <td>
                     <CargoStatusBadge status={c.status} />
                   </td>
-                  <td>{sch ? <DecisionBadge decision={sch.decision} /> : <StatusBadge kind="muted">—</StatusBadge>}</td>
+                  <td>{sch ? <DecisionBadge decision={sch.decision} /> : <StatusBadge kind="muted">---</StatusBadge>}</td>
                   <td style={{ fontSize: 12 }}>
                     {sch && sch.demurrageDays > 0 ? (
                       <span style={{ color: 'var(--hel-warning)' }}>
                         {sch.demurrageDays}d · {formatUsd(sch.demurrageCostUsd)}
                       </span>
                     ) : (
-                      <span style={{ color: 'var(--hel-text-muted)' }}>—</span>
+                      <span style={{ color: 'var(--hel-text-muted)' }}>---</span>
                     )}
                   </td>
                   <td aria-hidden style={{ color: 'var(--hel-text-muted)' }}>
@@ -735,7 +1049,7 @@ function CargoDetailDrawer({
     <Drawer
       open={!!cargo}
       onClose={onClose}
-      title={`${cargo.vesselName} — ${cargo.cargoId}`}
+      title={`${cargo.vesselName} --- ${cargo.cargoId}`}
       width={540}
       actions={
         <>
@@ -761,12 +1075,12 @@ function CargoDetailDrawer({
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 16 }}>
         <DetailField label="Grade" value={item?.name ?? cargo.crudeGrade} />
         <DetailField label="Volume" value={formatKbbls(cargo.volumeBbls)} />
-        <DetailField label="Loading port" value={cargo.loadingPort ?? '—'} />
-        <DetailField label="Origin" value={cargo.originRegion ?? '—'} />
+        <DetailField label="Loading port" value={cargo.loadingPort ?? '---'} />
+        <DetailField label="Origin" value={cargo.originRegion ?? '---'} />
         <DetailField label="Laycan start" value={formatDate(cargo.laycanStart)} />
         <DetailField label="Laycan end" value={formatDate(cargo.laycanEnd)} />
-        <DetailField label="ETA terminal" value={cargo.etaTerminal ?? '—'} />
-        <DetailField label="Charter-party" value={cargo.charterPartyRef ?? '—'} />
+        <DetailField label="ETA terminal" value={cargo.etaTerminal ?? '---'} />
+        <DetailField label="Charter-party" value={cargo.charterPartyRef ?? '---'} />
         <DetailField
           label="Demurrage risk"
           value={
@@ -785,15 +1099,15 @@ function CargoDetailDrawer({
         />
         <DetailField
           label="Demurrage rate"
-          value={cargo.demurrageRateUsdDay ? `${formatUsd(cargo.demurrageRateUsdDay)}/day` : '—'}
+          value={cargo.demurrageRateUsdDay ? `${formatUsd(cargo.demurrageRateUsdDay)}/day` : '---'}
         />
         <DetailField label="Freight cost" value={formatUsd(cargo.freightCostUsd)} />
         <DetailField
           label="AIS position"
           value={
             cargo.currentLat != null && cargo.currentLon != null
-              ? `${cargo.currentLat.toFixed(2)}°, ${cargo.currentLon.toFixed(2)}°`
-              : '—'
+              ? `${cargo.currentLat.toFixed(2)}deg, ${cargo.currentLon.toFixed(2)}deg`
+              : '---'
           }
         />
       </div>
@@ -829,7 +1143,7 @@ function CargoDetailDrawer({
           </ul>
         ) : (
           <div style={{ fontSize: 12, color: 'var(--hel-text-muted)' }}>
-            None — {compatibleTanks.length} compatible tank{compatibleTanks.length === 1 ? '' : 's'} available.
+            None --- {compatibleTanks.length} compatible tank{compatibleTanks.length === 1 ? '' : 's'} available.
           </div>
         )}
       </div>
@@ -909,7 +1223,7 @@ function NominateTanksModal({
   const coversCargo = totalPicked >= cargo.volumeBbls;
 
   return (
-    <ModalShell title={`Nominate tanks — ${cargo.vesselName}`} onClose={onClose}>
+    <ModalShell title={`Nominate tanks --- ${cargo.vesselName}`} onClose={onClose}>
       <div style={{ fontSize: 13, marginBottom: 12 }}>
         Needs at least <strong>{formatKbbls(cargo.volumeBbls)}</strong> of ullage in{' '}
         <strong>{item?.name ?? cargo.crudeGrade}</strong>-compatible tanks.
@@ -954,7 +1268,7 @@ function NominateTanksModal({
                     <strong>{tank.tankId}</strong>
                     <div style={{ fontSize: 11, color: 'var(--hel-text-muted)' }}>{tank.tankGroup}</div>
                   </td>
-                  <td>{tank.crudeGrade ? itemsById[tank.crudeGrade]?.name ?? tank.crudeGrade : '—'}</td>
+                  <td>{tank.crudeGrade ? itemsById[tank.crudeGrade]?.name ?? tank.crudeGrade : '---'}</td>
                   <td>{formatKbbls(ullage)}</td>
                   <td>
                     <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
@@ -1350,7 +1664,7 @@ function validateDrag(
     violations.push('Cargo is contract-fixed.');
   }
   if (Math.abs(deltaDays) > input.flexDays) {
-    violations.push(`Move of ${deltaDays}d exceeds flex window of ±${input.flexDays}d.`);
+    violations.push(`Move of ${deltaDays}d exceeds flex window of +/-${input.flexDays}d.`);
   }
   const newStart = addDays(cargo.laycanStart, deltaDays);
   const newEnd = addDays(cargo.laycanEnd, deltaDays);
@@ -1380,4 +1694,26 @@ function dateLabel(start: string, dayOffset: number): string {
   const d = new Date(start);
   d.setDate(d.getDate() + dayOffset);
   return d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' });
+}
+
+/** Greedy lane assignment for TankTransfer objects (same algorithm as cargo lanes). */
+function assignTransferLanes(transfers: TankTransfer[]): TankTransfer[][] {
+  const lanes: TankTransfer[][] = [];
+  const sorted = [...transfers].sort(
+    (a, b) => new Date(a.startDate).getTime() - new Date(b.startDate).getTime()
+  );
+  for (const t of sorted) {
+    const s = new Date(t.startDate).getTime();
+    let placed = false;
+    for (const lane of lanes) {
+      const last = lane[lane.length - 1];
+      if (new Date(last.endDate).getTime() <= s) {
+        lane.push(t);
+        placed = true;
+        break;
+      }
+    }
+    if (!placed) lanes.push([t]);
+  }
+  return lanes;
 }

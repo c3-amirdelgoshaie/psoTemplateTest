@@ -1,0 +1,26 @@
+/**
+ * PsoAnalysisService provides a natural-language Q&A interface over the
+ * Production Schedule Optimizer data model (PsoInput, PsoOutput, PsoScenario).
+ *
+ * Uses GenaiCore.Llm.Completion.Client (AWS Bedrock / Anthropic Claude) to
+ * interpret questions, executes structured C3 queries for context (scenarios,
+ * outputs, KPIs, cargo schedules, recommendations), and returns markdown answers.
+ *
+ * Runtime: py-bedrock_litellm_312 is required so that
+ * GenaiCore.Llm.Completion.Client.completion() can call Bedrock natively.
+ */
+type PsoAnalysisService mixes Singleton {
+
+  /**
+   * Answer a natural-language question about the PSO application data.
+   *
+   * @param question     The user's question.
+   * @param chatHistory  Previous Q&A pairs for multi-turn context.
+   *                     Each entry is a map with keys "question" and "answer".
+   * @returns A markdown-formatted answer string.
+   */
+  answerQuestion: member function(
+    question:    !string,
+    chatHistory: [map<string, string>]
+  ): string py-bedrock_litellm_312
+}

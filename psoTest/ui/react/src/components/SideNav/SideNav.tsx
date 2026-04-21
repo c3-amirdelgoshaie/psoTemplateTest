@@ -31,12 +31,12 @@ interface NavItem {
 }
 
 const NAV: NavItem[] = [
-  { id: 'dashboard',    path: '/',               icon: LayoutDashboard, label: 'Dashboard',        tooltip: 'Dashboard Overview' },
-  { id: 'schedule',     path: '/schedule',        icon: Ship,            label: 'Cargo Schedule',   tooltip: 'Cargo Schedule' },
-  { id: 'feedstock',    path: '/feedstock',       icon: Factory,         label: 'Feedstock Plan',   tooltip: 'Feedstock Plan' },
-  { id: 'optimizer',    path: '/optimizer',       icon: Sparkles,        label: 'Diet Optimizer',   tooltip: 'Diet Optimizer' },
-  { id: 'registry',     path: '/registry',        icon: ClipboardList,   label: 'Registry',         tooltip: 'Cargo & SKU Registry' },
-  { id: 'recs',         path: '/recommendations', icon: ListChecks,      label: 'Recommendations',  tooltip: 'Recommendations' },
+  { id: 'dashboard',    path: '/',               icon: LayoutDashboard, label: 'Dashboard',    tooltip: 'Dashboard Overview' },
+  { id: 'schedule',     path: '/schedule',        icon: Ship,            label: 'Schedule',     tooltip: 'Cargo Schedule' },
+  { id: 'feedstock',    path: '/feedstock',       icon: Factory,         label: 'Feedstock',    tooltip: 'Feedstock Plan' },
+  { id: 'optimizer',    path: '/optimizer',       icon: Sparkles,        label: 'Optimizer',    tooltip: 'Diet Optimizer' },
+  { id: 'registry',     path: '/registry',        icon: ClipboardList,   label: 'Registry',     tooltip: 'Cargo & SKU Registry' },
+  { id: 'recs',         path: '/recommendations', icon: ListChecks,      label: 'Recs',         tooltip: 'Recommendations' },
 ];
 
 export default function SideNav() {
@@ -75,7 +75,7 @@ export default function SideNav() {
                   <span className="w-6 h-6 flex items-center justify-center">
                     <Icon className="h-5 w-5" strokeWidth={2} aria-hidden />
                   </span>
-                  <span className="text-xs text-center">{item.label}</span>
+                  <span className="text-xs text-center w-full leading-tight truncate px-0.5">{item.label}</span>
                 </a>
               </li>
             );
