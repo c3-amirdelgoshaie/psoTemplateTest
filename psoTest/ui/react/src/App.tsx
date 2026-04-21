@@ -36,20 +36,18 @@ export default function App() {
           <SideNav />
           <div className="flex-1 flex flex-col min-w-0">
             <TopBar />
-            <div className="flex-1 flex min-h-0">
-              <main className="flex-1 overflow-auto p-5 min-w-0">
-                <Routes>
-                  <Route path="/" element={<DashboardPage />} />
-                  <Route path="/schedule" element={<CargoSchedulePage />} />
-                  <Route path="/feedstock" element={<FeedstockPlanPage />} />
-                  <Route path="/optimizer" element={<OptimizerPage />} />
-                  <Route path="/registry" element={<RegistryPage />} />
-                  <Route path="/recommendations" element={<RecommendationsPage />} />
-                </Routes>
-              </main>
-              <ChatSidebar />
-            </div>
+            <main className="flex-1 overflow-auto p-5 min-w-0">
+              <Routes>
+                <Route path="/" element={<DashboardPage />} />
+                <Route path="/schedule" element={<CargoSchedulePage />} />
+                <Route path="/feedstock" element={<FeedstockPlanPage />} />
+                <Route path="/optimizer" element={<OptimizerPage />} />
+                <Route path="/registry" element={<RegistryPage />} />
+                <Route path="/recommendations" element={<RecommendationsPage />} />
+              </Routes>
+            </main>
           </div>
+          <ChatSidebar />
         </div>
       </ChatProvider>
     </ErrorReporterProvider>
