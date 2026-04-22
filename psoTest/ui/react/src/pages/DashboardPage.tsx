@@ -272,7 +272,7 @@ export default function DashboardPage() {
               message="All recommendations are accepted or there are no open items."
             />
           ) : (
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, minWidth: 0 }}>
               {topRecs.map((r) => {
                 const item = r.crudeGrade ? itemsById[r.crudeGrade] : undefined;
                 return (
@@ -296,8 +296,8 @@ export default function DashboardPage() {
                       if (e.key === 'Enter') setSelected(r);
                     }}
                     aria-label={`Open recommendation ${r.title}`}
-                  >
-                    <div>
+                   >
+                    <div style={{ minWidth: 0 }}>
                       <div
                         style={{
                           display: 'flex',
@@ -356,7 +356,7 @@ export default function DashboardPage() {
                     {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
                     <div
                       onClick={(e) => e.stopPropagation()}
-                      style={{ display: 'flex', flexDirection: 'column', gap: 4 }}
+                      style={{ display: 'flex', flexDirection: 'column', gap: 4, flexShrink: 0 }}
                     >
                       <HelButton
                         variant="primary"

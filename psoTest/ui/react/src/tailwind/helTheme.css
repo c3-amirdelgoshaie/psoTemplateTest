@@ -78,6 +78,8 @@
   border: 1px solid var(--hel-border);
   border-radius: var(--hel-card-radius);
   padding: var(--hel-card-padding);
+  overflow: hidden;
+  min-width: 0;
 }
 
 .hel-card--flush   { padding: 0; }
@@ -132,6 +134,7 @@
   align-items: center;
   gap: 8px;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .hel-btn--primary {

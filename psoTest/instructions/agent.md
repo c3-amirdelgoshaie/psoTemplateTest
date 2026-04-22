@@ -541,3 +541,31 @@ Change `MIN_WIDTH`, `MAX_WIDTH`, `DEFAULT_WIDTH` in `ChatSidebar.tsx`.
 | Token limit errors from LLM | Chat history too long | Trim history more aggressively (fewer pairs, shorter truncation) |
 | Markdown tables overflow sidebar | No overflow containment on bubbles | Add `overflow-hidden` to message bubble divs |
 | Singleton not resolving | Wrong instance arg in `c3MemberAction` | Pass `{}` (empty object), not `null` |
+| Recommendation card buttons clipped | CSS grid `1fr auto` + no `minWidth:0` on text column | See "Session 2" fix below |
+
+---
+
+## Work log
+
+### Session 1 — Chat sidebar (committed)
+
+Built the full AI chat overlay sidebar: `ChatContext`, `ChatSidebar`, `ChatTab`, top-bar toggle, `ChatProvider` wrapper in `App.tsx`, and `overflow: hidden` on `html`/`body`. All committed and pushed (commits `5beb6a3` through `aab8ed7`).
+
+### Session 2 — Recommendation card button clipping fix
+
+**Problem:** On the Dashboard page, the "Accept" and "Dismiss" buttons on recommendation cards were being clipped/cut off on the right edge. The cards use a CSS grid with `gridTemplateColumns: '1fr auto'` where the text column (`1fr`) doesn't respect its parent container width, pushing the `auto`-sized button column off-screen.
+
+**Root cause:** In CSS grid, a `1fr` column can grow beyond its container if its content has an intrinsic minimum width larger than the available space. Without `minWidth: 0` on the content, the text column overflows and the button column gets pushed out of the visible area.
+
+**Files changed:**
+
+1. **`psoTest/ui/react/src/pages/DashboardPage.tsx`** (3 changes):
+   - Line ~275: Added `minWidth: 0` to the `<ul>` container to allow it to shrink within its parent
+   - Line ~300: Added `minWidth: 0` on the text content `<div>` (left column of the grid) so it respects the `1fr` constraint
+   - Line ~359: Added `flexShrink: 0` on the buttons container `<div>` (right column) so buttons never shrink
+
+2. **`psoTest/ui/react/src/tailwind/helTheme.css`** (2 changes):
+   - `.hel-card`: Added `overflow: hidden` and `min-width: 0` to prevent card content from overflowing the card boundary
+   - `.hel-btn`: Added `white-space: nowrap` to prevent button labels from wrapping
+
+**Validation:** TypeScript compilation (`tsc -p tsconfig.build.json --noEmit`) passes with zero errors.
